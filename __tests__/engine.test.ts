@@ -52,6 +52,13 @@ describe('prayer time engine', () => {
     for (const m of r.makruh) expect(m.end.getTime()).toBeGreaterThan(m.start.getTime());
   });
 
+  it('lines makruh windows up with the rounded prayer times', () => {
+    const r = computePrayerTimes(day, LAHORE, DEFAULT_SETTINGS);
+    expect(r.makruh[0].start.getTime()).toBe(r.times.sunrise.getTime());
+    expect(r.makruh[1].end.getTime()).toBe(r.times.dhuhr.getTime());
+    expect(r.makruh[2].end.getTime()).toBe(r.times.maghrib.getTime());
+  });
+
   it('finds the next prayer and rolls over to tomorrow after Isha', () => {
     const today = computePrayerTimes(day, LAHORE, DEFAULT_SETTINGS);
     const tomorrow = computePrayerTimes(addDays(day, 1), LAHORE, DEFAULT_SETTINGS);

@@ -30,6 +30,7 @@ const en = {
   location: 'Location', useGps: 'Use GPS', chooseCity: 'Choose a city',
   privacy: 'No ads, no tracking, no account. Your location never leaves this phone.',
   about: 'Made by Masmatix Innovations',
+  addCity: '+ Add city', edit: 'Edit', done: 'Done', searchCity: 'Search a city or an empire', noCities: 'No cities yet. Tap + Add city.', added: 'Added',
 };
 
 export type StringKey = keyof typeof en;
@@ -64,6 +65,7 @@ const ur: Record<StringKey, string> = {
   location: 'مقام', useGps: 'جی پی ایس استعمال کریں', chooseCity: 'شہر منتخب کریں',
   privacy: 'نہ اشتہار، نہ ٹریکنگ، نہ اکاؤنٹ۔ آپ کا مقام اس فون سے باہر نہیں جاتا۔',
   about: 'تیار کردہ: مسمیٹکس انوویشنز',
+  addCity: '+ شہر شامل کریں', edit: 'ترمیم', done: 'مکمل', searchCity: 'شہر یا سلطنت تلاش کریں', noCities: 'ابھی کوئی شہر نہیں۔ + شہر شامل کریں دبائیں۔', added: 'شامل',
 };
 
 const roman: Record<StringKey, string> = {
@@ -96,6 +98,7 @@ const roman: Record<StringKey, string> = {
   location: 'Location', useGps: 'GPS istemal karein', chooseCity: 'Shehar chunein',
   privacy: 'Na ishtehar, na tracking, na account. Aap ki location is phone se bahar nahi jati.',
   about: 'Masmatix Innovations ki taraf se',
+  addCity: '+ Shehar add karein', edit: 'Edit', done: 'Mukammal', searchCity: 'Shehar ya saltanat talash karein', noCities: 'Abhi koi shehar nahi. + Shehar add karein dabayen.', added: 'Shamil',
 };
 
 export const STRINGS: Record<Language, Record<StringKey, string>> = { en, ur, roman };

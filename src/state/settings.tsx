@@ -4,6 +4,8 @@ import { useColorScheme } from 'react-native';
 import { DEFAULT_SETTINGS, type Settings } from '../engine/methods';
 import { isRTL, translate, type Language, type StringKey } from '../i18n/strings';
 import { DARK, LIGHT, type Palette } from '../ui/theme';
+import { DEFAULT_WORLD_CITIES } from '../data/groups';
+import { cleanList } from './cityList';
 
 export type ThemeMode = 'system' | 'light' | 'dark';
 
@@ -14,6 +16,8 @@ export interface AppSettings {
   use24h: boolean;
   locationMode: 'gps' | 'manual';
   manualCityId: string;
+  /** Ids shown on the Shehar tab, in the user's order. */
+  worldCities: string[];
 }
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
@@ -23,6 +27,7 @@ export const DEFAULT_APP_SETTINGS: AppSettings = {
   use24h: false,
   locationMode: 'gps',
   manualCityId: 'glasgow',
+  worldCities: DEFAULT_WORLD_CITIES,
 };
 
 const STORAGE_KEY = 'qiblanuma.settings.v1';
@@ -49,6 +54,7 @@ export function mergeSettings(stored: unknown): AppSettings {
       ...(s.prayer ?? {}),
       adjustments: { ...DEFAULT_SETTINGS.adjustments, ...(s.prayer?.adjustments ?? {}) },
     },
+    worldCities: cleanList(s.worldCities, DEFAULT_WORLD_CITIES),
   };
 }
 

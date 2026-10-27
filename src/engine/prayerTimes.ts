@@ -137,9 +137,11 @@ export function computePrayerTimes(date: LocalDate, coords: Coordinates, setting
   // Times when salah is makruh (Hanafi): from sunrise until the sun has
   // risen (about 15 minutes), a short window before zawal, and the last
   // minutes before sunset. Durations are conventional approximations.
-  const noonDate = toDate(jd0, dhuhr);
-  const riseDate = toDate(jd0, sunrise);
-  const setDate = toDate(jd0, sunset);
+  // Rounded the same way as the prayer times so the windows line up with them.
+  const roundMin = (d: Date): Date => new Date(Math.round(d.getTime() / MINUTE) * MINUTE);
+  const noonDate = roundMin(toDate(jd0, dhuhr));
+  const riseDate = roundMin(toDate(jd0, sunrise));
+  const setDate = roundMin(toDate(jd0, sunset));
   const makruh: MakruhWindow[] = [
     { label: 'sunrise', start: riseDate, end: new Date(riseDate.getTime() + 15 * MINUTE) },
     { label: 'zawal', start: new Date(noonDate.getTime() - 5 * MINUTE), end: noonDate },

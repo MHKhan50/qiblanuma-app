@@ -1,6 +1,6 @@
 import * as Location from 'expo-location';
 import { useEffect, useState } from 'react';
-import { MANUAL_LOCATIONS } from '../data/cities';
+import { findCity, MANUAL_LOCATIONS } from '../data/cities';
 import { deviceTimeZone } from '../engine/timezone';
 import { useSettings } from './settings';
 
@@ -28,7 +28,7 @@ export function usePlace(): PlaceState {
   useEffect(() => {
     let cancelled = false;
     if (settings.locationMode === 'manual') {
-      const city = MANUAL_LOCATIONS.find((c) => c.id === settings.manualCityId) ?? MANUAL_LOCATIONS[0];
+      const city = findCity(settings.manualCityId) ?? MANUAL_LOCATIONS[0];
       setState({
         status: 'ready',
         place: { latitude: city.latitude, longitude: city.longitude, timeZone: city.timeZone, label: city.name.en, source: 'manual' },

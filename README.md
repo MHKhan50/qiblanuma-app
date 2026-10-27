@@ -13,7 +13,7 @@ Working name. Developer: Masmatix Innovations.
   - Per-prayer minute adjustments and elevation
   - Makruh windows (sunrise, zawal, before sunset)
 - Qibla: great-circle bearing, distance to the Kaaba, live compass with accuracy and a calibration hint
-- World clock of 17 Islamic cities with each city's next prayer
+- World clock with each city's local time and next prayer. 127 cities in 49 groups: Khilafat-e-Rashida first, then the Ottoman state, then other Muslim states in historical order, the Sufi centres of the Barr-e-Azeem, and present-day world cities; a city appears in every group it belonged to. Users add, remove and reorder their own list, with search by city or empire.
 - Urdu, Roman Urdu and English, right-to-left layout for Urdu, light and dark themes
 - Settings saved on the phone
 
@@ -29,14 +29,13 @@ Official timetables are not in the tests yet. See [docs/RESEARCH_NOTES.md](docs/
 
 ## Run it
 
-Needs Node.js 20.19.4 or newer and the Expo Go app (SDK 58) on the phone.
+Needs Node.js 20.19.4 or newer, the Expo Go app (SDK 58) on the phone, and the same free Expo account signed in on the computer and in Expo Go.
 
 ```bash
 npm install
-npx expo install expo-location expo-status-bar react-native-safe-area-context @react-native-async-storage/async-storage react react-native
-npx expo install jest-expo jest @types/jest typescript @types/react -- --save-dev
 npm test
-npx expo start
+npx expo login
+npx expo start --tunnel
 ```
 
 Scan the QR code with Expo Go (Android) or the Camera app (iPhone).
@@ -45,7 +44,7 @@ Scan the QR code with Expo Go (Android) or the Camera app (iPhone).
 
 ```
 src/engine/     astronomy, methods, prayer times, qibla, time zones (pure TypeScript, tested)
-src/data/       Islamic cities and manual locations
+src/data/       city catalog, empire groups and manual locations
 src/i18n/       English, Urdu and Roman Urdu strings
 src/state/      settings (stored on the phone) and location
 src/screens/    Today, Qibla, Cities, Settings
