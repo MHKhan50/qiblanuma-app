@@ -169,3 +169,22 @@ export function addDays(d: LocalDate, n: number): LocalDate {
   const t = new Date(Date.UTC(d.year, d.month - 1, d.day + n));
   return { year: t.getUTCFullYear(), month: t.getUTCMonth() + 1, day: t.getUTCDate() };
 }
+
+export interface CurrentPrayer {
+  name: PrayerName;
+  /** When this prayer's time ends (sunrise ends Fajr). */
+  endsAt: Date;
+}
+
+/** The prayer whose time is running now, or null between sunrise and Dhuhr. */
+export function currentPrayer(today: PrayerTimes, tomorrow: PrayerTimes, now: Date): CurrentPrayer | null {
+  const t = today.times;
+  const n = now.getTime();
+  if (n < t.fajr.getTime()) return { name: 'isha', endsAt: t.fajr };
+  if (n < t.sunrise.getTime()) return { name: 'fajr', endsAt: t.sunrise };
+  if (n < t.dhuhr.getTime()) return null;
+  if (n < t.asr.getTime()) return { name: 'dhuhr', endsAt: t.asr };
+  if (n < t.maghrib.getTime()) return { name: 'asr', endsAt: t.maghrib };
+  if (n < t.isha.getTime()) return { name: 'maghrib', endsAt: t.isha };
+  return { name: 'isha', endsAt: tomorrow.times.fajr };
+}

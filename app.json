@@ -26,7 +26,8 @@
           "locationWhenInUsePermission": "Your location is used on this phone only, to calculate prayer times and the Qibla direction."
         }
       ],
-      "expo-status-bar"
+      "expo-status-bar",
+      "expo-font"
     ]
   }
 }

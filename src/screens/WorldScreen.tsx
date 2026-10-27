@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { CITY_PHOTOS } from '../data/cityPhotos';
 import { findCity, type City } from '../data/cities';
 import { addDays, computePrayerTimes, nextPrayer } from '../engine/prayerTimes';
 import { formatClock, localDateIn } from '../engine/timezone';
@@ -64,6 +65,17 @@ export default function WorldScreen() {
         ListEmptyComponent={<Note>{t('noCities')}</Note>}
         renderItem={({ item }) => (
           <View style={[styles.item, { borderColor: colors.border, backgroundColor: colors.card, flexDirection: dir }]}>
+            {CITY_PHOTOS[item.city.id] && (
+              <Pressable
+                accessibilityRole="imagebutton"
+                onPress={() => {
+                  const p = CITY_PHOTOS[item.city.id];
+                  Alert.alert(p.title, `${t('photoCredit')}: ${p.artist}\n${p.licence}\nWikimedia Commons`);
+                }}
+              >
+                <Image source={CITY_PHOTOS[item.city.id].source} style={[styles.photo, rtl ? { marginLeft: 12 } : { marginRight: 12 }]} />
+              </Pressable>
+            )}
             <View style={{ flex: 1 }}>
               <Text style={[styles.city, { color: colors.text, textAlign: rtl ? 'right' : 'left' }]}>{cityName(item.city)}</Text>
               <Text style={{ color: colors.muted, textAlign: rtl ? 'right' : 'left' }}>
@@ -116,6 +128,7 @@ function IconButton({ label, onPress, danger }: { label: string; onPress: () => 
 
 const styles = StyleSheet.create({
   pad: { padding: 16 },
+  photo: { width: 56, height: 56, borderRadius: 10 },
   header: { justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 },
   item: { borderWidth: 1, borderRadius: 12, padding: 14, marginBottom: 10, alignItems: 'center' },
   city: { fontSize: 18, fontWeight: '600', marginBottom: 2 },

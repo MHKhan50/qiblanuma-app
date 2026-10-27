@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
-import { Modal, Pressable, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image, Modal, Pressable, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { GROUP_FLAGS } from '../data/groupFlags';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { searchGroups } from '../state/cityList';
 import { useSettings } from '../state/settings';
 
@@ -20,6 +21,8 @@ export default function AddCityModal({ visible, selected, onToggle, onClose }: P
 
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
+      {/* A Modal is a separate native view, so it needs its own safe-area provider. */}
+      <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
         <View style={[styles.top, { flexDirection: rtl ? 'row-reverse' : 'row', borderBottomColor: colors.border }]}>
           <TextInput
@@ -40,13 +43,20 @@ export default function AddCityModal({ visible, selected, onToggle, onClose }: P
           stickySectionHeadersEnabled
           contentContainerStyle={{ paddingBottom: 40 }}
           renderSectionHeader={({ section }) => (
-            <View style={[styles.sectionHead, { backgroundColor: colors.bg }]}>
+            <View style={[styles.sectionHead, { backgroundColor: colors.bg, flexDirection: rtl ? 'row-reverse' : 'row' }]}>
+              {GROUP_FLAGS[section.group.id] ? (
+                <Image source={GROUP_FLAGS[section.group.id].source} style={styles.flag} resizeMode="contain" />
+              ) : (
+                <Text style={[styles.emblem, { color: colors.gold }]}>۞</Text>
+              )}
+              <View style={{ flex: 1 }}>
               <Text style={[styles.sectionTitle, { color: colors.gold, textAlign: align }]}>
                 {lang === 'ur' ? section.group.name.ur : lang === 'en' ? section.group.name.en : section.group.name.roman}
               </Text>
               {lang !== 'en' && (
                 <Text style={{ color: colors.muted, fontSize: 12, textAlign: align }}>{section.group.name.en}</Text>
               )}
+              </View>
             </View>
           )}
           renderItem={({ item }) => {
@@ -67,6 +77,7 @@ export default function AddCityModal({ visible, selected, onToggle, onClose }: P
           }}
         />
       </SafeAreaView>
+      </SafeAreaProvider>
     </Modal>
   );
 }
@@ -75,7 +86,9 @@ const styles = StyleSheet.create({
   top: { padding: 12, alignItems: 'center', borderBottomWidth: StyleSheet.hairlineWidth },
   search: { flex: 1, borderWidth: 1, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 10, fontSize: 16 },
   done: { paddingHorizontal: 12, paddingVertical: 8 },
-  sectionHead: { paddingHorizontal: 16, paddingTop: 16, paddingBottom: 6 },
+  sectionHead: { paddingHorizontal: 16, paddingTop: 16, paddingBottom: 6, alignItems: 'center' },
+  flag: { width: 36, height: 24, marginHorizontal: 8 },
+  emblem: { fontSize: 22, width: 36, textAlign: 'center', marginHorizontal: 8 },
   sectionTitle: { fontSize: 16, fontWeight: '700' },
   row: { paddingHorizontal: 16, paddingVertical: 13, borderBottomWidth: StyleSheet.hairlineWidth, alignItems: 'center' },
 });

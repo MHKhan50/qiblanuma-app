@@ -56,6 +56,12 @@ export default function TodayScreen({ place }: { place: PlaceState }) {
       </Card>
 
       <Card>
+        <Title>{t('roza')}</Title>
+        <Row left={t('sehri')} right={clock(data.today.times.fajr)} />
+        <Row left={t('iftar')} right={clock(data.today.times.maghrib)} />
+      </Card>
+
+      <Card>
         <Title>{t('makruhTitle')}</Title>
         {data.today.makruh.map((w) => (
           <Row

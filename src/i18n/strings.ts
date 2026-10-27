@@ -30,6 +30,9 @@ const en = {
   location: 'Location', useGps: 'Use GPS', chooseCity: 'Choose a city',
   privacy: 'No ads, no tracking, no account. Your location never leaves this phone.',
   about: 'Made by Masmatix Innovations',
+  searchQuran: 'Search a surah, or Arabic words', bookmarks: 'Bookmarks', duas: 'Quranic duas', duasNote: 'Duas from the Quran, shown as full ayahs with their reference. Long-press an ayah in the reader to bookmark it.', roza: 'Fasting', sehri: 'Sehri ends', iftar: 'Iftar', adhanTitle: 'Prayer reminders', adhanBody: 'It is time for salah', ramadan: 'Ramadan Mubarak',
+  tabHome: 'Home', prayerTimes: 'Prayer times', tasbeeh: 'Tasbeeh', now: 'Now', endsIn: 'Ends in', beforeZuhr: 'Ishraq and Chasht', reset: 'Reset', hijriAdjust: 'Hijri date adjustment (days)', back: 'Back',
+  tabQuran: 'Quran', suras: 'Surahs', ayahs: 'ayahs', makki: 'Makki', madani: 'Madani', continueReading: 'Continue reading', quranMissing: 'Quran text is not bundled yet. Run scripts/fetch-content.mjs.', credits: 'Credits', photoCredit: 'Photo', showCredits: 'Show credits', hideCredits: 'Hide credits',
   addCity: '+ Add city', edit: 'Edit', done: 'Done', searchCity: 'Search a city or an empire', noCities: 'No cities yet. Tap + Add city.', added: 'Added',
 };
 
@@ -65,6 +68,9 @@ const ur: Record<StringKey, string> = {
   location: 'مقام', useGps: 'جی پی ایس استعمال کریں', chooseCity: 'شہر منتخب کریں',
   privacy: 'نہ اشتہار، نہ ٹریکنگ، نہ اکاؤنٹ۔ آپ کا مقام اس فون سے باہر نہیں جاتا۔',
   about: 'تیار کردہ: مسمیٹکس انوویشنز',
+  searchQuran: 'سورت یا عربی الفاظ تلاش کریں', bookmarks: 'نشانیاں', duas: 'قرآنی دعائیں', duasNote: 'قرآن کی دعائیں، پوری آیات حوالے کے ساتھ۔ کسی آیت کو نشانی بنانے کے لیے اسے دیر تک دبائیں۔', roza: 'روزہ', sehri: 'سحری کا اختتام', iftar: 'افطار', adhanTitle: 'نماز کی یاد دہانی', adhanBody: 'نماز کا وقت ہو گیا ہے', ramadan: 'رمضان مبارک',
+  tabHome: 'ہوم', prayerTimes: 'اوقاتِ نماز', tasbeeh: 'تسبیح', now: 'اب', endsIn: 'ختم ہونے میں', beforeZuhr: 'اشراق و چاشت', reset: 'دوبارہ شروع', hijriAdjust: 'ہجری تاریخ میں تبدیلی (دن)', back: 'واپس',
+  tabQuran: 'قرآن', suras: 'سورتیں', ayahs: 'آیات', makki: 'مکی', madani: 'مدنی', continueReading: 'پڑھنا جاری رکھیں', quranMissing: 'قرآن کا متن ابھی شامل نہیں۔', credits: 'حوالہ جات', photoCredit: 'تصویر', showCredits: 'حوالہ جات دکھائیں', hideCredits: 'حوالہ جات چھپائیں',
   addCity: '+ شہر شامل کریں', edit: 'ترمیم', done: 'مکمل', searchCity: 'شہر یا سلطنت تلاش کریں', noCities: 'ابھی کوئی شہر نہیں۔ + شہر شامل کریں دبائیں۔', added: 'شامل',
 };
 
@@ -98,6 +104,9 @@ const roman: Record<StringKey, string> = {
   location: 'Location', useGps: 'GPS istemal karein', chooseCity: 'Shehar chunein',
   privacy: 'Na ishtehar, na tracking, na account. Aap ki location is phone se bahar nahi jati.',
   about: 'Masmatix Innovations ki taraf se',
+  searchQuran: 'Surat ya Arabi alfaaz talash karein', bookmarks: 'Nishaniyan', duas: 'Qurani duain', duasNote: 'Quran ki duain, poori ayaat hawale ke saath. Kisi ayat ko nishani banane ke liye reader mein usay dair tak dabayen.', roza: 'Roza', sehri: 'Sehri ka ikhtitam', iftar: 'Iftar', adhanTitle: 'Namaz ki yaad dihani', adhanBody: 'Namaz ka waqt ho gaya hai', ramadan: 'Ramazan Mubarak',
+  tabHome: 'Home', prayerTimes: 'Namaz ke auqat', tasbeeh: 'Tasbeeh', now: 'Ab', endsIn: 'Khatam hone mein', beforeZuhr: 'Ishraq aur Chasht', reset: 'Dobara shuru', hijriAdjust: 'Hijri tareekh mein tabdeeli (din)', back: 'Wapas',
+  tabQuran: 'Quran', suras: 'Surtein', ayahs: 'ayaat', makki: 'Makki', madani: 'Madani', continueReading: 'Parhna jari rakhein', quranMissing: 'Quran ka matn abhi shamil nahi.', credits: 'Hawala jaat', photoCredit: 'Tasveer', showCredits: 'Hawala jaat dikhayen', hideCredits: 'Hawala jaat chhupayen',
   addCity: '+ Shehar add karein', edit: 'Edit', done: 'Mukammal', searchCity: 'Shehar ya saltanat talash karein', noCities: 'Abhi koi shehar nahi. + Shehar add karein dabayen.', added: 'Shamil',
 };
 

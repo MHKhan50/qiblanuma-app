@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CITY_PHOTOS } from '../data/cityPhotos';
+import { GROUP_FLAGS } from '../data/groupFlags';
+import { KAABA_PHOTO } from '../data/kaabaPhoto';
+import { QURAN, QURAN_INDOPAK } from '../data/quran';
 import { Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import { MANUAL_LOCATIONS } from '../data/cities';
 import { METHODS, PRAYER_ORDER, type HighLatitudeRule, type MethodId, type PrayerName } from '../engine/methods';
@@ -21,6 +25,20 @@ export default function SettingsScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.pad}>
+      <Card>
+        <Title>{t('adhanTitle')}</Title>
+        <View style={wrap}>
+          {(['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'] as const).map((p) => (
+            <Chip
+              key={p}
+              label={`${settings.adhan[p] ? '🔔' : '🔕'} ${t(p)}`}
+              active={settings.adhan[p]}
+              onPress={() => update({ adhan: { ...settings.adhan, [p]: !settings.adhan[p] } })}
+            />
+          ))}
+        </View>
+      </Card>
+
       <Card>
         <Title>{t('language')}</Title>
         <View style={wrap}>
@@ -87,6 +105,12 @@ export default function SettingsScreen() {
             <Chip key={m} label={t(m === 'system' ? 'themeSystem' : m === 'light' ? 'themeLight' : 'themeDark')} active={settings.theme === m} onPress={() => update({ theme: m })} />
           ))}
         </View>
+        <Title>{t('hijriAdjust')}</Title>
+        <View style={[styles.adjRow, { flexDirection: rtl ? 'row-reverse' : 'row', borderBottomColor: colors.border }]}>
+          <Stepper label="−" onPress={() => update({ hijriOffset: Math.max(-2, settings.hijriOffset - 1) })} />
+          <Text style={{ color: colors.text, width: 44, textAlign: 'center' }}>{settings.hijriOffset > 0 ? `+${settings.hijriOffset}` : settings.hijriOffset}</Text>
+          <Stepper label="+" onPress={() => update({ hijriOffset: Math.min(2, settings.hijriOffset + 1) })} />
+        </View>
         <Title>{t('clock')}</Title>
         <View style={wrap}>
           <Chip label={t('clock12')} active={!settings.use24h} onPress={() => update({ use24h: false })} />
@@ -96,6 +120,7 @@ export default function SettingsScreen() {
 
       <Note>{t('privacy')}</Note>
       <Note>{t('about')}</Note>
+      <CreditsCard />
     </ScrollView>
   );
 }
@@ -115,3 +140,27 @@ const styles = StyleSheet.create({
   adjRow: { alignItems: 'center', paddingVertical: 8, borderBottomWidth: StyleSheet.hairlineWidth },
   step: { width: 38, height: 34, borderWidth: 1, borderRadius: 8, alignItems: 'center', justifyContent: 'center' },
 });
+
+function CreditsCard() {
+  const { t, colors } = useSettings();
+  const [open, setOpen] = useState(false);
+  const items = [...(KAABA_PHOTO ? [KAABA_PHOTO] : []), ...Object.values(CITY_PHOTOS), ...Object.values(GROUP_FLAGS)];
+  return (
+    <Card style={{ marginTop: 14 }}>
+      <Pressable accessibilityRole="button" onPress={() => setOpen(!open)}>
+        <Text style={{ color: colors.accent, fontWeight: '700' }}>{open ? t('hideCredits') : t('showCredits')}</Text>
+      </Pressable>
+      {open && (
+        <View style={{ marginTop: 8 }}>
+          {QURAN.notice ? <Note>{`${QURAN.source}\n${QURAN.notice}`}</Note> : null}
+          {QURAN_INDOPAK.licence ? <Note>{`IndoPak: ${QURAN_INDOPAK.source}, ${QURAN_INDOPAK.licence}`}</Note> : null}
+          <Note>Amiri Quran font: The Amiri Project Authors, SIL Open Font License 1.1</Note>
+          <Note>Flags of historic states are traditional representations from Wikimedia Commons; many medieval states had no single official flag.</Note>
+          {items.map((c) => (
+            <Note key={c.page}>{`${c.title}: ${c.artist}, ${c.licence}, Wikimedia Commons`}</Note>
+          ))}
+        </View>
+      )}
+    </Card>
+  );
+}

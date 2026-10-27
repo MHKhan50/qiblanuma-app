@@ -1,0 +1,476 @@
+{
+ "makkah": {
+  "landmark": "Masjid al-Haram",
+  "city": "Mecca"
+ },
+ "madinah": {
+  "landmark": "Al-Masjid an-Nabawi",
+  "city": "Medina"
+ },
+ "alquds": {
+  "landmark": "Dome of the Rock",
+  "city": "Jerusalem"
+ },
+ "istanbul": {
+  "landmark": "Sultan Ahmed Mosque",
+  "city": "Istanbul"
+ },
+ "bursa": {
+  "landmark": "Grand Mosque of Bursa",
+  "city": "Bursa"
+ },
+ "sogut": {
+  "city": "Söğüt"
+ },
+ "edirne": {
+  "landmark": "Selimiye Mosque",
+  "city": "Edirne"
+ },
+ "iznik": {
+  "city": "İznik"
+ },
+ "konya": {
+  "landmark": "Mevlana Museum",
+  "city": "Konya"
+ },
+ "kayseri": {
+  "city": "Kayseri"
+ },
+ "sivas": {
+  "city": "Sivas"
+ },
+ "erzurum": {
+  "city": "Erzurum"
+ },
+ "ahlat": {
+  "city": "Ahlat"
+ },
+ "diyarbakir": {
+  "landmark": "Great Mosque of Diyarbakır",
+  "city": "Diyarbakır"
+ },
+ "sarajevo": {
+  "landmark": "Gazi Husrev-beg Mosque",
+  "city": "Sarajevo"
+ },
+ "damascus": {
+  "landmark": "Umayyad Mosque",
+  "city": "Damascus"
+ },
+ "aleppo": {
+  "landmark": "Citadel of Aleppo",
+  "city": "Aleppo"
+ },
+ "hama": {
+  "landmark": "Norias of Hama",
+  "city": "Hama"
+ },
+ "karak": {
+  "landmark": "Kerak Castle",
+  "city": "Al-Karak"
+ },
+ "baghdad": {
+  "city": "Baghdad"
+ },
+ "mosul": {
+  "landmark": "Great Mosque of al-Nuri (Mosul)",
+  "city": "Mosul"
+ },
+ "cairo": {
+  "landmark": "Al-Azhar Mosque",
+  "city": "Cairo"
+ },
+ "alexandria": {
+  "landmark": "Citadel of Qaitbay",
+  "city": "Alexandria"
+ },
+ "kairouan": {
+  "landmark": "Great Mosque of Kairouan",
+  "city": "Kairouan"
+ },
+ "fez": {
+  "landmark": "University of al-Qarawiyyin",
+  "city": "Fez, Morocco"
+ },
+ "cordoba": {
+  "city": "Córdoba, Spain"
+ },
+ "granada": {
+  "landmark": "Alhambra",
+  "city": "Granada"
+ },
+ "timbuktu": {
+  "landmark": "Djinguereber Mosque",
+  "city": "Timbuktu"
+ },
+ "sanaa": {
+  "landmark": "Great Mosque of Sanaa",
+  "city": "Sanaa"
+ },
+ "tarim": {
+  "landmark": "Al-Muhdhar Mosque",
+  "city": "Tarim, Yemen"
+ },
+ "zanzibar": {
+  "landmark": "Stone Town",
+  "city": "Zanzibar"
+ },
+ "kazan": {
+  "landmark": "Kul Sharif Mosque",
+  "city": "Kazan"
+ },
+ "baku": {
+  "landmark": "Palace of the Shirvanshahs",
+  "city": "Baku"
+ },
+ "tabriz": {
+  "landmark": "Blue Mosque, Tabriz",
+  "city": "Tabriz"
+ },
+ "ardabil": {
+  "city": "Ardabil"
+ },
+ "qazvin": {
+  "city": "Qazvin"
+ },
+ "isfahan": {
+  "landmark": "Shah Mosque",
+  "city": "Isfahan"
+ },
+ "tehran": {
+  "landmark": "Golestan Palace",
+  "city": "Tehran"
+ },
+ "mashhad": {
+  "landmark": "Goharshad Mosque",
+  "city": "Mashhad"
+ },
+ "nishapur": {
+  "city": "Nishapur"
+ },
+ "merv": {
+  "city": "Merv"
+ },
+ "kunyaurgench": {
+  "city": "Konye-Urgench"
+ },
+ "khiva": {
+  "landmark": "Itchan Kala",
+  "city": "Khiva"
+ },
+ "bukhara": {
+  "landmark": "Po-i-Kalyan",
+  "city": "Bukhara"
+ },
+ "samarqand": {
+  "landmark": "Registan",
+  "city": "Samarkand"
+ },
+ "shahrisabz": {
+  "landmark": "Ak-Saray Palace",
+  "city": "Shahrisabz"
+ },
+ "turkistan": {
+  "landmark": "Mausoleum of Khoja Ahmed Yasawi",
+  "city": "Turkistan"
+ },
+ "balkh": {
+  "city": "Balkh"
+ },
+ "mazarisharif": {
+  "landmark": "Blue Mosque, Mazar-i-Sharif",
+  "city": "Mazar-i-Sharif"
+ },
+ "herat": {
+  "landmark": "Great Mosque of Herat",
+  "city": "Herat"
+ },
+ "ghazni": {
+  "landmark": "Minarets of Ghazni",
+  "city": "Ghazni"
+ },
+ "lahore": {
+  "landmark": "Badshahi Mosque",
+  "city": "Lahore"
+ },
+ "multan": {
+  "landmark": "Tomb of Shah Rukn-e-Alam",
+  "city": "Multan"
+ },
+ "uch": {
+  "city": "Uch"
+ },
+ "pakpattan": {
+  "city": "Pakpattan"
+ },
+ "chishtian": {
+  "city": "Chishtian"
+ },
+ "peshawar": {
+  "landmark": "Mohabbat Khan Mosque",
+  "city": "Peshawar"
+ },
+ "delhi": {
+  "landmark": "Jama Masjid, Delhi",
+  "city": "Delhi"
+ },
+ "agra": {
+  "landmark": "Taj Mahal",
+  "city": "Agra"
+ },
+ "fatehpursikri": {
+  "landmark": "Buland Darwaza",
+  "city": "Fatehpur Sikri"
+ },
+ "ajmer": {
+  "landmark": "Ajmer Sharif Dargah",
+  "city": "Ajmer"
+ },
+ "srinagar": {
+  "landmark": "Jamia Masjid, Srinagar",
+  "city": "Srinagar"
+ },
+ "hyderabad": {
+  "landmark": "Charminar",
+  "city": "Hyderabad"
+ },
+ "dhaka": {
+  "landmark": "Lalbagh Fort",
+  "city": "Dhaka"
+ },
+ "kufa": {
+  "landmark": "Great Mosque of Kufa",
+  "city": "Kufa"
+ },
+ "basra": {
+  "city": "Basra"
+ },
+ "samarra": {
+  "landmark": "Great Mosque of Samarra",
+  "city": "Samarra"
+ },
+ "raqqa": {
+  "city": "Raqqa"
+ },
+ "mahdia": {
+  "landmark": "Great Mosque of Mahdia",
+  "city": "Mahdia"
+ },
+ "tunis": {
+  "landmark": "Al-Zaytuna Mosque",
+  "city": "Tunis"
+ },
+ "algiers": {
+  "landmark": "Ketchaoua Mosque",
+  "city": "Algiers"
+ },
+ "marrakesh": {
+  "landmark": "Koutoubia Mosque",
+  "city": "Marrakesh"
+ },
+ "rabat": {
+  "landmark": "Hassan Tower",
+  "city": "Rabat"
+ },
+ "meknes": {
+  "landmark": "Bab Mansour",
+  "city": "Meknes"
+ },
+ "seville": {
+  "landmark": "Giralda",
+  "city": "Seville"
+ },
+ "gao": {
+  "landmark": "Tomb of Askia",
+  "city": "Gao"
+ },
+ "sokoto": {
+  "city": "Sokoto"
+ },
+ "muscat": {
+  "landmark": "Sultan Qaboos Grand Mosque",
+  "city": "Muscat"
+ },
+ "shiraz": {
+  "landmark": "Nasir al-Mulk Mosque",
+  "city": "Shiraz"
+ },
+ "sultaniyeh": {
+  "landmark": "Dome of Soltaniyeh",
+  "city": "Soltaniyeh"
+ },
+ "kashgar": {
+  "landmark": "Id Kah Mosque",
+  "city": "Kashgar"
+ },
+ "kokand": {
+  "city": "Kokand"
+ },
+ "tashkent": {
+  "city": "Tashkent"
+ },
+ "bakhchysarai": {
+  "landmark": "Bakhchysarai Palace",
+  "city": "Bakhchysarai"
+ },
+ "jam": {
+  "landmark": "Minaret of Jam",
+  "city": "Minaret of Jam"
+ },
+ "kabul": {
+  "landmark": "Gardens of Babur",
+  "city": "Kabul"
+ },
+ "kandahar": {
+  "city": "Kandahar"
+ },
+ "thatta": {
+  "landmark": "Shah Jahan Mosque",
+  "city": "Thatta"
+ },
+ "rohtas": {
+  "landmark": "Rohtas Fort",
+  "city": "Rohtas Fort"
+ },
+ "bahawalpur": {
+  "landmark": "Noor Mahal",
+  "city": "Bahawalpur"
+ },
+ "lucknow": {
+  "landmark": "Bara Imambara",
+  "city": "Lucknow"
+ },
+ "sasaram": {
+  "landmark": "Sher Shah Suri Tomb",
+  "city": "Sasaram"
+ },
+ "gulbarga": {
+  "city": "Kalaburagi"
+ },
+ "bidar": {
+  "landmark": "Mahmud Gawan Madrasa",
+  "city": "Bidar"
+ },
+ "bijapur": {
+  "landmark": "Gol Gumbaz",
+  "city": "Bijapur"
+ },
+ "srirangapatna": {
+  "city": "Srirangapatna"
+ },
+ "sonargaon": {
+  "city": "Sonargaon"
+ },
+ "malacca": {
+  "city": "Malacca City"
+ },
+ "bandaaceh": {
+  "landmark": "Baiturrahman Grand Mosque",
+  "city": "Banda Aceh"
+ },
+ "brunei": {
+  "landmark": "Omar Ali Saifuddien Mosque",
+  "city": "Bandar Seri Begawan"
+ },
+ "glasgow": {
+  "landmark": "Glasgow Central Mosque",
+  "city": "Glasgow"
+ },
+ "london": {
+  "landmark": "London Central Mosque",
+  "city": "London"
+ },
+ "manchester": {
+  "city": "Manchester"
+ },
+ "birmingham": {
+  "landmark": "Birmingham Central Mosque",
+  "city": "Birmingham"
+ },
+ "paris": {
+  "landmark": "Grand Mosque of Paris",
+  "city": "Paris"
+ },
+ "brussels": {
+  "landmark": "Great Mosque of Brussels",
+  "city": "Brussels"
+ },
+ "amsterdam": {
+  "city": "Amsterdam"
+ },
+ "berlin": {
+  "landmark": "Şehitlik Mosque",
+  "city": "Berlin"
+ },
+ "moscow": {
+  "landmark": "Moscow Cathedral Mosque",
+  "city": "Moscow"
+ },
+ "newyork": {
+  "landmark": "Islamic Cultural Center of New York",
+  "city": "New York City"
+ },
+ "chicago": {
+  "city": "Chicago"
+ },
+ "toronto": {
+  "city": "Toronto"
+ },
+ "sydney": {
+  "landmark": "Lakemba Mosque",
+  "city": "Sydney"
+ },
+ "capetown": {
+  "city": "Cape Town"
+ },
+ "lagos": {
+  "landmark": "Lagos Central Mosque",
+  "city": "Lagos"
+ },
+ "nairobi": {
+  "landmark": "Jamia Mosque (Nairobi)",
+  "city": "Nairobi"
+ },
+ "riyadh": {
+  "city": "Riyadh"
+ },
+ "dubai": {
+  "landmark": "Jumeirah Mosque",
+  "city": "Dubai"
+ },
+ "doha": {
+  "city": "Doha"
+ },
+ "kuwait": {
+  "landmark": "Grand Mosque (Kuwait)",
+  "city": "Kuwait City"
+ },
+ "karachi": {
+  "landmark": "Mazar-e-Quaid",
+  "city": "Karachi"
+ },
+ "islamabad": {
+  "landmark": "Faisal Mosque",
+  "city": "Islamabad"
+ },
+ "faisalabad": {
+  "landmark": "Clock Tower, Faisalabad",
+  "city": "Faisalabad"
+ },
+ "kualalumpur": {
+  "landmark": "National Mosque of Malaysia",
+  "city": "Kuala Lumpur"
+ },
+ "singapore": {
+  "landmark": "Sultan Mosque",
+  "city": "Singapore"
+ },
+ "jakarta": {
+  "landmark": "Istiqlal Mosque, Jakarta",
+  "city": "Jakarta"
+ },
+ "tokyo": {
+  "landmark": "Tokyo Camii",
+  "city": "Tokyo"
+ }
+}

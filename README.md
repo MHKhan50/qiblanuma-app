@@ -14,6 +14,8 @@ Working name. Developer: Masmatix Innovations.
   - Makruh windows (sunrise, zawal, before sunset)
 - Qibla: great-circle bearing, distance to the Kaaba, live compass with accuracy and a calibration hint
 - World clock with each city's local time and next prayer. 127 cities in 49 groups: Khilafat-e-Rashida first, then the Ottoman state, then other Muslim states in historical order, the Sufi centres of the Barr-e-Azeem, and present-day world cities; a city appears in every group it belonged to. Users add, remove and reorder their own list, with search by city or empire.
+- Quran reader: Tanzil Uthmani text, unchanged, with surah list, adjustable text size and continue-reading
+- City photos and group flags from Wikimedia Commons, free licences only, each credited in the app
 - Urdu, Roman Urdu and English, right-to-left layout for Urdu, light and dark themes
 - Settings saved on the phone
 
@@ -34,6 +36,7 @@ Needs Node.js 20.19.4 or newer, the Expo Go app (SDK 58) on the phone, and the s
 ```bash
 npm install
 npm test
+node scripts/fetch-content.mjs   # once: Quran text, city photos, flags
 npx expo login
 npx expo start --tunnel
 ```
@@ -55,7 +58,7 @@ __tests__/      engine tests, published reference checks, official timetable fix
 
 1. Adhan reminders (Android exact alarms and a battery optimisation guide; iOS rolling schedule)
 2. Qibla map line and home screen widget
-3. Quran (Tanzil Uthmani text, verbatim, licence confirmed), then translations one by one after licence checks
+3. Quran audio (recitation source and licence to be confirmed), then translations one by one after licence checks
 4. Tasbeeh, duas and kalimas, learning sections
 
 ## Licence

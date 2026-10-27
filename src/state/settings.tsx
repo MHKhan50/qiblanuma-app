@@ -18,6 +18,18 @@ export interface AppSettings {
   manualCityId: string;
   /** Ids shown on the Shehar tab, in the user's order. */
   worldCities: string[];
+  /** Last ayah seen in the Quran reader. */
+  lastRead: { sura: number; aya: number } | null;
+  quranFontSize: number;
+  quranScript: 'uthmani' | 'indopak';
+  /** 'lines' flows ayahs like a printed mushaf; 'ayahs' shows one ayah per block. */
+  quranView: 'lines' | 'ayahs';
+  /** Days added to the calculated Hijri date to match local moon sighting. */
+  hijriOffset: number;
+  tasbeeh: { dhikr: string; target: number; counts: Record<string, number> };
+  bookmarks: { sura: number; aya: number }[];
+  /** Which prayers get a reminder at their time. */
+  adhan: Record<'fajr' | 'dhuhr' | 'asr' | 'maghrib' | 'isha', boolean>;
 }
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
@@ -28,6 +40,14 @@ export const DEFAULT_APP_SETTINGS: AppSettings = {
   locationMode: 'gps',
   manualCityId: 'glasgow',
   worldCities: DEFAULT_WORLD_CITIES,
+  lastRead: null,
+  quranFontSize: 26,
+  quranScript: 'uthmani',
+  quranView: 'lines',
+  hijriOffset: 0,
+  tasbeeh: { dhikr: 'subhanallah', target: 33, counts: {} },
+  bookmarks: [],
+  adhan: { fajr: true, dhuhr: true, asr: true, maghrib: true, isha: true },
 };
 
 const STORAGE_KEY = 'qiblanuma.settings.v1';
@@ -55,6 +75,9 @@ export function mergeSettings(stored: unknown): AppSettings {
       adjustments: { ...DEFAULT_SETTINGS.adjustments, ...(s.prayer?.adjustments ?? {}) },
     },
     worldCities: cleanList(s.worldCities, DEFAULT_WORLD_CITIES),
+    adhan: { ...DEFAULT_APP_SETTINGS.adhan, ...(s.adhan ?? {}) },
+    bookmarks: Array.isArray(s.bookmarks) ? s.bookmarks : [],
+    tasbeeh: { ...DEFAULT_APP_SETTINGS.tasbeeh, ...(s.tasbeeh ?? {}), counts: { ...(s.tasbeeh?.counts ?? {}) } },
   };
 }
 

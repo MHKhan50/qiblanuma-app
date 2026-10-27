@@ -39,3 +39,21 @@ Checked on 27 October 2026. Each line says what was verified and what still need
 | Quran fonts | Not checked yet (candidates: KFGQPC fonts, Amiri under SIL OFL). | To verify |
 | Adhan recordings | No licensed source verified. Use system sounds until a recording with written permission is found and credited. | To verify |
 | Time zones | IANA tz database through the phone's Intl/ICU; no bundled data needed. | In use |
+
+## Bundled content (fetched by scripts/fetch-content.mjs)
+
+| Item | Rule | Status |
+|---|---|---|
+| Quran text | Tanzil Uthmani, "text with aya numbers", stored unchanged. The script refuses anything other than 114 suras and 6236 ayahs and keeps Tanzil's notice, which the app shows under Settings, credits. | Needs review by huffaz before release |
+| City photos | Lead image of the landmark's English Wikipedia article, used only when the file is on Wikimedia Commons with CC0, CC BY, CC BY-SA or public domain licence. Artist and licence are stored with each photo and shown in the app. | content-report.md lists every photo and every skipped file |
+| Group flags | The Ottoman flag (1844) is fixed in scripts/group-flags.json. For other states the script searches Wikimedia Commons for "Flag of the <state>" and keeps only free licences. Many medieval states had no single official flag, so the app calls these traditional representations. Each pick is listed in content-report.md for review. | Review content-report.md before release |
+| Hijri date | Phone's Umm al-Qura calendar through Intl, tabular Islamic calendar as fallback, plus a ±2 day adjustment for local moon sighting. | In use |
+| Quran audio | Not added. A recitation source with clear terms for app use must be confirmed first. | To verify |
+
+## Quran fonts and scripts (checked 27 Oct 2026)
+
+| Item | Finding | Status |
+|---|---|---|
+| Amiri Quran | SIL Open Font License 1.1, The Amiri Project Authors. Free to bundle; cannot be sold on its own. Used for the Uthmani text through @expo-google-fonts/amiri-quran. | In use. [Fontsource](https://fontsource.org/fonts/amiri-quran/about) |
+| KFGQPC Uthmanic Script Hafs | Property of King Fahd Glorious Quran Printing Complex; copying or altering needs their prior written approval (ScanCode category "Proprietary Free"). | Not bundled. Ask the Complex for written permission. [ScanCode](https://scancode-licensedb.aboutcode.org/kfgqpc-uthmanic-script-hafs.html) |
+| IndoPak text and font (QUL, Tarteel) | QUL says each resource has its own licence and some need attribution. The licence tab of the IndoPak text and font could not be read from here. | Import with scripts/import-indopak.mjs only after reading both licence tabs. [QUL FAQ](https://qul.tarteel.ai/faq) |
