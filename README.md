@@ -29,7 +29,7 @@ Official timetables are not in the tests yet. See [docs/RESEARCH_NOTES.md](docs/
 
 ## Run it
 
-Needs Node.js 20.19.4 or newer and the Expo Go app (SDK 54) on the phone.
+Needs Node.js 20.19.4 or newer and the Expo Go app (SDK 58) on the phone.
 
 ```bash
 npm install
