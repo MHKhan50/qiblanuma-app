@@ -6,13 +6,22 @@ import { formatClock, formatCountdown, localDateIn } from '../engine/timezone';
 import { useSettings } from '../state/settings';
 import type { PlaceState } from '../state/usePlace';
 import { Note, useNow } from '../ui/components';
+import { QURAN, QURAN_FONT } from '../data/quran';
+import { useAudio } from '../state/audio';
+import VoiceButton, { VOICE_AVAILABLE } from '../ui/VoiceButton';
 import { GearIcon, GlobeIcon, KaabaIcon, MosqueClockIcon, QuranIcon, Star8, TasbeehIcon } from '../ui/icons';
+import { Dedication } from './FamilyScreens';
 
-export type Screen = 'home' | 'times' | 'quran' | 'qibla' | 'tasbeeh' | 'duas' | 'world' | 'settings';
+const Star8Icon = ({ accent }: { color: string; accent: string; size?: number }) => <Star8 size={40} color={accent} />;
 
-export default function HomeScreen({ place, open }: { place: PlaceState; open: (s: Screen) => void }) {
+export type Screen = 'home' | 'times' | 'quran' | 'qibla' | 'tasbeeh' | 'duas' | 'world' | 'settings' | 'maktab' | 'khatam' | 'halima' | 'zakat';
+
+export default function HomeScreen({ place, open, onVoice }: { place: PlaceState; open: (s: Screen) => void; onVoice?: (text: string) => void }) {
   const { settings, t, colors, rtl } = useSettings();
   const now = useNow();
+  const audio = useAudio();
+  // Al-Fatiha 1:5, taken from the bundled Tanzil text (not retyped).
+  const openingAyah = QURAN.suras[0]?.ayahs[4];
   const ready = place.status === 'ready' ? place.place : null;
   const tz = ready?.timeZone ?? 'UTC';
   const dayKey = JSON.stringify(localDateIn(now, tz));
@@ -40,6 +49,10 @@ export default function HomeScreen({ place, open }: { place: PlaceState; open: (
     { id: 'times', label: t('prayerTimes'), Icon: MosqueClockIcon },
     { id: 'tasbeeh', label: t('tasbeeh'), Icon: TasbeehIcon },
     { id: 'duas', label: t('duas'), Icon: QuranIcon },
+    { id: 'maktab', label: t('maktab'), Icon: QuranIcon },
+    { id: 'khatam', label: t('khatam'), Icon: Star8Icon },
+    { id: 'halima', label: t('halima'), Icon: TasbeehIcon },
+    { id: 'zakat', label: t('zakat'), Icon: MosqueClockIcon },
     { id: 'world', label: t('tabWorld'), Icon: GlobeIcon },
     { id: 'settings', label: t('tabSettings'), Icon: GearIcon },
   ];
@@ -47,6 +60,17 @@ export default function HomeScreen({ place, open }: { place: PlaceState; open: (
   return (
     <ScrollView contentContainerStyle={{ paddingBottom: 24 }}>
       <View style={[styles.hero, { backgroundColor: colors.accent }]}>
+        {openingAyah && (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Al-Fatiha 1:5"
+            onPress={() => audio.available && audio.playRange({ sura: 1, aya: 5 }, { sura: 1, aya: 5 })}
+            style={styles.opening}
+          >
+            <Text style={[styles.openingText, { color: colors.card, fontFamily: QURAN_FONT.uthmani }]}>{openingAyah}</Text>
+            <Text style={{ color: colors.gold, fontSize: 12 }}>{`${QURAN.suras[0].tname} 1:5${audio.available ? '  ▶' : ''}`}</Text>
+          </Pressable>
+        )}
         <Text style={[styles.hijri, { color: colors.card, textAlign: rtl ? 'right' : 'left' }]}>
           {`${h.day} ${monthNames[h.month - 1]} ${h.year}`}
         </Text>
@@ -84,6 +108,13 @@ export default function HomeScreen({ place, open }: { place: PlaceState; open: (
         </View>
       )}
 
+      {VOICE_AVAILABLE && onVoice && (
+        <View style={[styles.voice, { backgroundColor: colors.card, borderColor: colors.gold }]}>
+          <VoiceButton onText={onVoice} />
+          <Text style={{ color: colors.text, flex: 1, marginLeft: 12 }}>{t('speakNow')}</Text>
+        </View>
+      )}
+
       <View style={styles.divider}>
         <Star8 color={colors.gold} />
       </View>
@@ -107,6 +138,7 @@ export default function HomeScreen({ place, open }: { place: PlaceState; open: (
         ))}
       </View>
 
+      <Dedication />
       <View style={{ paddingHorizontal: 16 }}>
         <Note>{t('privacy')}</Note>
       </View>
@@ -115,6 +147,8 @@ export default function HomeScreen({ place, open }: { place: PlaceState; open: (
 }
 
 const styles = StyleSheet.create({
+  opening: { alignItems: 'center', marginBottom: 12, paddingBottom: 10, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: 'rgba(255,255,255,0.35)' },
+  openingText: { fontSize: 30, lineHeight: 58, writingDirection: 'rtl', textAlign: 'center' },
   hero: { paddingHorizontal: 18, paddingTop: 18, paddingBottom: 24, borderBottomLeftRadius: 28, borderBottomRightRadius: 28 },
   hijri: { fontSize: 22, fontWeight: '700' },
   cards: { marginTop: 16, gap: 12 },
@@ -124,6 +158,7 @@ const styles = StyleSheet.create({
   cardTitle: { fontSize: 24, fontWeight: '700', marginTop: 4 },
   count: { fontSize: 20, fontWeight: '600', fontVariant: ['tabular-nums'], marginTop: 2 },
   divider: { alignItems: 'center', marginVertical: 14 },
+  voice: { flexDirection: 'row', alignItems: 'center', marginHorizontal: 16, marginTop: 14, borderWidth: 1.5, borderRadius: 18, padding: 12 },
   ramadan: { marginHorizontal: 16, marginTop: 14, borderWidth: 1.5, borderRadius: 16, padding: 14, alignItems: 'center' },
   grid: { flexWrap: 'wrap', paddingHorizontal: 10, justifyContent: 'space-between' },
   tile: { width: '31%', aspectRatio: 0.9, borderRadius: 18, borderWidth: 1, alignItems: 'center', justifyContent: 'center', marginHorizontal: '1%', marginBottom: 12 },

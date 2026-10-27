@@ -57,3 +57,14 @@ Checked on 27 October 2026. Each line says what was verified and what still need
 | Amiri Quran | SIL Open Font License 1.1, The Amiri Project Authors. Free to bundle; cannot be sold on its own. Used for the Uthmani text through @expo-google-fonts/amiri-quran. | In use. [Fontsource](https://fontsource.org/fonts/amiri-quran/about) |
 | KFGQPC Uthmanic Script Hafs | Property of King Fahd Glorious Quran Printing Complex; copying or altering needs their prior written approval (ScanCode category "Proprietary Free"). | Not bundled. Ask the Complex for written permission. [ScanCode](https://scancode-licensedb.aboutcode.org/kfgqpc-uthmanic-script-hafs.html) |
 | IndoPak text and font (QUL, Tarteel) | QUL says each resource has its own licence and some need attribution. The licence tab of the IndoPak text and font could not be read from here. | Import with scripts/import-indopak.mjs only after reading both licence tabs. [QUL FAQ](https://qul.tarteel.ai/faq) |
+
+## Audio and IndoPak (deep research, 27 Oct 2026)
+
+| Item | Finding | Status |
+|---|---|---|
+| Recitation audio | Islamic Network (alquran.cloud): "Recitations are licensed to us by the reciters or their estates for free, non-commercial redistribution"; "You may stream, embed and download them for personal and educational use." Reciters may ask for removal. Per-ayah files: cdn.islamic.network/quran/audio/{bitrate}/{edition}/{1-6236}.mp3. The script keeps only reciters whose ayah-1 URL the live API returns. | In use, with credit in Settings |
+| IndoPak text | No IndoPak text with a verified open licence was found. Tarteel QUL licence tabs say "We don't have copyright information for this resource." Quran Foundation allows the text only through its API and sync, not bundled. | Ask Tarteel QUL for written permission, or use Quran Foundation API with a token server |
+| IndoPak font | DigitalKhatt IndoPak font: SIL OFL 1.1 (Amine Anane and Tarteel Inc.). | Usable once a licensed IndoPak text is available |
+| KFGQPC fonts | Font licence: "may not be reproduced, modified without the express written approval" of the Complex. Contact: info@qurancomplex.gov.sa. | Ask before use |
+
+Full report with quotes: reports/Quran text font audio licences.md (outside the repo).

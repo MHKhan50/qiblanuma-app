@@ -12,7 +12,11 @@
         "ACCESS_FINE_LOCATION",
         "android.permission.ACCESS_COARSE_LOCATION",
         "android.permission.ACCESS_FINE_LOCATION"
-      ]
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0E6E6E"
+      }
     },
     "ios": {
       "bundleIdentifier": "com.masmatix.qiblanuma",
@@ -30,12 +34,19 @@
       ],
       "expo-status-bar",
       "expo-font",
-      "expo-speech-recognition"
+      "expo-speech-recognition",
+      "expo-audio"
     ],
     "extra": {
       "eas": {
         "projectId": "5f2e99f2-7729-4a2c-a681-dcee916cd62a"
       }
+    },
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F6F3EC"
     }
   }
 }

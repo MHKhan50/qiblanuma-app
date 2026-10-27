@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { CITY_PHOTOS } from '../data/cityPhotos';
 import { GROUP_FLAGS } from '../data/groupFlags';
 import { KAABA_PHOTO } from '../data/kaabaPhoto';
-import { QURAN, QURAN_INDOPAK } from '../data/quran';
-import { Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { QURAN, QURAN_INDOPAK, RECITERS } from '../data/quran';
+import { Image, Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import { MANUAL_LOCATIONS } from '../data/cities';
 import { METHODS, PRAYER_ORDER, type HighLatitudeRule, type MethodId, type PrayerName } from '../engine/methods';
 import type { Language } from '../i18n/strings';
@@ -38,6 +38,33 @@ export default function SettingsScreen() {
           ))}
         </View>
       </Card>
+
+      {RECITERS.length > 0 && (
+        <Card>
+          <Title>{t('reciter')}</Title>
+          <View style={wrap}>
+            {RECITERS.map((r) => (
+              <Chip key={r.id} label={r.name} active={settings.reciter === r.id} onPress={() => update({ reciter: r.id })} />
+            ))}
+          </View>
+          <Title>{t('repeatEach')}</Title>
+          <View style={wrap}>
+            {[1, 3, 5, 10].map((n) => (
+              <Chip key={n} label={`${n}×`} active={settings.repeatEach === n} onPress={() => update({ repeatEach: n })} />
+            ))}
+          </View>
+          <View style={wrap}>
+            <Chip label={`${settings.openingRecitation ? '✓' : '○'} ${t('openingRecitation')}`} active={settings.openingRecitation} onPress={() => update({ openingRecitation: !settings.openingRecitation })} />
+          </View>
+          <View style={wrap}>
+            <Chip label={`${settings.voiceMode ? '✓' : '○'} ${t('voiceMode')}`} active={settings.voiceMode} onPress={() => update({ voiceMode: !settings.voiceMode })} />
+          </View>
+          <View style={wrap}>
+            <Chip label={`${settings.voiceAutoplay ? '✓' : '○'} ${t('voiceAutoplay')}`} active={settings.voiceAutoplay} onPress={() => update({ voiceAutoplay: !settings.voiceAutoplay })} />
+          </View>
+          <Note>{t('audioCredit')}</Note>
+        </Card>
+      )}
 
       <Card>
         <Title>{t('language')}</Title>
@@ -119,6 +146,11 @@ export default function SettingsScreen() {
       </Card>
 
       <Note>{t('privacy')}</Note>
+      <Card style={{ marginTop: 14, alignItems: 'center' }}>
+        <Image source={require('../../assets/icon.png')} style={{ width: 96, height: 96, borderRadius: 20, marginBottom: 10 }} />
+        <Title>{t('iconStoryTitle')}</Title>
+        <Text style={{ color: colors.text, lineHeight: 22, textAlign: rtl ? 'right' : 'left' }}>{t('iconStory')}</Text>
+      </Card>
       <Note>{t('about')}</Note>
       <CreditsCard />
     </ScrollView>

@@ -61,3 +61,12 @@ test('reads IndoPak exports in several shapes and refuses gaps', async () => {
   delete obj['2:1'];
   assert.throws(() => readIndoPak(obj, lengths), /missing/);
 });
+
+test('parses the 30 para starts', async () => {
+  const { parseJuzMetadata } = await import('./content-lib.mjs');
+  const rows = Array.from({ length: 30 }, (_, i) => (i === 0 ? '[1, 1]' : `[2, ${i * 9}]`));
+  const js = `QuranData.Juz = [\n\t// [sura, aya]\n\t[],\n\t${rows.join(',\n\t')},\n\t[115, 1]\n];`;
+  const juz = parseJuzMetadata(js);
+  assert.equal(juz.length, 30);
+  assert.deepEqual(juz[0], { sura: 1, aya: 1 });
+});

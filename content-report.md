@@ -1,5 +1,14 @@
 # Content report
 
+## Reciters
+
+- ar.alafasy: Alafasy (https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3)
+- ar.abdulbasitmurattal: Abdul Basit (https://cdn.islamic.network/quran/audio/192/ar.abdulbasitmurattal/1.mp3)
+- ar.husary: Husary (https://cdn.islamic.network/quran/audio/128/ar.husary/1.mp3)
+- ar.minshawi: Minshawi (https://cdn.islamic.network/quran/audio/128/ar.minshawi/1.mp3)
+- ar.abdurrahmaansudais: Abdurrahmaan As-Sudais (https://cdn.islamic.network/quran/audio/192/ar.abdurrahmaansudais/1.mp3)
+- ar.mahermuaiqly: Maher Al Muaiqly (https://cdn.islamic.network/quran/audio/128/ar.mahermuaiqly/1.mp3)
+- ar.saoodshuraym: Saood bin Ibraaheem Ash-Shuraym (https://cdn.islamic.network/quran/audio/64/ar.saoodshuraym/1.mp3)
 ## City photos
 
 - no Commons details for "Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
@@ -243,9 +252,9 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 - ghurid: no flag found on Commons
 - zengid: no flag found on Commons
 - ayyubid: Flag of the Mamluk Sultanate (Alexandria).svg | CC BY-SA 3.0 (check this is a fair representation before release)
-- almohad: Almohad flag.svg | CC0 (check this is a fair representation before release)
+- almohad: no flag found on Commons
 - khwarazmian: Flag of Khwarazmian Empire (16 Great Turkic Empires).svg | CC0 (check this is a fair representation before release)
-- delhi: Flag of the Delhi Sultanate.svg | CC BY-SA 4.0 (check this is a fair representation before release)
+- delhi: no flag found on Commons
 - mamluk: Mamluk Sultanate Flag of Map (Year-1413).png | CC BY-SA 4.0 (check this is a fair representation before release)
 - nasrid: Nasrid Flag.svg | CC BY-SA 4.0 (check this is a fair representation before release)
 - hafsid: no flag found on Commons
@@ -254,7 +263,7 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 - samma: no flag found on Commons
 - timurid: Flag of Timurid Empire (16 Great Turkic Empires).svg | CC0 (check this is a fair representation before release)
 - qaraqoyunlu: Flag of Kara Koyunlu dynasty.png | CC BY-SA 4.0 (check this is a fair representation before release)
-- aqqoyunlu: no flag found on Commons
+- aqqoyunlu: AkkoyunluFlag.svg | CC BY-SA 3.0 (check this is a fair representation before release)
 - bengal: Flag of the Bengal Sultanate (Armalec) in the Book of all kingdoms c. 1350.svg | Public domain (check this is a fair representation before release)
 - deccan: no flag found on Commons
 - nusantara: no flag found on Commons
@@ -272,8 +281,8 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 - mysore: Flag of Mysore Hyder Ali & TipuSultan.png | CC BY-SA 4.0 (check this is a fair representation before release)
 - bahawalpur: Flag of State of Bahawalpur.svg | CC0 (check this is a fair representation before release)
 - awadh: 1857 Flag of Princely state of Oudh (Awadh), during the siege of Lucknow in 1857.png | Public domain (check this is a fair representation before release)
-- hyderabad: no flag found on Commons
-- sokoto: no flag found on Commons
+- hyderabad: Asafia flag of Hyderabad State.svg | CC BY-SA 4.0 (check this is a fair representation before release)
+- sokoto: Flag of the Sokoto Caliphate.svg | Public domain (check this is a fair representation before release)
 - no lead image for "Kaaba"
 - no Commons details for "Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 ## Kaaba photo

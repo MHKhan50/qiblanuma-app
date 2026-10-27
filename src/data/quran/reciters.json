@@ -1,0 +1,37 @@
+[
+ {
+  "id": "ar.alafasy",
+  "name": "Alafasy",
+  "base": "https://cdn.islamic.network/quran/audio/128/ar.alafasy/"
+ },
+ {
+  "id": "ar.abdulbasitmurattal",
+  "name": "Abdul Basit",
+  "base": "https://cdn.islamic.network/quran/audio/192/ar.abdulbasitmurattal/"
+ },
+ {
+  "id": "ar.husary",
+  "name": "Husary",
+  "base": "https://cdn.islamic.network/quran/audio/128/ar.husary/"
+ },
+ {
+  "id": "ar.minshawi",
+  "name": "Minshawi",
+  "base": "https://cdn.islamic.network/quran/audio/128/ar.minshawi/"
+ },
+ {
+  "id": "ar.abdurrahmaansudais",
+  "name": "Abdurrahmaan As-Sudais",
+  "base": "https://cdn.islamic.network/quran/audio/192/ar.abdurrahmaansudais/"
+ },
+ {
+  "id": "ar.mahermuaiqly",
+  "name": "Maher Al Muaiqly",
+  "base": "https://cdn.islamic.network/quran/audio/128/ar.mahermuaiqly/"
+ },
+ {
+  "id": "ar.saoodshuraym",
+  "name": "Saood bin Ibraaheem Ash-Shuraym",
+  "base": "https://cdn.islamic.network/quran/audio/64/ar.saoodshuraym/"
+ }
+]

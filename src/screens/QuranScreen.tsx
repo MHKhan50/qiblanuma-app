@@ -1,17 +1,53 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { searchQuran, splitBismillah } from '../data/quran/search';
-import { arabicNumber, ayahText, INDOPAK_AVAILABLE, QURAN, QURAN_FONT, type Sura } from '../data/quran';
+import { parseVoiceCommand, type VoiceTarget } from '../data/quran/voice';
+import { runControl, useAudio } from '../state/audio';
+import VoiceButton from '../ui/VoiceButton';
+import { arabicNumber, ayahText, INDOPAK_AVAILABLE, juzEnd, QURAN, QURAN_FONT, type Sura } from '../data/quran';
 import { useSettings } from '../state/settings';
-import { Card, Note } from '../ui/components';
+import { Card, Chip, Note } from '../ui/components';
 
 export interface QuranTarget { sura: number; aya: number }
 
-export default function QuranScreen() {
+export default function QuranScreen({ request, onHandled }: {
+  request?: (VoiceTarget & { autoplay?: boolean }) | null; onHandled?: () => void;
+} = {}) {
   const { settings, update, t, colors } = useSettings();
+  const audio = useAudio();
   const [open, setOpen] = useState<QuranTarget | null>(null);
   const [query, setQuery] = useState('');
+  const [mode, setMode] = useState<'suras' | 'paras'>('suras');
+  const [listening, setListening] = useState(false);
   const hits = useMemo(() => searchQuran(query), [query]);
+  const command = useMemo(() => (query.trim() ? parseVoiceCommand(query, QURAN.suras) : null), [query]);
+
+  const go = (c: VoiceTarget, play = false) => {
+    if (c.type === 'control') { runControl(audio, c.action); return; }
+    if (c.type === 'juz') {
+      const start = QURAN.juz?.[c.juz - 1];
+      if (!start) return;
+      setOpen(start);
+      if (play) audio.playRange(start, juzEnd(c.juz));
+    } else {
+      const max = QURAN.suras[c.sura - 1]?.ayahs.length ?? 1;
+      const start = { sura: c.sura, aya: Math.min(Math.max(c.aya ?? 1, 1), max) };
+      setOpen(start);
+      if (play) audio.playRange(start, { sura: c.sura, aya: max });
+    }
+  };
+
+  // Requests from the Home screen's big microphone open and, if asked, play.
+  useEffect(() => {
+    if (request && QURAN.suras.length) { go(request, !!request.autoplay); onHandled?.(); }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [request]);
+
+  // A spoken request opens its place straight away (and plays it, if set); otherwise it becomes a search.
+  const onVoice = (text: string) => {
+    const c = parseVoiceCommand(text, QURAN.suras);
+    if (c && (c.type !== 'juz' || QURAN.juz)) { setQuery(''); go(c, settings.voiceAutoplay); } else setQuery(text);
+  };
 
   if (QURAN.suras.length === 0) {
     return <View style={styles.pad}><Note>{t('quranMissing')}</Note></View>;
@@ -36,14 +72,39 @@ export default function QuranScreen() {
 
   const header = (
     <View>
-      <TextInput
-        value={query}
-        onChangeText={setQuery}
-        placeholder={t('searchQuran')}
-        placeholderTextColor={colors.muted}
-        autoCorrect={false}
-        style={[styles.search, { color: colors.text, borderColor: colors.border, backgroundColor: colors.card }]}
-      />
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+        <TextInput
+          value={query}
+          onChangeText={setQuery}
+          placeholder={t('searchQuran')}
+          placeholderTextColor={colors.muted}
+          autoCorrect={false}
+          returnKeyType="go"
+          onSubmitEditing={() => command && go(command)}
+          style={[styles.search, { flex: 1, marginBottom: 0, color: colors.text, borderColor: colors.border, backgroundColor: colors.card }]}
+        />
+        <VoiceButton onText={onVoice} onListening={setListening} />
+      </View>
+      {listening && <Note>{t('listening')}</Note>}
+      {command && (
+        <Pressable onPress={() => go(command)}>
+          <Card style={{ borderColor: colors.gold }}>
+            <Text style={{ color: colors.gold, fontWeight: '700' }}>
+              {command.type === 'juz'
+                ? `${t('para')} ${command.juz}`
+                : command.type === 'control'
+                  ? `▶ ${command.action}`
+                  : `${QURAN.suras[command.sura - 1]?.tname ?? ''} (${command.sura})${command.aya ? ` · ${command.aya}` : ''}`}
+            </Text>
+          </Card>
+        </Pressable>
+      )}
+      {!q && QURAN.juz && (
+        <View style={{ flexDirection: 'row', marginBottom: 8 }}>
+          <Chip label={t('suras')} active={mode === 'suras'} onPress={() => setMode('suras')} />
+          <Chip label={t('paras')} active={mode === 'paras'} onPress={() => setMode('paras')} />
+        </View>
+      )}
       {!q && last && (
         <Pressable onPress={() => setOpen(last)}>
           <Card style={{ backgroundColor: colors.accent, borderColor: colors.accent }}>
@@ -72,6 +133,27 @@ export default function QuranScreen() {
       ))}
     </View>
   );
+
+  if (mode === 'paras' && !q && QURAN.juz) {
+    return (
+      <FlatList
+        contentContainerStyle={styles.pad}
+        data={QURAN.juz.map((start, i) => ({ n: i + 1, start }))}
+        keyExtractor={(j) => String(j.n)}
+        ListHeaderComponent={header}
+        keyboardShouldPersistTaps="handled"
+        renderItem={({ item }) => (
+          <Pressable onPress={() => setOpen(item.start)} style={[styles.sura, { borderBottomColor: colors.border }]}>
+            <Text style={[styles.num, { color: colors.gold, borderColor: colors.gold }]}>{item.n}</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={{ color: colors.text, fontSize: 17, fontWeight: '600' }}>{`${t('para')} ${item.n}`}</Text>
+              <Text style={{ color: colors.muted, fontSize: 13 }}>{`${QURAN.suras[item.start.sura - 1].tname} ${item.start.sura}:${item.start.aya}`}</Text>
+            </View>
+          </Pressable>
+        )}
+      />
+    );
+  }
 
   return (
     <FlatList
@@ -125,6 +207,16 @@ function Reader({ sura, startAya, onBack, onRead }: {
     return blocks;
   }, [sura, script, perBlock]);
   const lastSaved = useRef(0);
+  const audio = useAudio();
+  const nowPlaying = (aya: number) => audio.pos?.sura === sura.n && audio.pos.aya === aya;
+  const listRef = useRef<FlatList<(typeof data)[number]>>(null);
+
+  // Follow the recitation: keep the ayah being recited in view, for learners and listeners.
+  useEffect(() => {
+    if (!audio.pos || audio.pos.sura !== sura.n) return;
+    const index = Math.floor((audio.pos.aya - 1) / perBlock);
+    listRef.current?.scrollToIndex({ index, viewPosition: 0.25, animated: true });
+  }, [audio.pos, sura.n, perBlock]);
   const isMarked = (aya: number) => settings.bookmarks.some((b) => b.sura === sura.n && b.aya === aya);
   const toggleBookmark = (aya: number) =>
     update({
@@ -141,6 +233,19 @@ function Reader({ sura, startAya, onBack, onRead }: {
         </Pressable>
         <Text style={[styles.barTitle, { color: colors.text }]}>{sura.name}</Text>
         <View style={{ flexDirection: 'row' }}>
+          {audio.available && (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={audio.playing ? 'Pause recitation' : 'Play recitation'}
+              onPress={() => {
+                if (audio.playing && audio.pos?.sura === sura.n) audio.pause();
+                else audio.playRange({ sura: sura.n, aya: Math.max(1, lastSaved.current || startAya) }, { sura: sura.n, aya: sura.ayahs.length });
+              }}
+              style={styles.barBtn}
+            >
+              <Text style={{ color: colors.accent, fontSize: 18 }}>{audio.playing && audio.pos?.sura === sura.n ? '⏸' : '▶'}</Text>
+            </Pressable>
+          )}
           {INDOPAK_AVAILABLE && (
             <Pressable
               accessibilityRole="button"
@@ -167,6 +272,7 @@ function Reader({ sura, startAya, onBack, onRead }: {
       </View>
       <FlatList
         data={data}
+        ref={listRef}
         keyExtractor={(b) => String(b.aya)}
         contentContainerStyle={{ padding: 16, paddingBottom: 48 }}
         initialScrollIndex={Math.min(Math.floor(Math.max(startAya - 1, 0) / perBlock), data.length - 1)}
@@ -182,7 +288,7 @@ function Reader({ sura, startAya, onBack, onRead }: {
             )}
           </View>
         }
-        onScrollToIndexFailed={() => undefined}
+        onScrollToIndexFailed={(info) => listRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: true })}
         viewabilityConfig={{ itemVisiblePercentThreshold: 60 }}
         onViewableItemsChanged={({ viewableItems }) => {
           const first = viewableItems[0]?.item as { aya: number } | undefined;
@@ -201,7 +307,12 @@ function Reader({ sura, startAya, onBack, onRead }: {
               ]}
             >
               {item.ayahs.map((a) => (
-                <Text key={a.aya} onLongPress={() => toggleBookmark(a.aya)}>
+                <Text
+                  key={a.aya}
+                  onLongPress={() => toggleBookmark(a.aya)}
+                  onPress={() => audio.available && audio.playRange({ sura: sura.n, aya: a.aya }, { sura: sura.n, aya: sura.ayahs.length })}
+                  style={nowPlaying(a.aya) ? { backgroundColor: colors.border, color: colors.accent } : undefined}
+                >
                   {a.text}
                   <Text style={{ color: isMarked(a.aya) ? colors.danger : colors.gold }}>{` ﴿${arabicNumber(a.aya)}﴾ `}</Text>
                 </Text>

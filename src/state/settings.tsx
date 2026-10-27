@@ -30,6 +30,17 @@ export interface AppSettings {
   bookmarks: { sura: number; aya: number }[];
   /** Which prayers get a reminder at their time. */
   adhan: Record<'fajr' | 'dhuhr' | 'asr' | 'maghrib' | 'isha', boolean>;
+  reciter: string;
+  /** How many times each ayah is recited (for memorising). */
+  repeatEach: number;
+  /** A spoken request starts the recitation straight away (for people who cannot see the screen). */
+  voiceAutoplay: boolean;
+  /** Hands-free mode: the app greets, listens on start, and a tap anywhere starts listening. */
+  voiceMode: boolean;
+  /** Recite Al-Fatiha 1:5 once when the app opens. */
+  openingRecitation: boolean;
+  /** Fatima section: paras read in the current khatam, and khatams completed. */
+  khatam: { paras: boolean[]; completed: number };
 }
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
@@ -48,6 +59,12 @@ export const DEFAULT_APP_SETTINGS: AppSettings = {
   tasbeeh: { dhikr: 'subhanallah', target: 33, counts: {} },
   bookmarks: [],
   adhan: { fajr: true, dhuhr: true, asr: true, maghrib: true, isha: true },
+  reciter: 'ar.alafasy',
+  repeatEach: 1,
+  voiceAutoplay: true,
+  voiceMode: false,
+  openingRecitation: true,
+  khatam: { paras: Array(30).fill(false), completed: 0 },
 };
 
 const STORAGE_KEY = 'qiblanuma.settings.v1';
@@ -76,6 +93,7 @@ export function mergeSettings(stored: unknown): AppSettings {
     },
     worldCities: cleanList(s.worldCities, DEFAULT_WORLD_CITIES),
     adhan: { ...DEFAULT_APP_SETTINGS.adhan, ...(s.adhan ?? {}) },
+    khatam: Array.isArray(s.khatam?.paras) && s.khatam.paras.length === 30 ? s.khatam : DEFAULT_APP_SETTINGS.khatam,
     bookmarks: Array.isArray(s.bookmarks) ? s.bookmarks : [],
     tasbeeh: { ...DEFAULT_APP_SETTINGS.tasbeeh, ...(s.tasbeeh ?? {}), counts: { ...(s.tasbeeh?.counts ?? {}) } },
   };

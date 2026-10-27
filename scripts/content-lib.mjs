@@ -100,3 +100,13 @@ export function readIndoPak(data, lengths) {
   if (suras.length !== 114 || total !== 6236 || missing > 0) throw new Error(`Incomplete IndoPak text: ${missing} ayahs missing`);
   return suras;
 }
+
+/** Parse QuranData.Juz (start of each of the 30 paras) from Tanzil metadata. */
+export function parseJuzMetadata(js) {
+  const block = /QuranData\.Juz\s*=\s*\[([\s\S]*?)\n\];/.exec(String(js));
+  if (!block) throw new Error('QuranData.Juz not found in metadata');
+  const starts = [...block[1].matchAll(/\[\s*(\d+),\s*(\d+)\s*\]/g)].map((m) => ({ sura: Number(m[1]), aya: Number(m[2]) }));
+  const juz = starts.filter((s) => s.sura >= 1 && s.sura <= 114).slice(0, 30);
+  if (juz.length !== 30 || juz[0].sura !== 1 || juz[0].aya !== 1) throw new Error(`Unexpected Juz data (${juz.length} entries)`);
+  return juz;
+}

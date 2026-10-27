@@ -9,7 +9,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import {
-  buildQuran, extensionOf, imageFileFromUrl, isFreeLicence, parseSuraMetadata, parseTanzilText, stripHtml,
+  buildQuran, extensionOf, parseJuzMetadata, imageFileFromUrl, isFreeLicence, parseSuraMetadata, parseTanzilText, stripHtml,
 } from './content-lib.mjs';
 
 const UA = 'QiblanumaContentFetcher/0.2 (https://masmatixinnovations.co.uk; GitHub MHKhan50/qiblanuma-app)';
@@ -206,6 +206,48 @@ ${body}
 `);
 }
 
+/** Adds the 30 para starts to quran.json if they are missing. */
+async function ensureJuz() {
+  const path = 'src/data/quran/quran.json';
+  if (!existsSync(path)) return;
+  const q = JSON.parse(await readFile(path, 'utf8'));
+  if (q.suras.length !== 114 || Array.isArray(q.juz)) return;
+  q.juz = parseJuzMetadata(await get('https://tanzil.net/res/text/metadata/quran-data.js', 'text'));
+  await writeFile(path, JSON.stringify(q));
+  console.log('Para (juz) starts added');
+}
+
+// Reciters streamed from the Islamic Network CDN (alquran.cloud). Their terms:
+// recitations are licensed to them by the reciters or estates for free,
+// non-commercial redistribution; streaming for personal and educational use
+// is allowed, with credit. Each id is checked against the live API and the
+// real file URL for ayah 1 is stored, so the app never guesses a link.
+const RECITERS = [
+  'ar.alafasy', 'ar.abdulbasitmurattal', 'ar.husary', 'ar.minshawi',
+  'ar.abdurrahmaansudais', 'ar.mahermuaiqly', 'ar.saoodshuraym',
+];
+
+async function reciters() {
+  const out = [];
+  report.push('## Reciters\n');
+  for (const id of RECITERS) {
+    try {
+      const d = await get(`https://api.alquran.cloud/v1/ayah/1/${id}`);
+      const url = d?.data?.audio;
+      const name = d?.data?.edition?.englishName;
+      if (url && /\/1\.mp3$/.test(url)) {
+        out.push({ id, name, base: url.replace(/1\.mp3$/, '') });
+        report.push(`- ${id}: ${name} (${url})`);
+      } else report.push(`- ${id}: not available`);
+    } catch (e) {
+      report.push(`- ${id}: lookup failed (${e.message})`);
+    }
+    await sleep(300);
+  }
+  await writeFile('src/data/quran/reciters.json', JSON.stringify(out, null, 1));
+  console.log(`Reciters: ${out.length}`);
+}
+
 const localQuran = process.argv[2];
 if (localQuran && !existsSync(localQuran)) throw new Error(`File not found: ${localQuran}`);
 const haveQuran = existsSync('src/data/quran/quran.json')
@@ -219,6 +261,8 @@ try {
   console.error('  node scripts/fetch-content.mjs ~/Downloads/quran-uthmani.txt');
   process.exitCode = 1;
 }
+await reciters().catch((e) => console.error(`Reciter step failed: ${e.message}`));
+await ensureJuz().catch((e) => console.error(`Para step failed: ${e.message}`));
 await photos();
 await flags();
 await kaaba();
