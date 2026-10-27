@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Qiblanuma",
+    "slug": "qiblanuma",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "package": "com.masmatix.qiblanuma",
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
+    },
+    "ios": {
+      "bundleIdentifier": "com.masmatix.qiblanuma",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Your location is used on this phone only, to calculate prayer times and the Qibla direction."
+      }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        { "locationWhenInUsePermission": "Your location is used on this phone only, to calculate prayer times and the Qibla direction." }
+      ]
+    ]
+  }
+}

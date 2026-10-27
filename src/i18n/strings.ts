@@ -1,0 +1,107 @@
+export type Language = 'en' | 'ur' | 'roman';
+
+const en = {
+  appName: 'Qiblanuma',
+  tabToday: 'Today', tabQibla: 'Qibla', tabWorld: 'Cities', tabSettings: 'Settings',
+  fajr: 'Fajr', sunrise: 'Sunrise', dhuhr: 'Dhuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha',
+  nextPrayer: 'Next prayer', in: 'in',
+  estimated: 'estimated by the high latitude rule',
+  makruhTitle: 'Makruh times today',
+  makruh_sunrise: 'Sunrise', makruh_zawal: 'Zawal', makruh_sunset: 'Before sunset',
+  makruhNote: 'Approximate windows. Follow your local masjid for exact practice.',
+  locating: 'Finding your location…',
+  locationDenied: 'Location permission was not given. Choose a city in Settings.',
+  usingCity: 'Using city',
+  usingGps: 'Using your location (kept on this phone only)',
+  qiblaBearing: 'Qibla bearing', fromNorth: 'from true north',
+  distance: 'Distance to the Kaaba',
+  turnRight: 'Turn right', turnLeft: 'Turn left', facingQibla: 'You are facing the Qibla',
+  compassAccuracy: 'Compass accuracy',
+  accHigh: 'High', accMedium: 'Medium', accLow: 'Low – calibrate', accUnknown: 'Unknown',
+  calibrate: 'To calibrate, move the phone in a figure of eight and keep it away from metal and magnets.',
+  noCompass: 'Compass not available on this device. Use the bearing with a physical compass.',
+  worldTitle: 'Islamic cities',
+  nextAt: 'next',
+  method: 'Calculation method', asrSchool: 'Asr', hanafi: 'Hanafi (later Asr)', shafi: 'Shafi, Maliki, Hanbali',
+  highLat: 'High latitude rule', hl_none: 'None', hl_angleBased: 'Angle based', hl_seventhOfNight: 'One seventh of night', hl_middleOfNight: 'Middle of night',
+  adjustments: 'Minute adjustments',
+  language: 'Language', theme: 'Theme', themeSystem: 'System', themeLight: 'Light', themeDark: 'Dark',
+  clock: 'Clock', clock24: '24 hour', clock12: '12 hour',
+  location: 'Location', useGps: 'Use GPS', chooseCity: 'Choose a city',
+  privacy: 'No ads, no tracking, no account. Your location never leaves this phone.',
+  about: 'Made by Masmatix Innovations',
+};
+
+export type StringKey = keyof typeof en;
+
+const ur: Record<StringKey, string> = {
+  appName: 'قبلہ نما',
+  tabToday: 'آج', tabQibla: 'قبلہ', tabWorld: 'شہر', tabSettings: 'ترتیبات',
+  fajr: 'فجر', sunrise: 'طلوعِ آفتاب', dhuhr: 'ظہر', asr: 'عصر', maghrib: 'مغرب', isha: 'عشاء',
+  nextPrayer: 'اگلی نماز', in: 'باقی',
+  estimated: 'بلند عرض بلد کے اصول سے اندازہ',
+  makruhTitle: 'آج کے مکروہ اوقات',
+  makruh_sunrise: 'طلوع', makruh_zawal: 'زوال', makruh_sunset: 'غروب سے پہلے',
+  makruhNote: 'تقریبی اوقات۔ درست معمول کے لیے اپنی مقامی مسجد کی پیروی کریں۔',
+  locating: 'آپ کا مقام تلاش کیا جا رہا ہے…',
+  locationDenied: 'مقام کی اجازت نہیں ملی۔ ترتیبات میں شہر منتخب کریں۔',
+  usingCity: 'منتخب شہر',
+  usingGps: 'آپ کا مقام (صرف اسی فون پر محفوظ)',
+  qiblaBearing: 'قبلہ کی سمت', fromNorth: 'حقیقی شمال سے',
+  distance: 'کعبہ تک فاصلہ',
+  turnRight: 'دائیں مڑیں', turnLeft: 'بائیں مڑیں', facingQibla: 'آپ کا رخ قبلہ کی طرف ہے',
+  compassAccuracy: 'قطب نما کی درستگی',
+  accHigh: 'زیادہ', accMedium: 'درمیانی', accLow: 'کم – کیلیبریٹ کریں', accUnknown: 'نامعلوم',
+  calibrate: 'کیلیبریٹ کرنے کے لیے فون کو آٹھ کی شکل میں گھمائیں اور دھات یا مقناطیس سے دور رکھیں۔',
+  noCompass: 'اس فون میں قطب نما دستیاب نہیں۔ سمت کو عام قطب نما کے ساتھ استعمال کریں۔',
+  worldTitle: 'اسلامی شہر',
+  nextAt: 'اگلی',
+  method: 'حساب کا طریقہ', asrSchool: 'عصر', hanafi: 'حنفی (عصر بعد میں)', shafi: 'شافعی، مالکی، حنبلی',
+  highLat: 'بلند عرض بلد کا اصول', hl_none: 'کوئی نہیں', hl_angleBased: 'زاویہ کی بنیاد پر', hl_seventhOfNight: 'رات کا ساتواں حصہ', hl_middleOfNight: 'نصف شب',
+  adjustments: 'منٹوں کی تبدیلی',
+  language: 'زبان', theme: 'تھیم', themeSystem: 'سسٹم', themeLight: 'روشن', themeDark: 'تاریک',
+  clock: 'گھڑی', clock24: '24 گھنٹے', clock12: '12 گھنٹے',
+  location: 'مقام', useGps: 'جی پی ایس استعمال کریں', chooseCity: 'شہر منتخب کریں',
+  privacy: 'نہ اشتہار، نہ ٹریکنگ، نہ اکاؤنٹ۔ آپ کا مقام اس فون سے باہر نہیں جاتا۔',
+  about: 'تیار کردہ: مسمیٹکس انوویشنز',
+};
+
+const roman: Record<StringKey, string> = {
+  appName: 'Qiblanuma',
+  tabToday: 'Aaj', tabQibla: 'Qibla', tabWorld: 'Shehar', tabSettings: 'Settings',
+  fajr: 'Fajr', sunrise: 'Tulu-e-Aftab', dhuhr: 'Zuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha',
+  nextPrayer: 'Agli namaz', in: 'baqi',
+  estimated: 'buland arz-e-balad ke usool se andaza',
+  makruhTitle: 'Aaj ke makruh auqat',
+  makruh_sunrise: 'Tulu', makruh_zawal: 'Zawal', makruh_sunset: 'Ghuroob se pehle',
+  makruhNote: 'Taqreebi auqat. Durust maamool ke liye apni maqami masjid ki pairvi karein.',
+  locating: 'Aap ki location dhoondi ja rahi hai…',
+  locationDenied: 'Location ki ijazat nahi mili. Settings mein shehar chunein.',
+  usingCity: 'Muntakhab shehar',
+  usingGps: 'Aap ki location (sirf isi phone par)',
+  qiblaBearing: 'Qibla ki simt', fromNorth: 'haqeeqi shimal se',
+  distance: 'Kaaba tak faasla',
+  turnRight: 'Daayen murein', turnLeft: 'Baayen murein', facingQibla: 'Aap ka rukh Qibla ki taraf hai',
+  compassAccuracy: 'Compass ki durustagi',
+  accHigh: 'Zyada', accMedium: 'Darmiyani', accLow: 'Kam – calibrate karein', accUnknown: 'Namaloom',
+  calibrate: 'Calibrate karne ke liye phone ko 8 ki shakal mein ghumayen aur dhaat ya magnet se door rakhein.',
+  noCompass: 'Is phone mein compass nahi. Simt ko aam compass ke saath istemal karein.',
+  worldTitle: 'Islami shehar',
+  nextAt: 'agli',
+  method: 'Hisaab ka tareeqa', asrSchool: 'Asr', hanafi: 'Hanafi (Asr baad mein)', shafi: 'Shafi, Maliki, Hanbali',
+  highLat: 'Buland arz-e-balad ka usool', hl_none: 'Koi nahi', hl_angleBased: 'Zaviye ki bunyad par', hl_seventhOfNight: 'Raat ka saatwan hissa', hl_middleOfNight: 'Nisf shab',
+  adjustments: 'Minute adjustment',
+  language: 'Zaban', theme: 'Theme', themeSystem: 'System', themeLight: 'Roshan', themeDark: 'Tareek',
+  clock: 'Ghari', clock24: '24 ghante', clock12: '12 ghante',
+  location: 'Location', useGps: 'GPS istemal karein', chooseCity: 'Shehar chunein',
+  privacy: 'Na ishtehar, na tracking, na account. Aap ki location is phone se bahar nahi jati.',
+  about: 'Masmatix Innovations ki taraf se',
+};
+
+export const STRINGS: Record<Language, Record<StringKey, string>> = { en, ur, roman };
+
+export const isRTL = (lang: Language): boolean => lang === 'ur';
+
+export function translate(lang: Language, key: StringKey): string {
+  return STRINGS[lang][key] ?? en[key];
+}
