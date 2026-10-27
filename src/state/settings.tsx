@@ -6,6 +6,7 @@ import { isRTL, translate, type Language, type StringKey } from '../i18n/strings
 import { DARK, LIGHT, type Palette } from '../ui/theme';
 import { DEFAULT_WORLD_CITIES } from '../data/groups';
 import { cleanList } from './cityList';
+import type { TrackerLog } from '../engine/tracker';
 
 export type ThemeMode = 'system' | 'light' | 'dark';
 
@@ -41,6 +42,16 @@ export interface AppSettings {
   openingRecitation: boolean;
   /** Fatima section: paras read in the current khatam, and khatams completed. */
   khatam: { paras: boolean[]; completed: number };
+  /** Ids of duas the user starred. */
+  favDuas: string[];
+  /** Notify the evening before and the morning of Islamic days and heroes' days. */
+  eventReminders: boolean;
+  /** Translation shown under each ayah in the ayah view. */
+  quranTranslation: 'none' | 'ur' | 'en';
+  /** Personal journal entries, newest first. */
+  journal: { id: string; date: string; text: string }[];
+  /** Daily deen tracker, last 90 days. */
+  tracker: TrackerLog;
 }
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
@@ -65,6 +76,11 @@ export const DEFAULT_APP_SETTINGS: AppSettings = {
   voiceMode: false,
   openingRecitation: true,
   khatam: { paras: Array(30).fill(false), completed: 0 },
+  favDuas: [],
+  eventReminders: true,
+  quranTranslation: 'ur',
+  journal: [],
+  tracker: {},
 };
 
 const STORAGE_KEY = 'qiblanuma.settings.v1';
@@ -95,6 +111,10 @@ export function mergeSettings(stored: unknown): AppSettings {
     adhan: { ...DEFAULT_APP_SETTINGS.adhan, ...(s.adhan ?? {}) },
     khatam: Array.isArray(s.khatam?.paras) && s.khatam.paras.length === 30 ? s.khatam : DEFAULT_APP_SETTINGS.khatam,
     bookmarks: Array.isArray(s.bookmarks) ? s.bookmarks : [],
+    journal: Array.isArray(s.journal) ? s.journal : [],
+    favDuas: Array.isArray(s.favDuas) ? s.favDuas.filter((x) => typeof x === 'string') : [],
+    tracker: s.tracker && typeof s.tracker === 'object' && !Array.isArray(s.tracker) ? s.tracker : {},
+    language: ['en', 'ur', 'roman', 'fa', 'tr'].includes(s.language as string) ? (s.language as AppSettings['language']) : DEFAULT_APP_SETTINGS.language,
     tasbeeh: { ...DEFAULT_APP_SETTINGS.tasbeeh, ...(s.tasbeeh ?? {}), counts: { ...(s.tasbeeh?.counts ?? {}) } },
   };
 }

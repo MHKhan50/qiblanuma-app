@@ -93,10 +93,35 @@ async function leadImage(title) {
   return src ? imageFileFromUrl(src) : null;
 }
 
+/** Commons file search, used when Wikipedia gives no lead image. */
+async function searchCommons(q) {
+  const data = await get('https://commons.wikimedia.org/w/api.php?action=query&format=json&list=search&srnamespace=6&srlimit=8'
+    + `&srsearch=${encodeURIComponent(q)}`);
+  await sleep(200);
+  return (data?.query?.search ?? []).map((r) => r.title.replace(/^File:/, '')).filter((f) => /\.(jpe?g|png)$/i.test(f));
+}
+
+let errorsShown = 0;
+function showError(where, err) {
+  if (errorsShown++ < 5) console.log(`  ! ${where}: ${err?.message ?? err}`);
+}
+
 async function freeImage(candidates) {
   for (const c of candidates) {
     if (!c) continue;
-    const loc = c.startsWith('File:') ? { repo: 'commons', file: c.slice(5) } : await leadImage(c);
+    let loc = null;
+    try {
+      loc = c.startsWith('File:') ? { repo: 'commons', file: c.slice(5) } : await leadImage(c);
+    } catch (err) { showError(`Wikipedia "${c}"`, err); }
+    if (!loc && !c.startsWith('File:')) {
+      try {
+        for (const file of await searchCommons(c)) {
+          const info = await commonsInfo(file);
+          await sleep(150);
+          if (info && isFreeLicence(info.licence)) return { ...info, from: c };
+        }
+      } catch (err) { showError(`Commons search "${c}"`, err); }
+    }
     if (!loc) { report.push(`- no lead image for "${c}"`); continue; }
     if (loc.repo !== 'commons') { report.push(`- skipped non-Commons image for "${c}"`); continue; }
     const info = await commonsInfo(loc.file);
@@ -126,6 +151,7 @@ async function photos() {
     if (!img) { missing.push(id); console.log(`photo: ${id} none`); continue; }
     const ext = extensionOf(img.thumb);
     const data = await tryGet(img.thumb);
+    if (!data) showError(`download ${id}`, `HTTP ${lastStatus} ${img.thumb}`);
     if (!data) { missing.push(id); report.push(`- ${id}: download failed (HTTP ${lastStatus})`); console.log(`photo: ${id} download failed (HTTP ${lastStatus})`); continue; }
     await sleep(300);
     await writeFile(`assets/cities/${id}.${ext}`, data);
@@ -141,6 +167,7 @@ ${lines.join('\n')}
 };
 `);
   report.push(`\nNo free photo found for: ${missing.join(', ') || 'none'}\n`);
+  console.log(`Photos: ${lines.length} saved, ${missing.length} missing`);
 }
 
 async function searchFlag(name) {
@@ -227,6 +254,29 @@ const RECITERS = [
   'ar.abdurrahmaansudais', 'ar.mahermuaiqly', 'ar.saoodshuraym',
 ];
 
+// Quran translations from Tanzil, served by the alquran.cloud API. Tanzil
+// translations may be used verbatim, non-commercially, with credit.
+const TRANSLATIONS = { ur: 'ur.jalandhry', en: 'en.sahih' };
+async function translations() {
+  const out = {};
+  report.push('## Translations\n');
+  for (const [key, edition] of Object.entries(TRANSLATIONS)) {
+    try {
+      const d = await get(`https://api.alquran.cloud/v1/quran/${edition}`);
+      const surahs = d?.data?.surahs ?? [];
+      if (surahs.length === 114) {
+        out[key] = { name: d.data.edition?.englishName ?? edition, source: `Tanzil translation ${edition}, via alquran.cloud`, suras: surahs.map((s) => s.ayahs.map((a) => a.text)) };
+        report.push(`- ${key}: ${out[key].name} (${edition})`);
+        console.log(`Translation ${key}: ${out[key].name}`);
+      } else report.push(`- ${key}: not available`);
+    } catch (e) {
+      report.push(`- ${key}: failed (${e.message})`);
+    }
+    await sleep(500);
+  }
+  if (Object.keys(out).length) await writeFile('src/data/quran/translations.json', JSON.stringify(out));
+}
+
 async function reciters() {
   const out = [];
   report.push('## Reciters\n');
@@ -261,6 +311,7 @@ try {
   console.error('  node scripts/fetch-content.mjs ~/Downloads/quran-uthmani.txt');
   process.exitCode = 1;
 }
+await translations().catch((e) => console.error(`Translation step failed: ${e.message}`));
 await reciters().catch((e) => console.error(`Reciter step failed: ${e.message}`));
 await ensureJuz().catch((e) => console.error(`Para step failed: ${e.message}`));
 await photos();

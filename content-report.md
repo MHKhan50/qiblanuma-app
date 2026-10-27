@@ -1,5 +1,9 @@
 # Content report
 
+## Translations
+
+- ur: Fateh Muhammad Jalandhry (ur.jalandhry)
+- en: Saheeh International (en.sahih)
 ## Reciters
 
 - ar.alafasy: Alafasy (https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3)
@@ -12,51 +16,43 @@
 ## City photos
 
 - no Commons details for "Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Mecca"
+- makkah: Supplicating Pilgrim at Masjid Al Haram. Mecca, Saudi Arabia.jpg | Ali Mansuri | CC BY-SA 2.5
 - no Commons details for "Masjid_Nabawi_The_Prophet's_Mosque,_Madina.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Medina"
-- no lead image for "Dome of the Rock"
-- no Commons details for "Dome_of_the_Rock_seen_from_the_Mount_of_Olives_(12395649153)_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- madinah: Masjid al-Qiblatain.jpg | Aiman titi | CC BY-SA 3.0
+- alquds: Jerusalem-2013-Temple Mount-Dome of the Rock & Chain 02.jpg | Godot13 | CC BY-SA 4.0
 - no Commons details for "Istanbul_(34223582516)_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Historical_peninsula_and_modern_skyline_of_Istanbul.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "71_Bursa_la_Grande_Moschea_(Edited).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Bursa"
+- bursa: BursaTelAviv-1.jpg | פארוק | CC BY-SA 3.0
 - no Commons details for "Screenshot_20200623_202323_com.android.gallery3d.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Selimiye Mosque"
-- no lead image for "Edirne"
+- edirne: Turkish postage stamp, Selimiye Mosque, Scott No. J61, issued 1913.jpg | Unknown authorUnknown author | Public domain
 - no Commons details for "İznik_ve_surlar.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Mevlana Museum"
-- no Commons details for "Konyaaltincarsi.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Kayseri"
-- no lead image for "Sivas"
+- konya: Mevlana Müzesi 01.jpg | Bernard Gagnon | CC BY-SA 3.0
+- kayseri: Tarihi Kayseri Mahallesi 360 Panorama.jpg | Abdurrahman Çam | CC BY-SA 4.0
+- sivas: Sivas Crete.jpg | Rob de Vries from Groningen, Netherlands | CC BY 2.0
 - no Commons details for "Erzurum_Citadel_-_Erzurum_Kalesi_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Ahlat"
+- ahlat: Ahlat, fattoria con mucche 01.jpg | Francesco Bini | CC BY-SA 4.0
 - no Commons details for "Diyarbakir_Great_Mosque_DSCF8194.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Diyarbakır"
+- diyarbakir: Diyarbakır Suriçi.jpg | Hamdigumus | CC0
 - no Commons details for "Gazi_Husrev-beg's_Mosque_IMG_9523_sarajevo.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Sarajevo_City_Panorama.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Umayyad_Mosque,_Damascus.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Damascus"
+- damascus: Damascus watertower sign Damascus MD 2023-10-08 16-46-55.jpg | G. Edward Johnson | CC BY 4.0
 - no Commons details for "Citadel_of_Aleppo.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Aleppo"
-- no lead image for "Norias of Hama"
-- no lead image for "Hama"
-- no lead image for "Kerak Castle"
-- no lead image for "Al-Karak"
+- aleppo: Aleppo Citadel 13 - Great Mosque.jpg | Bernard Gagnon | CC BY-SA 3.0
+- hama: Norias of Hama 2, Orontes River, Hama, Syria.jpg | Vyacheslav Argenberg | CC BY 4.0
+- karak: Kerak BW 1.JPG | Berthold Werner | CC BY 3.0
 - no Commons details for "5628442718_b10fc2c47f_o.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Great Mosque of al-Nuri (Mosul)"
-- no Commons details for "مدينة_الموصل.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Al-Azhar Mosque"
-- no Commons details for "Cairo_From_Tower_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- mosul: Great Mosque of al-Nuri (Mosul), 2020.jpg | Ennolenze | CC BY-SA 4.0
+- cairo: Cairo - Islamic district - Al Azhar Mosque and University.JPG | Daniel Mayer | CC BY-SA 4.0
 - no Commons details for "قلعة_قايتباي_من_الجو.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "San_Stefano_Grand_Plaza.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Great_Mosque_of_Kairouan_Panorama_-_Grande_Mosquée_de_Kairouan_Panorama.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Montage_ville_de_Kairouan.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "University_of_Al_Qaraouiyine.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Fez, Morocco"
+- fez: Dar El-Beida, Fez, Marocco (الدار البيضاء, فاس).jpg | Petar Milošević | CC BY-SA 4.0
 - no Commons details for "Córdoba_aerial_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Alhambra"
-- no lead image for "Granada"
+- granada: Alhambra in the evening.jpg | Jebulon | Public domain
 - no Commons details for "Djingareiber_cour.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Donkeys,_Timbuktu.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Old_City,_Sana'a,_Yemen_(15335600470).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
@@ -64,19 +60,16 @@
 - no Commons details for "13_Tarim_(13)_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "13_Tarim_(10).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Zanzibar_sultan_palace.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Zanzibar"
+- zanzibar: Zanzibar sail.jpg | Gianluca Miscione | CC BY-SA 4.0
 - no Commons details for "Kazan_Kremlin_Qolsharif_Mosque_08-2016_img1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Kazan"
-- no lead image for "Palace of the Shirvanshahs"
-- no Commons details for "Baku_city_at_night.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- kazan: Kazan Railway Station 2024-07-13 1314.jpg | Mike1979 Russia | CC BY-SA 4.0
+- baku: Shirvanshahs Palace Mosque 01.jpg | Bernard Gagnon | CC BY 4.0
 - no Commons details for "Blue_Mosque_(Tabriz)_General_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Tabriz_Municipality_Sa'at_Tower.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Ardabil"
-- no lead image for "Qazvin"
-- no lead image for "Shah Mosque"
-- no Commons details for "Naghshe_jahan_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Golestan Palace"
-- no Commons details for "North_of_Tehran_Skyline_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- ardabil: The Ardabil Carpet - Google Art Project.jpg | Unknown – production | Public domain
+- qazvin: Irán (RPS 12-10-2019) rezando en la mezquita de Qazvin.jpg | Raimundo Pastor y Pilar Pastor | CC BY-SA 4.0
+- isfahan: Mezquita Shah, Isfahán, Irán, 2016-09-20, DD 71-73 HDR.jpg | Diego Delso | CC BY-SA 4.0
+- tehran: Palacio de Golestán, Teherán, Irán, 2016-09-17, DD 24-26 HDR.jpg | Diego Delso | CC BY-SA 4.0
 - no Commons details for "Gohar_Shad_Mosque.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Aerial_View_of_Koohsangi_street,_Mashhad,_Iran.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "آرامگاه_عمر_خیام.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
@@ -90,26 +83,22 @@
 - no Commons details for "RegistanSquare_Samarkand.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Ak_Serai_Palace,_Shakhrisabz_(490496).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Amir_Temur_Statue_and_Ak-Saray_Monument_in_Shahrisabz.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Mausoleum of Khoja Ahmed Yasawi"
-- no Commons details for "1914_map_of_Asia.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- turkistan: Mausoleum of Khoja Ahmed Yasawi in Hazrat-e Turkestan, Kazakhstan.jpg | Petar Milošević | CC BY-SA 4.0
 - no Commons details for "Green_Mosque,_Balkh.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Blue Mosque, Mazar-i-Sharif"
-- no Commons details for "Nowruz_in_northern_Afghanistan-2011_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- mazarisharif: Blue Mosque Courtyard Dusk Wikimedia Commons.jpg | Benh LIEU SONG (Flickr) | CC BY-SA 3.0
 - no Commons details for "Friday_Mosque_in_Herat,_Afghanistan.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Herat_7452a.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Minarets of Ghazni"
-- no lead image for "Ghazni"
+- ghazni: Minaret of Bahram Shah (with Minaret of Mas'ud III in the background). Ghazni, Afghanistan 2014.jpg | AhmadElhan | CC BY-SA 4.0
 - no Commons details for "Badshahi_Mosque_front_picture.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Lahore_Fort_view_from_Baradari.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Tomb_of_Shah_Rukn-e-Alam_2014-07-31.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Shrine_Shah_Rukn-e-Alam.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "UchMontage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Darbar_Hazrat_Baba_Farid_ud_Deen_Ganj_Shakar_Rahmatullah_Alaih_-_panoramio.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Chishtian"
+- chishtian: SufiTajSarwar.JPG | Ammarkh (talk) | CC BY-SA 3.0
 - no Commons details for "MKmosque.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Islamia_College_Peshawar_(Public_Sector_University),_Khyber_Pakhtunkhwa,_Pakistan_cropped.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Jama Masjid, Delhi"
-- no Commons details for "Jama_Masjid_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- delhi: 20191203 Jama Masjid, Delhi 0707 6468 DxO.jpg | Jakub Hałun | CC BY-SA 4.0
 - no Commons details for "Taj_Mahal_(Edited).jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Taj_Mahal,_Agra,_India.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Fatehput_Sikiri_Buland_Darwaza_gate_2010.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
@@ -119,120 +108,101 @@
 - no Commons details for "Jama_Masjid,_Srinagar_(14363005587).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Red_and_Yellow_Tulips.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Charminar_Hyderabad_1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Hyderabad"
+- hyderabad: Birla Mandir in Hyderabad, 2015.JPG | Nikhilb239 | CC BY-SA 4.0
 - no Commons details for "লাল_কেল্লার_মায়া.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Downtown_Hatirjheel.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Kufa_Mosque.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Kufa"
+- kufa: Kufa Mosque.jpg | Ali Alturaihy | CC BY-SA 4.0
 - no Commons details for "Basra_city.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Great Mosque of Samarra"
-- no lead image for "Samarra"
+- samarra: Great Mosque of Samarra - Dec 27, 2017 15.jpg | Mahdi Almasi | CC BY 4.0
 - no Commons details for "Raqqa_2003-12-31.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Great Mosque of Mahdia"
-- no lead image for "Mahdia"
-- no lead image for "Al-Zaytuna Mosque"
-- no Commons details for "TunisAveHabibBourguiba.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Ketchaoua Mosque"
-- no lead image for "Algiers"
+- mahdia: Great Mosque of Mahdia.jpg | Hamed Gamaoun | CC BY-SA 4.0
+- tunis: Al zaytuna mosque people.jpg | Mohamed Aziz Smaoui | CC BY-SA 4.0
+- algiers: The Ketchaoua Mosque.jpg | Rouibi Dhia Eddine Nadjm | CC BY-SA 4.0
 - no Commons details for "Marokko0112_(retouched).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Marrakech,_Morocco_(5421595453)_(5).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Hassan_Tower,_Rabat,_Marocco_(صومعة_حسان_).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Rabat"
-- no lead image for "Bab Mansour"
-- no lead image for "Meknes"
+- rabat: Honor guard at Mausoleum of Mohammed V, Rabat, Morocco.jpg | Petar Milošević This photograph was taken with a Panasonic Lumix DMC-G85/G80 | CC BY-SA 4.0
+- meknes: Bab Mansour gate.jpg | Jerzy Strzelecki | CC BY 3.0
 - no Commons details for "Sevilla_Cathedral_-_Giralda.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Seville"
+- seville: Torre del Oro flag Seville Spain.jpg | Jebulon | CC0
 - no Commons details for "Askia.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Tombeau_dAskia_in_Gao_by_David_Sessoms.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Front_of_Sokoto_Sultan_Palce.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Sultan Qaboos Grand Mosque"
-- no lead image for "Muscat"
-- no lead image for "Nasir al-Mulk Mosque"
-- no Commons details for "Darvaze_Ghoran11.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- muscat: Sultan Qaboos Grand Mosque (1).jpg | Mostafameraji | CC BY-SA 4.0
+- shiraz: Nasir-al molk -1.jpg | Ayyoubsabawiki | CC BY-SA 4.0
 - no Commons details for "Dome_of_Soltaniyeh_jb1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Soltaniyeh"
-- no lead image for "Id Kah Mosque"
-- no lead image for "Kashgar"
-- no lead image for "Kokand"
+- sultaniyeh: مقبره سلطان محمد خدابنده - گنبد سلطانیه.jpg | Alireza-Derogar | CC BY-SA 4.0
+- kashgar: Hëytgah Mosque, Kashi (20230923100109).jpg | N509FZ | CC BY-SA 4.0
+- kokand: Khudayar Khan Palace, Kokand, Uzbekistan (Дворец Худояр-хана, Коканд, Узбекистан).jpg | Petar Milošević | CC BY-SA 4.0
 - skipped non-Commons image for "Tashkent"
 - no Commons details for "Hansaray1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Bakhchysarai"
+- bakhchysarai: Bakhchysarai 04-14 img16 train station.jpg | A.Savin | CC BY-SA 3.0
 - no Commons details for "Jam_afghan_architecture_harirud_brick.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Jam_afghan_architecture_harirud_brick.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Garden_of_Babur_By_Dani.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Kabul,_Afghanistan_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Kandahar"
-- no lead image for "Shah Jahan Mosque"
-- no Commons details for "Thatta_collage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- kandahar: Kandahar0004.jpg | Katya at English Wikipedia | Public domain
+- thatta: Naghshe Jahan Square Isfahan modified.jpg | en:User:Arad | CC BY-SA 3.0
 - no Commons details for "Kabuli_Gate_-_Rohtas_Fort_by_Usman_Ghani.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Kabuli_Gate_-_Rohtas_Fort_by_Usman_Ghani.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Noor Mahal"
-- no Commons details for "BahawalpurMontage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Bara Imambara"
-- no Commons details for "Harzratganj_Market,_Lucknow.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Sher Shah Suri Tomb"
-- no lead image for "Sasaram"
+- bahawalpur: Noor Mahal (FrontView) 01.jpg | Syeda Aamna Amjad | CC BY-SA 4.0
+- lucknow: Imambara of Asaf-ud-daula .jpg | Harsh13596 | CC BY-SA 4.0
+- sasaram: Sher Shah Suri Tomb.jpg | Nandanupadhyay | CC BY-SA 3.0
 - skipped non-Commons image for "Kalaburagi"
-- no lead image for "Mahmud Gawan Madrasa"
-- no Commons details for "Guru_Nanak_Jhira_Sahib_gurdwara_in_Bidar,_Jul_2017.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- bidar: Complete view of Mahumad Gawan.JPG | Prasannasindol | CC BY-SA 3.0
 - no Commons details for "Gol_Gumbaz_-4,_Bijapur,_Karnataka.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Bijapur_Montage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Gopuram_of_the_Ranganathaswamy_Temple,_Srirangapatna_Karnataka_India.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Sonargaon"
-- no lead image for "Malacca City"
-- no lead image for "Baiturrahman Grand Mosque"
-- no Commons details for "Meuseujid_Raya_Baiturrahman,_Aceh.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+- sonargaon: Struggle of bullock cart, Sonargaon.jpg | Masum-al-hasan | CC BY-SA 3.0
+- malacca: Melaka Malaysia Majlis-Bandaraya-Melaka-Bersejarah-01.jpg | CEphoto, Uwe Aranas | CC BY-SA 3.0
+- bandaaceh: Meuseujid Raya Bayturrahman.JPG | Si Gam Acèh | CC BY-SA 3.0
 - no Commons details for "Sultan_Omar_Ali_Saifuddin_Mosque_with_the_ceremonial_ship.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Bandar Seri Begawan"
+- brunei: Sultan Omar Ali Saifuddin Mosque 02.jpg | sam garza from Los Angeles, USA | CC BY 2.0
 - no Commons details for "Wfm_glasgow_central_mosque_front.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Glasgow"
+- glasgow: 141-197 Howard Street, Glasgow, Scotland.jpg | Michal Klajban | CC BY-SA 4.0
 - no Commons details for "London_Central_Mosque_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "London_Skyline_(125508655).jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Tower_Blocks_over_Knott_Mill,_geograph_6866152_by_David_Dixon.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Birmingham_Central_Mosque.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Birmingham_Skyline_from_the_West.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Grande_Mosquée_de_Paris.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Paris"
+- paris: Plan de Paris en 1657.JPG | Jan Janssonius | Public domain
 - no Commons details for "Great_Mosque_of_Brussels.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Grand_Place_Bruselas_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Imagen_de_los_canales_concéntricos_en_Ámsterdam.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Sehitlik-Moschee_in_Berlin,_2012.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Berlin"
+- berlin: Berlin Mitte June 2023 01.jpg | ArildV | CC BY-SA 4.0
 - no Commons details for "Moscow_Cathedral_Mosque_01-2016.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Saint_Basil's_Cathedral_and_the_Red_Square.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Islamic_Cultural_Center_E96_jeh.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "New York City"
+- newyork: Long Island City New York May 2015 panorama 3.jpg | King of Hearts | CC BY-SA 3.0
 - no Commons details for "Chicago_River_ferry_b.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Toronto"
+- toronto: Toronto - ON - Toronto Harbourfront7.jpg | Wladyslaw | CC BY-SA 3.0
 - no Commons details for "Eid_Prayer_at_Lakemba_Mosque.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Sydney"
-- no lead image for "Cape Town"
+- sydney: Sydney skyline at dusk - Dec 2008.jpg | Diliff | CC BY-SA 3.0
+- capetown: Cape Town (ZA), Wale Street -- 2024 -- 3536.jpg | Dietmar Rabich | CC BY-SA 4.0
 - no Commons details for "Lagos_Central_Mosque,_the_home_of_Chief_Imam.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Lagos-centre-from-executive-lounge-Continental-hotel-2026-IMG_7970.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Jamia Mosque (Nairobi)"
-- no lead image for "Nairobi"
-- no lead image for "Riyadh"
+- nairobi: Jamia Mosque (Nairobi) 01.JPG | Ruslik0 | CC BY-SA 4.0
+- riyadh: Riyadh Skyline.jpg | B.alotaby | CC BY-SA 4.0
 - no Commons details for "Jumeira_Mosque_Dubai.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Dubai"
+- dubai: Artificial Archipelagos, Dubai, United Arab Emirates ISS022-E-024940 lrg.jpg | Member of the Expedition 22 crew. | Public domain
 - no Commons details for "The_Pearl_Marina_in_Nov_2013.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Grand Mosque (Kuwait)"
-- no lead image for "Kuwait City"
-- no lead image for "Mazar-e-Quaid"
-- no Commons details for "Clifton_Karachi_View.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Faisal Mosque"
-- no lead image for "Islamabad"
+- kuwait: Aerial view of a girl reading the Quran at Grand Mosque of Kuwait.jpg | Di7ane | CC BY-SA 4.0
+- karachi: Mazar-e-Quaid, or Jinnah Mausoleum in Karachi, Pakistan.jpg | Jan Kranendonk (https://www.jankranendonk.nl) | CC BY-SA 4.0
+- islamabad: Ali Mujtaba WLM2015 FAISAL MOSQUE m 10.jpg | Ali Mujtaba | CC BY-SA 4.0
 - no Commons details for "Kenta_Kerr.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Faisalabad"
+- faisalabad: Faisalabad City Flag.png | Aml-401 | CC BY-SA 4.0
 - no Commons details for "National_Mosque_of_Malaysia,_Kuala_Lumpur_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- no lead image for "Kuala Lumpur"
-- no lead image for "Sultan Mosque"
-- no lead image for "Singapore"
+- kualalumpur: Butorides striata javanica @ Kuala Lumpur, Malaysia (1).jpg | GerifalteDelSabana | CC BY-SA 4.0
+- singapore: Exterior of Sultan Ahmed I Mosque in Istanbul, Turkey 002.jpg | Moonik | CC BY-SA 3.0
 - skipped non-Commons image for "Istiqlal Mosque, Jakarta"
-- no lead image for "Jakarta"
+- jakarta: Jakarta old football.jpg | Jonathan McIntosh | CC BY 2.0
 - no Commons details for "Tokyo_Camii_2009.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Skyscrapers_of_Shinjuku_2009_January.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 
-No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne, iznik, konya, kayseri, sivas, erzurum, ahlat, diyarbakir, sarajevo, damascus, aleppo, hama, karak, baghdad, mosul, cairo, alexandria, kairouan, fez, cordoba, granada, timbuktu, sanaa, tarim, zanzibar, kazan, baku, tabriz, ardabil, qazvin, isfahan, tehran, mashhad, nishapur, merv, kunyaurgench, khiva, bukhara, samarqand, shahrisabz, turkistan, balkh, mazarisharif, herat, ghazni, lahore, multan, uch, pakpattan, chishtian, peshawar, delhi, agra, fatehpursikri, ajmer, srinagar, hyderabad, dhaka, kufa, basra, samarra, raqqa, mahdia, tunis, algiers, marrakesh, rabat, meknes, seville, gao, sokoto, muscat, shiraz, sultaniyeh, kashgar, kokand, tashkent, bakhchysarai, jam, kabul, kandahar, thatta, rohtas, bahawalpur, lucknow, sasaram, gulbarga, bidar, bijapur, srirangapatna, sonargaon, malacca, bandaaceh, brunei, glasgow, london, manchester, birmingham, paris, brussels, amsterdam, berlin, moscow, newyork, chicago, toronto, sydney, capetown, lagos, nairobi, riyadh, dubai, doha, kuwait, karachi, islamabad, faisalabad, kualalumpur, singapore, jakarta, tokyo
+No free photo found for: istanbul, sogut, iznik, erzurum, sarajevo, baghdad, alexandria, kairouan, cordoba, timbuktu, sanaa, tarim, tabriz, mashhad, nishapur, merv, kunyaurgench, khiva, bukhara, samarqand, shahrisabz, balkh, herat, lahore, multan, uch, pakpattan, peshawar, agra, fatehpursikri, ajmer, srinagar, dhaka, basra, raqqa, marrakesh, gao, sokoto, tashkent, jam, kabul, rohtas, gulbarga, bijapur, srirangapatna, london, manchester, birmingham, brussels, amsterdam, moscow, chicago, lagos, doha, tokyo
 
 ## Group flags
 
@@ -252,9 +222,9 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 - ghurid: no flag found on Commons
 - zengid: no flag found on Commons
 - ayyubid: Flag of the Mamluk Sultanate (Alexandria).svg | CC BY-SA 3.0 (check this is a fair representation before release)
-- almohad: no flag found on Commons
+- almohad: Almohad flag.svg | CC0 (check this is a fair representation before release)
 - khwarazmian: Flag of Khwarazmian Empire (16 Great Turkic Empires).svg | CC0 (check this is a fair representation before release)
-- delhi: no flag found on Commons
+- delhi: Flag of the Delhi Sultanate.svg | CC BY-SA 4.0 (check this is a fair representation before release)
 - mamluk: Mamluk Sultanate Flag of Map (Year-1413).png | CC BY-SA 4.0 (check this is a fair representation before release)
 - nasrid: Nasrid Flag.svg | CC BY-SA 4.0 (check this is a fair representation before release)
 - hafsid: no flag found on Commons
@@ -273,7 +243,7 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 - mughal: Mughal Empire Flag Map.png | CC BY-SA 4.0 (check this is a fair representation before release)
 - suri: 1500s-1701 flag of the Ottoman Empire.png | CC0 (check this is a fair representation before release)
 - centralasia: no flag found on Commons
-- morocco: Flag of Morocco.svg | Public domain (check this is a fair representation before release)
+- morocco: no flag found on Commons
 - afsharqajar: no flag found on Commons
 - durrani: Flag of the Durrani Kingdom.svg | CC0 (check this is a fair representation before release)
 - yemen: no flag found on Commons
@@ -283,9 +253,7 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 - awadh: 1857 Flag of Princely state of Oudh (Awadh), during the siege of Lucknow in 1857.png | Public domain (check this is a fair representation before release)
 - hyderabad: Asafia flag of Hyderabad State.svg | CC BY-SA 4.0 (check this is a fair representation before release)
 - sokoto: Flag of the Sokoto Caliphate.svg | Public domain (check this is a fair representation before release)
-- no lead image for "Kaaba"
-- no Commons details for "Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 ## Kaaba photo
 
-- not available (HTTP 200)
+- The Kaaba during Hajj - edited.jpg | Adli Wahid Minor modifications made by Basile Morin, from the original version. | CC BY-SA 4.0
 

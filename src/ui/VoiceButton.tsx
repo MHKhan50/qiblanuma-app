@@ -2,12 +2,13 @@ import React from 'react';
 import { Pressable, Text } from 'react-native';
 import { useSettings } from '../state/settings';
 import { useVoice, VOICE_AVAILABLE } from '../state/useVoice';
+import { SPEECH_LANG } from '../i18n/strings';
 
 export { VOICE_AVAILABLE };
 
 export default function VoiceButton({ onText, onListening }: { onText: (t: string) => void; onListening?: (on: boolean) => void }) {
   const { settings, colors } = useSettings();
-  const voice = useVoice(settings.language === 'en' ? 'en-GB' : 'ur-PK');
+  const voice = useVoice(SPEECH_LANG[settings.language]);
   React.useEffect(() => { onListening?.(voice.listening); }, [voice.listening, onListening]);
   if (!voice.available) return null;
   return (

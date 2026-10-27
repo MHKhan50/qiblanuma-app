@@ -12,7 +12,7 @@ import { Card, Chip, Note, Title } from '../ui/components';
 
 const HIGH_LAT: HighLatitudeRule[] = ['angleBased', 'seventhOfNight', 'middleOfNight', 'none'];
 const LANGS: { id: Language; label: string }[] = [
-  { id: 'roman', label: 'Roman Urdu' }, { id: 'ur', label: 'اردو' }, { id: 'en', label: 'English' },
+  { id: 'roman', label: 'Roman Urdu' }, { id: 'ur', label: 'اردو' }, { id: 'en', label: 'English' }, { id: 'fa', label: 'فارسی' }, { id: 'tr', label: 'Türkçe' },
 ];
 
 export default function SettingsScreen() {
@@ -36,6 +36,9 @@ export default function SettingsScreen() {
               onPress={() => update({ adhan: { ...settings.adhan, [p]: !settings.adhan[p] } })}
             />
           ))}
+        </View>
+        <View style={wrap}>
+          <Chip label={`${settings.eventReminders ? '🔔' : '🔕'} ${t('eventRemindersLabel')}`} active={settings.eventReminders} onPress={() => update({ eventReminders: !settings.eventReminders })} />
         </View>
       </Card>
 
@@ -83,7 +86,7 @@ export default function SettingsScreen() {
           {MANUAL_LOCATIONS.map((c) => (
             <Chip
               key={c.id}
-              label={settings.language === 'ur' ? c.name.ur : c.name.en}
+              label={settings.language === 'ur' || settings.language === 'fa' ? c.name.ur : c.name.en}
               active={settings.locationMode === 'manual' && settings.manualCityId === c.id}
               onPress={() => update({ locationMode: 'manual', manualCityId: c.id })}
             />

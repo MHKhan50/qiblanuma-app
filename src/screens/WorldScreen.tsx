@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Alert, FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { CITY_PHOTOS } from '../data/cityPhotos';
+import CityArt from '../ui/CityArt';
 import { findCity, type City } from '../data/cities';
 import { addDays, computePrayerTimes, nextPrayer } from '../engine/prayerTimes';
 import { formatClock, localDateIn } from '../engine/timezone';
@@ -45,7 +46,7 @@ export default function WorldScreen() {
   );
 
   const dir = rtl ? 'row-reverse' : 'row';
-  const cityName = (c: City) => (settings.language === 'ur' ? c.name.ur : c.name.en);
+  const cityName = (c: City) => (settings.language === 'ur' || settings.language === 'fa' ? c.name.ur : c.name.en);
 
   return (
     <>
@@ -65,6 +66,9 @@ export default function WorldScreen() {
         ListEmptyComponent={<Note>{t('noCities')}</Note>}
         renderItem={({ item }) => (
           <View style={[styles.item, { borderColor: colors.border, backgroundColor: colors.card, flexDirection: dir }]}>
+            {!CITY_PHOTOS[item.city.id] && (
+              <View style={rtl ? { marginLeft: 12 } : { marginRight: 12 }}><CityArt id={item.city.id} /></View>
+            )}
             {CITY_PHOTOS[item.city.id] && (
               <Pressable
                 accessibilityRole="imagebutton"

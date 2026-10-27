@@ -9,6 +9,9 @@ import { useSettings } from './settings';
 
 export interface Pos { sura: number; aya: number }
 
+/** Set while a guided sequence (e.g. Khatam Sharif) is playing, so hands-free mode does not interrupt it. */
+export const sequence = { active: false };
+
 interface AudioCtx {
   available: boolean;
   playing: boolean;

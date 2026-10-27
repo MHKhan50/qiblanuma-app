@@ -2,6 +2,7 @@ import recitersData from './reciters.json';
 import data from './quran.json';
 import indopak from './quran-indopak.json';
 import { INDOPAK_FONT } from './fonts';
+import translations from './translations.json';
 
 export interface Sura {
   n: number;
@@ -77,4 +78,25 @@ export function juzEnd(juz: number): { sura: number; aya: number } {
   const next = QURAN.juz?.[juz];
   if (!next) return { sura: 114, aya: QURAN.suras[113]?.ayahs.length ?? 6 };
   return prevAyah(next.sura, next.aya) ?? { sura: 1, aya: 1 };
+}
+
+/** Quran translations bundled by scripts/fetch-content.mjs (Tanzil, via alquran.cloud). */
+export type TranslationId = 'ur' | 'en';
+const TR = translations as Partial<Record<TranslationId, { name: string; source: string; suras: string[][] }>>;
+export const TRANSLATIONS: TranslationId[] = (['ur', 'en'] as const).filter((k) => TR[k]?.suras?.length === 114);
+export function translationName(id: TranslationId): string { return TR[id]?.name ?? id; }
+export function translationOf(id: TranslationId, sura: number, aya: number): string | null {
+  return TR[id]?.suras?.[sura - 1]?.[aya - 1] ?? null;
+}
+
+/** A different ayah for each day of the year, chosen from the whole Quran. */
+export function ayahOfDay(dayNumber: number): { sura: number; aya: number } | null {
+  if (QURAN.suras.length !== 114) return null;
+  const total = 6236;
+  let g = ((dayNumber * 2654435761) >>> 0) % total; // spread across the Quran
+  for (const s of QURAN.suras) {
+    if (g < s.ayahs.length) return { sura: s.n, aya: g + 1 };
+    g -= s.ayahs.length;
+  }
+  return null;
 }

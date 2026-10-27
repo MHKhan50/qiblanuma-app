@@ -4,6 +4,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 const app = JSON.parse(await readFile('app.json', 'utf8'));
 const e = app.expo;
+e.version = '0.2.0';
 e.icon = './assets/icon.png';
 e.splash = { image: './assets/splash-icon.png', resizeMode: 'contain', backgroundColor: '#F6F3EC' };
 e.android = { ...(e.android ?? {}), adaptiveIcon: { foregroundImage: './assets/adaptive-icon.png', backgroundColor: '#0E6E6E' } };

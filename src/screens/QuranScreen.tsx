@@ -4,7 +4,7 @@ import { searchQuran, splitBismillah } from '../data/quran/search';
 import { parseVoiceCommand, type VoiceTarget } from '../data/quran/voice';
 import { runControl, useAudio } from '../state/audio';
 import VoiceButton from '../ui/VoiceButton';
-import { arabicNumber, ayahText, INDOPAK_AVAILABLE, juzEnd, QURAN, QURAN_FONT, type Sura } from '../data/quran';
+import { arabicNumber, ayahText, INDOPAK_AVAILABLE, juzEnd, QURAN, QURAN_FONT, TRANSLATIONS, translationOf, type Sura } from '../data/quran';
 import { useSettings } from '../state/settings';
 import { Card, Chip, Note } from '../ui/components';
 
@@ -255,6 +255,20 @@ function Reader({ sura, startAya, onBack, onRead }: {
               <Text style={{ color: colors.gold, fontSize: 14 }}>{script === 'uthmani' ? 'عثمانی' : 'انڈوپاک'}</Text>
             </Pressable>
           )}
+          {TRANSLATIONS.length > 0 && !lines && (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Translation"
+              onPress={() => {
+                const order: ('none' | 'ur' | 'en')[] = ['none', ...TRANSLATIONS];
+                const i = order.indexOf(settings.quranTranslation);
+                update({ quranTranslation: order[(i + 1) % order.length] });
+              }}
+              style={styles.barBtn}
+            >
+              <Text style={{ color: colors.gold, fontSize: 14 }}>{settings.quranTranslation === 'none' ? 'ترجمہ' : settings.quranTranslation === 'ur' ? 'اردو' : 'EN'}</Text>
+            </Pressable>
+          )}
           <Pressable
             accessibilityRole="button"
             onPress={() => update({ quranView: lines ? 'ayahs' : 'lines' })}
@@ -318,6 +332,11 @@ function Reader({ sura, startAya, onBack, onRead }: {
                 </Text>
               ))}
             </Text>
+            {!lines && settings.quranTranslation !== 'none' && TRANSLATIONS.includes(settings.quranTranslation) && (
+              <Text style={{ color: colors.muted, fontSize: 15, lineHeight: 26, marginTop: 4, textAlign: settings.quranTranslation === 'ur' ? 'right' : 'left', writingDirection: settings.quranTranslation === 'ur' ? 'rtl' : 'ltr' }}>
+                {translationOf(settings.quranTranslation, sura.n, item.aya)}
+              </Text>
+            )}
           </View>
         )}
       />

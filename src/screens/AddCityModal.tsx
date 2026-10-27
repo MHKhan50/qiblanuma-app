@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { Image, Modal, Pressable, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
-import { GROUP_FLAGS } from '../data/groupFlags';
+import { Modal, Pressable, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
+import Flag from '../ui/Flag';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { searchGroups } from '../state/cityList';
 import { useSettings } from '../state/settings';
@@ -44,14 +44,10 @@ export default function AddCityModal({ visible, selected, onToggle, onClose }: P
           contentContainerStyle={{ paddingBottom: 40 }}
           renderSectionHeader={({ section }) => (
             <View style={[styles.sectionHead, { backgroundColor: colors.bg, flexDirection: rtl ? 'row-reverse' : 'row' }]}>
-              {GROUP_FLAGS[section.group.id] ? (
-                <Image source={GROUP_FLAGS[section.group.id].source} style={styles.flag} resizeMode="contain" />
-              ) : (
-                <Text style={[styles.emblem, { color: colors.gold }]}>۞</Text>
-              )}
+              <View style={styles.flag}><Flag id={section.group.id} /></View>
               <View style={{ flex: 1 }}>
               <Text style={[styles.sectionTitle, { color: colors.gold, textAlign: align }]}>
-                {lang === 'ur' ? section.group.name.ur : lang === 'en' ? section.group.name.en : section.group.name.roman}
+                {lang === 'ur' ? section.group.name.ur : lang === 'roman' ? section.group.name.roman : section.group.name.en}
               </Text>
               {lang !== 'en' && (
                 <Text style={{ color: colors.muted, fontSize: 12, textAlign: align }}>{section.group.name.en}</Text>
@@ -69,7 +65,7 @@ export default function AddCityModal({ visible, selected, onToggle, onClose }: P
                 style={[styles.row, { flexDirection: rtl ? 'row-reverse' : 'row', borderBottomColor: colors.border }]}
               >
                 <Text style={{ color: colors.text, fontSize: 17, flex: 1, textAlign: align }}>
-                  {lang === 'ur' ? item.name.ur : item.name.en}
+                  {lang === 'ur' || lang === 'fa' ? item.name.ur : item.name.en}
                 </Text>
                 <Text style={{ color: on ? colors.accent : colors.muted, fontSize: 15 }}>{on ? `✓ ${t('added')}` : '+'}</Text>
               </Pressable>

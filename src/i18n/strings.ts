@@ -1,6 +1,21 @@
-export type Language = 'en' | 'ur' | 'roman';
+export type Language = 'en' | 'ur' | 'roman' | 'fa' | 'tr';
 
 const en = {
+  muzammil: 'Muzammil Zikr Circle', mudassir: 'Mudassir Calendar', mudassirSub: 'Islamic days and heroes',
+  eventToday: 'Today', eventTomorrow: 'Tomorrow', eventBody: 'Open Qiblanuma for duas and details.', eventRemindersLabel: 'Reminders for Islamic days and heroes (evening before and morning)', todayEvents: 'Today in Islamic history', allCats: 'All',
+  sectionCalc: 'Maryam Family Office (calculators)',
+  babyNames: 'Amna Names Library', boys: 'Boys', girls: 'Girls',
+  ushr: 'Ushr calculator (crops)', ushrQty: 'Harvest quantity', ushrUnit: 'Unit', ushrRain: 'Rain, river or spring water (barani): 10%', ushrPaid: 'Tube-well or paid water: 5%', ushrMixed: 'Both kinds of water', ushrPaidShare: 'Part of the season on paid water (%)', ushrPrice: 'Price per unit (optional)', ushrDue: 'Ushr due', ushrValue: 'Value',
+  ushrNote: 'Hanafi (Imam Abu Hanifa): ushr is due on every harvest from ushri land, however small, and the costs of seed, fertiliser and labour are not deducted. Give it to those entitled to zakat. Please confirm with a mufti.',
+  mirath: 'Inheritance calculator (Hanafi)', estate: 'Total estate', funeral: 'Funeral costs', debtsOwed: 'Debts', wasiyyat: 'Wasiyyat (will)', heirsTitle: 'Living heirs', netEstate: 'To be divided', share: 'Share', each: 'each', blocked: 'gets nothing',
+  mirathNote: 'Hanafi rules for the close family. Uncles, cousins and other distant relatives are not covered. Debts and funeral costs come first, then the wasiyyat (at most one third). Show this to a mufti before dividing.',
+  awlNote: "Shares were more than the whole, so all were reduced in proportion ('awl).", raddNote: 'Something was left over, so it was returned to the heirs in proportion (radd), not to the spouse.', wasiyyatCapped: 'The wasiyyat was reduced to one third.',
+  h_husband: 'Husband', h_wives: 'Wives', h_sons: 'Sons', h_daughters: 'Daughters', h_sonsSons: "Son's sons", h_sonsDaughters: "Son's daughters", h_father: 'Father', h_mother: 'Mother', h_grandfather: "Father's father", h_grandmothers: 'Grandmothers', h_fullBrothers: 'Full brothers', h_fullSisters: 'Full sisters', h_paternalBrothers: 'Brothers (same father only)', h_paternalSisters: 'Sisters (same father only)', h_maternalSiblings: 'Brothers and sisters (same mother only)', h_paternalGrandmother: "of them, father's mother",
+  duaLibrary: 'Khadijah Dua Library', favourites: 'Starred', all: 'All', search: 'Search',
+  names99: '99 Names of Allah', tracker: 'Daily tracker', hajjUmrah: 'Hajj and Umrah', greetings: 'Greeting messages', live: 'Live from the Haramain',
+  streak: 'Prayer streak', quranRead: 'Quran', dhikr: 'Dhikr', khatamTracker: 'Quran khatam tracker', features: 'All features',
+  searchFeatures: 'Search features, duas, names…', swipeHint: 'Swipe left or right to move between tabs', dayDone: 'All five prayers today, MashaAllah!',
+  photoMissing: 'Run scripts/fetch-content.mjs to add a photo',
   appName: 'Qiblanuma',
   tabToday: 'Today', tabQibla: 'Qibla', tabWorld: 'Cities', tabSettings: 'Settings',
   fajr: 'Fajr', sunrise: 'Sunrise', dhuhr: 'Dhuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha',
@@ -32,9 +47,9 @@ const en = {
   about: 'Made by Masmatix Innovations',
   iconStoryTitle: "About the emblem",
   iconStory: "A Seljuk eight-pointed star on the outside, the mihrab facing the Qibla inside it, the Ottoman crescent within the mihrab, and in its embrace a meem: the first letter of the blessed name of our Master Muhammad ﷺ, and the letter our family and our companies, Masmatix Innovations and M2M Global Consultants, carry in their names.",
-  maktab: "Masmat Maktab (Qaida)",
+  maktab: "Qaida class",
   maktabNote: "Tap a letter to hear it in the phone's Arabic voice. Lessons recorded by a qualified teacher will replace this.",
-  khatam: "Fatima: Quran khatam",
+  khatam: "Quran khatam tracker",
   parasRead: "Paras read",
   khatamsDone: "Khatams completed",
   khatamComplete: "Khatam complete, start a new one",
@@ -64,11 +79,40 @@ const en = {
   tabHome: 'Home', prayerTimes: 'Prayer times', tasbeeh: 'Tasbeeh', now: 'Now', endsIn: 'Ends in', beforeZuhr: 'Ishraq and Chasht', reset: 'Reset', hijriAdjust: 'Hijri date adjustment (days)', back: 'Back',
   tabQuran: 'Quran', suras: 'Surahs', ayahs: 'ayahs', makki: 'Makki', madani: 'Madani', continueReading: 'Continue reading', quranMissing: 'Quran text is not bundled yet. Run scripts/fetch-content.mjs.', credits: 'Credits', photoCredit: 'Photo', showCredits: 'Show credits', hideCredits: 'Hide credits',
   addCity: '+ Add city', edit: 'Edit', done: 'Done', searchCity: 'Search a city or an empire', noCities: 'No cities yet. Tap + Add city.', added: 'Added',
+  tabCalendar: 'Islamic calendar', kids: 'Fatima Academy', kidsSub: 'For children: kalimas, iman, duas, qaida',
+  tarbiyat: 'Halima Institute', tarbiyatSub: 'For adults: wudu, ghusl, salah, rakats, tajweed',
+  khatamSharif: 'Masmat Majlis', khatamSharifSub: 'Khatam Sharif and the Quran khatam tracker',
+  kalimas: 'Six kalimas', iman: 'Iman-e-Mujmal and Iman-e-Mufassal', masnoonDuas: 'Masnoon duas', qaida: 'Qaida',
+  meaning: 'Meaning', source: 'Source', times: 'times', listen: 'Listen', recite: 'Recite',
+  sectionWorship: 'Worship', sectionLearn: 'Learn', sectionMore: 'More',
+  upcoming: 'Important days ahead', daysLeft: 'days', today: 'Today',
+  calendarNote: 'Umm al-Qura calculation. Local moon sighting can differ by a day; adjust it in Settings.',
+  khatamNote: 'The order commonly read in Pakistan and India; families may add or leave out some parts.',
+  reportNote: 'If you see any mistake, please tell us so we can correct it.',
+  resetAdjustments: 'Reset all to 0', voiceBusy: 'I could not hear you. Please try again.',
 };
 
 export type StringKey = keyof typeof en;
 
+import { FA, TR } from './more';
+
+
 const ur: Record<StringKey, string> = {
+  muzammil: 'مزمل ذکر حلقہ', mudassir: 'مدثر کیلنڈر', mudassirSub: 'اسلامی ایام اور ہیرو',
+  eventToday: 'آج', eventTomorrow: 'کل', eventBody: 'دعاؤں اور تفصیل کے لیے قبلہ نما کھولیں۔', eventRemindersLabel: 'اسلامی ایام اور ہیروز کی یاد دہانی (ایک دن پہلے شام اور اسی دن صبح)', todayEvents: 'آج کا دن اسلامی تاریخ میں', allCats: 'سب',
+  sectionCalc: 'مریم فیملی آفس (حساب کتاب)',
+  babyNames: 'آمنہ نام لائبریری', boys: 'لڑکے', girls: 'لڑکیاں',
+  ushr: 'عشر کیلکولیٹر (فصل)', ushrQty: 'پیداوار کی مقدار', ushrUnit: 'پیمانہ', ushrRain: 'بارانی، دریا یا چشمے کا پانی: دسواں حصہ (10%)', ushrPaid: 'ٹیوب ویل یا خریدا ہوا پانی: بیسواں حصہ (5%)', ushrMixed: 'دونوں طرح کا پانی', ushrPaidShare: 'موسم کا کتنا حصہ خریدے پانی پر (%)', ushrPrice: 'فی پیمانہ قیمت (اختیاری)', ushrDue: 'واجب عشر', ushrValue: 'قیمت',
+  ushrNote: 'حنفی (امام ابو حنیفہ): عشری زمین کی ہر پیداوار پر عشر واجب ہے چاہے تھوڑی ہو، اور بیج، کھاد اور مزدوری کے اخراجات منہا نہیں ہوتے۔ زکوٰۃ کے مستحقین کو دیں۔ مفتی سے تصدیق کریں۔',
+  mirath: 'وراثت کیلکولیٹر (حنفی)', estate: 'کل ترکہ', funeral: 'کفن دفن کے اخراجات', debtsOwed: 'قرض', wasiyyat: 'وصیت', heirsTitle: 'زندہ ورثاء', netEstate: 'تقسیم کے لیے', share: 'حصہ', each: 'فی کس', blocked: 'محروم',
+  mirathNote: 'قریبی خاندان کے لیے حنفی اصول۔ چچا، چچازاد اور دور کے رشتہ دار شامل نہیں۔ پہلے قرض اور کفن دفن، پھر وصیت (زیادہ سے زیادہ ایک تہائی)۔ تقسیم سے پہلے مفتی کو دکھائیں۔',
+  awlNote: 'حصے کل سے بڑھ گئے، اس لیے سب کو تناسب سے کم کیا گیا (عول)۔', raddNote: 'کچھ بچ گیا، اس لیے تناسب سے ورثاء کو لوٹایا گیا (رد)، شوہر یا بیوی کو نہیں۔', wasiyyatCapped: 'وصیت ایک تہائی تک کم کی گئی۔',
+  h_husband: 'شوہر', h_wives: 'بیویاں', h_sons: 'بیٹے', h_daughters: 'بیٹیاں', h_sonsSons: 'پوتے', h_sonsDaughters: 'پوتیاں', h_father: 'والد', h_mother: 'والدہ', h_grandfather: 'دادا', h_grandmothers: 'دادی / نانی', h_fullBrothers: 'سگے بھائی', h_fullSisters: 'سگی بہنیں', h_paternalBrothers: 'علاتی بھائی (صرف باپ شریک)', h_paternalSisters: 'علاتی بہنیں (صرف باپ شریک)', h_maternalSiblings: 'اخیافی بہن بھائی (صرف ماں شریک)', h_paternalGrandmother: 'ان میں دادی',
+  duaLibrary: 'خدیجہ دعا لائبریری', favourites: 'پسندیدہ', all: 'سب', search: 'تلاش',
+  names99: 'اللہ کے 99 نام', tracker: 'روزانہ کا حساب', hajjUmrah: 'حج اور عمرہ', greetings: 'مبارکباد کے پیغامات', live: 'حرمین لائیو',
+  streak: 'نماز کا تسلسل', quranRead: 'قرآن', dhikr: 'ذکر', khatamTracker: 'ختمِ قرآن کا حساب', features: 'تمام خصوصیات',
+  searchFeatures: 'خصوصیات، دعائیں، نام تلاش کریں…', swipeHint: 'ٹیب بدلنے کے لیے دائیں بائیں سوائپ کریں', dayDone: 'آج پانچوں نمازیں، ماشاء اللہ!',
+  photoMissing: 'تصویر کے لیے scripts/fetch-content.mjs چلائیں',
   appName: 'قبلہ نما',
   tabToday: 'آج', tabQibla: 'قبلہ', tabWorld: 'شہر', tabSettings: 'ترتیبات',
   fajr: 'فجر', sunrise: 'طلوعِ آفتاب', dhuhr: 'ظہر', asr: 'عصر', maghrib: 'مغرب', isha: 'عشاء',
@@ -100,9 +144,9 @@ const ur: Record<StringKey, string> = {
   about: 'تیار کردہ: مسمیٹکس انوویشنز',
   iconStoryTitle: "نشان کی کہانی",
   iconStory: "باہر سلجوقی آٹھ کونوں والا ستارہ، اس کے اندر قبلہ رخ محراب، محراب میں عثمانی ہلال، اور ہلال کی گود میں میم: ہمارے آقا محمد ﷺ کے مبارک نام کا پہلا حرف، اور وہ حرف جو ہمارے خاندان اور ہماری کمپنیوں، مسمیٹکس انوویشنز اور ایم ٹو ایم گلوبل کنسلٹنٹس، کے ناموں میں ہے۔",
-  maktab: "مسمات مکتب (قاعدہ)",
+  maktab: "قاعدہ کلاس",
   maktabNote: "حرف سننے کے لیے اسے چھوئیں (فون کی عربی آواز)۔ بعد میں کسی قاری کی ریکارڈ شدہ آواز لگے گی۔",
-  khatam: "فاطمہ: ختمِ قرآن",
+  khatam: "ختمِ قرآن کا حساب",
   parasRead: "پڑھے گئے پارے",
   khatamsDone: "مکمل ختم",
   khatamComplete: "ختم مکمل، نیا ختم شروع کریں",
@@ -132,9 +176,35 @@ const ur: Record<StringKey, string> = {
   tabHome: 'ہوم', prayerTimes: 'اوقاتِ نماز', tasbeeh: 'تسبیح', now: 'اب', endsIn: 'ختم ہونے میں', beforeZuhr: 'اشراق و چاشت', reset: 'دوبارہ شروع', hijriAdjust: 'ہجری تاریخ میں تبدیلی (دن)', back: 'واپس',
   tabQuran: 'قرآن', suras: 'سورتیں', ayahs: 'آیات', makki: 'مکی', madani: 'مدنی', continueReading: 'پڑھنا جاری رکھیں', quranMissing: 'قرآن کا متن ابھی شامل نہیں۔', credits: 'حوالہ جات', photoCredit: 'تصویر', showCredits: 'حوالہ جات دکھائیں', hideCredits: 'حوالہ جات چھپائیں',
   addCity: '+ شہر شامل کریں', edit: 'ترمیم', done: 'مکمل', searchCity: 'شہر یا سلطنت تلاش کریں', noCities: 'ابھی کوئی شہر نہیں۔ + شہر شامل کریں دبائیں۔', added: 'شامل',
+  tabCalendar: 'اسلامی کیلنڈر', kids: 'فاطمہ اکیڈمی', kidsSub: 'بچوں کے لیے: کلمے، ایمان، دعائیں، قاعدہ',
+  tarbiyat: 'حلیمہ انسٹیٹیوٹ', tarbiyatSub: 'بڑوں کے لیے: وضو، غسل، نماز، رکعتیں، تجوید',
+  khatamSharif: 'مسمات مجلس', khatamSharifSub: 'ختم شریف اور ختمِ قرآن کا حساب',
+  kalimas: 'چھ کلمے', iman: 'ایمانِ مجمل اور ایمانِ مفصل', masnoonDuas: 'مسنون دعائیں', qaida: 'قاعدہ',
+  meaning: 'ترجمہ', source: 'حوالہ', times: 'مرتبہ', listen: 'سنیں', recite: 'پڑھیں',
+  sectionWorship: 'عبادات', sectionLearn: 'سیکھیں', sectionMore: 'مزید',
+  upcoming: 'آنے والے اہم دن', daysLeft: 'دن', today: 'آج',
+  calendarNote: 'ام القریٰ کا حساب۔ مقامی رویتِ ہلال میں ایک دن کا فرق ہو سکتا ہے؛ ترتیبات میں درست کریں۔',
+  khatamNote: 'پاکستان اور ہندوستان میں عام طور پر پڑھی جانے والی ترتیب؛ خاندانوں میں کچھ کمی بیشی ہو سکتی ہے۔',
+  reportNote: 'اگر کوئی غلطی نظر آئے تو ہمیں بتائیں تاکہ درست کی جا سکے۔',
+  resetAdjustments: 'سب صفر کریں', voiceBusy: 'آواز سنائی نہیں دی۔ دوبارہ کوشش کریں۔',
 };
 
 const roman: Record<StringKey, string> = {
+  muzammil: 'Muzammil Zikr Halqa', mudassir: 'Mudassir Calendar', mudassirSub: 'Islami ayyam aur heroes',
+  eventToday: 'Aaj', eventTomorrow: 'Kal', eventBody: 'Duaon aur tafseel ke liye Qiblanuma kholein.', eventRemindersLabel: 'Islami ayyam aur heroes ki yaad dihani (ek din pehle shaam aur usi din subah)', todayEvents: 'Aaj ka din Islami tareekh mein', allCats: 'Sab',
+  sectionCalc: 'Maryam Family Office (hisaab kitaab)',
+  babyNames: 'Amna Naam Library', boys: 'Larke', girls: 'Larkiyan',
+  ushr: 'Ushr calculator (fasal)', ushrQty: 'Paidawar ki miqdar', ushrUnit: 'Paimana', ushrRain: 'Barani, darya ya chashme ka pani: daswan hissa (10%)', ushrPaid: 'Tube-well ya khareeda hua pani: beeswan hissa (5%)', ushrMixed: 'Dono tarah ka pani', ushrPaidShare: 'Mausam ka kitna hissa khareede pani par (%)', ushrPrice: 'Fi paimana qeemat (ikhtiyari)', ushrDue: 'Wajib ushr', ushrValue: 'Qeemat',
+  ushrNote: 'Hanafi (Imam Abu Hanifa): ushri zameen ki har paidawar par ushr wajib hai chahe thori ho, aur beej, khaad aur mazdoori ke akhrajat minha nahi hote. Zakat ke mustahiqeen ko dein. Mufti se tasdeeq karein.',
+  mirath: 'Wirasat calculator (Hanafi)', estate: 'Kul tarka', funeral: 'Kafan dafan ke akhrajat', debtsOwed: 'Qarz', wasiyyat: 'Wasiyat', heirsTitle: 'Zinda warisan', netEstate: 'Taqseem ke liye', share: 'Hissa', each: 'fi kas', blocked: 'mehroom',
+  mirathNote: 'Qareebi khandan ke liye Hanafi usool. Chacha, chachazad aur door ke rishtedar shamil nahi. Pehle qarz aur kafan dafan, phir wasiyat (zyada se zyada ek tihai). Taqseem se pehle mufti ko dikhayen.',
+  awlNote: "Hisse kul se barh gaye, is liye sab ko tanasub se kam kiya gaya ('awl).", raddNote: 'Kuch bach gaya, is liye tanasub se warisan ko lautaya gaya (radd), shohar ya biwi ko nahi.', wasiyyatCapped: 'Wasiyat ek tihai tak kam ki gayi.',
+  h_husband: 'Shohar', h_wives: 'Biwiyan', h_sons: 'Betay', h_daughters: 'Betiyan', h_sonsSons: 'Potay', h_sonsDaughters: 'Potiyan', h_father: 'Walid', h_mother: 'Walida', h_grandfather: 'Dada', h_grandmothers: 'Dadi / Nani', h_fullBrothers: 'Sagay bhai', h_fullSisters: 'Sagi behnein', h_paternalBrothers: 'Allati bhai (sirf baap shareek)', h_paternalSisters: 'Allati behnein (sirf baap shareek)', h_maternalSiblings: 'Akhyafi behan bhai (sirf maa shareek)', h_paternalGrandmother: 'in mein dadi',
+  duaLibrary: 'Khadijah Dua Library', favourites: 'Pasandeeda', all: 'Sab', search: 'Talash',
+  names99: 'Allah ke 99 naam', tracker: 'Rozana ka hisaab', hajjUmrah: 'Hajj aur Umrah', greetings: 'Mubarakbad ke paighamat', live: 'Haramain live',
+  streak: 'Namaz ka tasalsul', quranRead: 'Quran', dhikr: 'Zikr', khatamTracker: 'Khatam-e-Quran ka hisaab', features: 'Tamam features',
+  searchFeatures: 'Features, duain, naam talash karein…', swipeHint: 'Tab badalne ke liye daayen baayen swipe karein', dayDone: 'Aaj paanchon namazein, MashaAllah!',
+  photoMissing: 'Tasveer ke liye scripts/fetch-content.mjs chalayen',
   appName: 'Qiblanuma',
   tabToday: 'Aaj', tabQibla: 'Qibla', tabWorld: 'Shehar', tabSettings: 'Settings',
   fajr: 'Fajr', sunrise: 'Tulu-e-Aftab', dhuhr: 'Zuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha',
@@ -166,9 +236,9 @@ const roman: Record<StringKey, string> = {
   about: 'Masmatix Innovations ki taraf se',
   iconStoryTitle: "Nishan ki kahani",
   iconStory: "Bahar Saljuqi aath konon wala sitara, us ke andar Qibla rukh mehrab, mehrab mein Usmani hilal, aur hilal ki god mein meem: hamare Aqa Muhammad ﷺ ke mubarak naam ka pehla harf, aur woh harf jo hamare khandan aur hamari companies, Masmatix Innovations aur M2M Global Consultants, ke naamon mein hai.",
-  maktab: "Masmat Maktab (Qaida)",
+  maktab: "Qaida class",
   maktabNote: "Harf sunne ke liye usay chhuyen (phone ki Arabi awaz). Baad mein kisi qari ki record ki hui awaz lagegi.",
-  khatam: "Fatima: Khatam-e-Quran",
+  khatam: "Khatam-e-Quran ka hisaab",
   parasRead: "Parhe gaye paray",
   khatamsDone: "Mukammal khatam",
   khatamComplete: "Khatam mukammal, naya khatam shuru karein",
@@ -198,12 +268,34 @@ const roman: Record<StringKey, string> = {
   tabHome: 'Home', prayerTimes: 'Namaz ke auqat', tasbeeh: 'Tasbeeh', now: 'Ab', endsIn: 'Khatam hone mein', beforeZuhr: 'Ishraq aur Chasht', reset: 'Dobara shuru', hijriAdjust: 'Hijri tareekh mein tabdeeli (din)', back: 'Wapas',
   tabQuran: 'Quran', suras: 'Surtein', ayahs: 'ayaat', makki: 'Makki', madani: 'Madani', continueReading: 'Parhna jari rakhein', quranMissing: 'Quran ka matn abhi shamil nahi.', credits: 'Hawala jaat', photoCredit: 'Tasveer', showCredits: 'Hawala jaat dikhayen', hideCredits: 'Hawala jaat chhupayen',
   addCity: '+ Shehar add karein', edit: 'Edit', done: 'Mukammal', searchCity: 'Shehar ya saltanat talash karein', noCities: 'Abhi koi shehar nahi. + Shehar add karein dabayen.', added: 'Shamil',
+  tabCalendar: 'Islami calendar', kids: 'Fatima Academy', kidsSub: 'Bachon ke liye: kalime, iman, duain, qaida',
+  tarbiyat: 'Halima Institute', tarbiyatSub: 'Baron ke liye: wuzu, ghusl, namaz, rakatein, tajweed',
+  khatamSharif: 'Masmat Majlis', khatamSharifSub: 'Khatam Sharif aur Khatam-e-Quran ka hisaab',
+  kalimas: 'Chhe kalime', iman: 'Iman-e-Mujmal aur Iman-e-Mufassal', masnoonDuas: 'Masnoon duain', qaida: 'Qaida',
+  meaning: 'Tarjuma', source: 'Hawala', times: 'martaba', listen: 'Sunein', recite: 'Parhein',
+  sectionWorship: 'Ibadat', sectionLearn: 'Seekhein', sectionMore: 'Mazeed',
+  upcoming: 'Aane wale aham din', daysLeft: 'din', today: 'Aaj',
+  calendarNote: 'Umm-ul-Qura ka hisaab. Maqami ruyat-e-hilal mein ek din ka farq ho sakta hai; Settings mein durust karein.',
+  khatamNote: 'Pakistan aur Hindustan mein aam taur par parhi jane wali tarteeb; khandanon mein kuch kami beshi ho sakti hai.',
+  reportNote: 'Agar koi ghalti nazar aaye to hamein batayen taake durust ki ja sake.',
+  resetAdjustments: 'Sab zero karein', voiceBusy: 'Awaz sunai nahi di. Dobara koshish karein.',
 };
 
-export const STRINGS: Record<Language, Record<StringKey, string>> = { en, ur, roman };
+export const STRINGS: Record<Language, Partial<Record<StringKey, string>>> = { en, ur, roman, fa: FA as Partial<Record<StringKey, string>>, tr: TR as Partial<Record<StringKey, string>> };
 
-export const isRTL = (lang: Language): boolean => lang === 'ur';
+export const isRTL = (lang: Language): boolean => lang === 'ur' || lang === 'fa';
 
 export function translate(lang: Language, key: StringKey): string {
   return STRINGS[lang][key] ?? en[key];
 }
+
+/** Language tag for speech and dates. */
+export const SPEECH_LANG: Record<Language, string> = { en: 'en-GB', ur: 'ur-PK', roman: 'ur-PK', fa: 'fa-IR', tr: 'tr-TR' };
+
+export const WEEKDAYS: Record<Language, string[]> = {
+  en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  ur: ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'],
+  roman: ['Itwar', 'Peer', 'Mangal', 'Budh', 'Jumerat', 'Juma', 'Hafta'],
+  fa: ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'],
+  tr: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
+};
