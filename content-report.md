@@ -229,7 +229,7 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 
 - rashidun: Flag map of Rashidun caliphate.png | CC BY-SA 4.0 (check this is a fair representation before release)
 - ottoman: Flag of the Ottoman Empire (1844–1922).svg | Public domain (check this is a fair representation before release)
-- umayyad: no flag found on Commons
+- umayyad: Flag of the Umayyad Caliphate (Reconstructed).png | CC0 (check this is a fair representation before release)
 - abbasid: Flag-map of Abbasid caliphate.png | CC BY-SA 4.0 (check this is a fair representation before release)
 - aghlabid: Aghlabids flag map by turkish uzbekeditor dm2ckd8-fullview.png | CC0 (check this is a fair representation before release)
 - idrisid: Flag of Morocco.svg | Public domain (check this is a fair representation before release)
@@ -254,7 +254,7 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 - samma: no flag found on Commons
 - timurid: Flag of Timurid Empire (16 Great Turkic Empires).svg | CC0 (check this is a fair representation before release)
 - qaraqoyunlu: Flag of Kara Koyunlu dynasty.png | CC BY-SA 4.0 (check this is a fair representation before release)
-- aqqoyunlu: AkkoyunluFlag.svg | CC BY-SA 3.0 (check this is a fair representation before release)
+- aqqoyunlu: no flag found on Commons
 - bengal: Flag of the Bengal Sultanate (Armalec) in the Book of all kingdoms c. 1350.svg | Public domain (check this is a fair representation before release)
 - deccan: no flag found on Commons
 - nusantara: no flag found on Commons
@@ -269,11 +269,11 @@ No free photo found for: makkah, madinah, alquds, istanbul, bursa, sogut, edirne
 - durrani: Flag of the Durrani Kingdom.svg | CC0 (check this is a fair representation before release)
 - yemen: no flag found on Commons
 - oman: no flag found on Commons
-- mysore: no flag found on Commons
+- mysore: Flag of Mysore Hyder Ali & TipuSultan.png | CC BY-SA 4.0 (check this is a fair representation before release)
 - bahawalpur: Flag of State of Bahawalpur.svg | CC0 (check this is a fair representation before release)
 - awadh: 1857 Flag of Princely state of Oudh (Awadh), during the siege of Lucknow in 1857.png | Public domain (check this is a fair representation before release)
-- hyderabad: Asafia flag of Hyderabad State.svg | CC BY-SA 4.0 (check this is a fair representation before release)
-- sokoto: Flag of the Sokoto Caliphate.svg | Public domain (check this is a fair representation before release)
+- hyderabad: no flag found on Commons
+- sokoto: no flag found on Commons
 - no lead image for "Kaaba"
 - no Commons details for "Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 ## Kaaba photo

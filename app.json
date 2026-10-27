@@ -9,7 +9,9 @@
       "package": "com.masmatix.qiblanuma",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
-        "ACCESS_FINE_LOCATION"
+        "ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
       ]
     },
     "ios": {
@@ -27,7 +29,13 @@
         }
       ],
       "expo-status-bar",
-      "expo-font"
-    ]
+      "expo-font",
+      "expo-speech-recognition"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5f2e99f2-7729-4a2c-a681-dcee916cd62a"
+      }
+    }
   }
 }
