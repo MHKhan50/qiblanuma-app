@@ -72,7 +72,8 @@ describe('Islamic calendar', () => {
 
   it('finds every event within a year, in date order', () => {
     const ev = upcomingEvents(dayOf({ year: 2026, month: 10, day: 27 }));
-    expect(ev.length).toBe(ISLAMIC_EVENTS.length);
+    // A day-30 event can be missing in a year whose month has 29 days.
+    expect(ev.length).toBeGreaterThanOrEqual(ISLAMIC_EVENTS.length - ISLAMIC_EVENTS.filter((e) => e.day === 30).length);
     for (let i = 1; i < ev.length; i++) expect(ev[i].date.getTime()).toBeGreaterThanOrEqual(ev[i - 1].date.getTime());
     for (const e of ev) {
       if (e.event.kind === 'hijri') {

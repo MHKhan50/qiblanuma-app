@@ -1,6 +1,7 @@
 // Islamic calendar helpers built on hijriDate(): the days of a Hijri month
 // with their Gregorian dates, and the important days of the year.
 import { hijriDate, type HijriDate } from './hijri';
+import { URS } from '../data/urs';
 
 const DAY = 86400000;
 
@@ -56,6 +57,8 @@ export interface IslamicEvent {
   name: { en: string; ur: string; roman: string };
   /** Year of the original event, for display ("1453"). */
   year?: string;
+  /** Less widely observed days: shown in the calendar, but no notification. */
+  minor?: boolean;
 }
 
 export const EVENT_CATEGORIES: { id: EventCategory; emoji: string; en: string; ur: string; roman: string }[] = [
@@ -72,7 +75,7 @@ const G = (category: EventCategory, id: string, month: number, day: number, en: 
 
 // Hijri dates are those traditionally observed in Pakistan and India; for many
 // historical events the sources differ by a day or more.
-export const ISLAMIC_EVENTS: IslamicEvent[] = [
+const CORE_EVENTS: IslamicEvent[] = [
   // ----- Islamic days and festivals -----
   H('festival', 'newYear', 1, 1, 'Islamic New Year', 'اسلامی نیا سال', 'Islami naya saal'),
   H('festival', 'tasua', 1, 9, '9 Muharram (fast with Ashura)', '9 محرم (عاشورہ کے ساتھ روزہ)', '9 Muharram (Ashura ke saath roza)'),
@@ -107,7 +110,6 @@ export const ISLAMIC_EVENTS: IslamicEvent[] = [
   H('sahaba', 'aisha', 9, 17, 'Wafat of Sayyida Aisha (RA)', 'وصالِ ام المومنین سیدہ عائشہ رضی اللہ عنہا', 'Wisal-e-Sayyida Aisha (RA)', '58 AH'),
   H('sahaba', 'ali', 9, 21, 'Shahadat of Hazrat Ali (RA)', 'شہادتِ حضرت علی المرتضیٰ رضی اللہ عنہ', 'Shahadat-e-Hazrat Ali (RA)', '40 AH'),
   H('sahaba', 'hamza', 10, 15, 'Battle of Uhud, Shahadat of Hazrat Hamza (RA)', 'غزوۂ احد، شہادتِ سیدنا حمزہ رضی اللہ عنہ', 'Ghazwa-e-Uhud, Shahadat-e-Hazrat Hamza (RA)', '3 AH'),
-  H('sahaba', 'muawiya', 7, 22, 'Wafat of Hazrat Amir Muawiya (RA)', 'وصالِ حضرت امیر معاویہ رضی اللہ عنہ', 'Wisal-e-Hazrat Amir Muawiya (RA)', '60 AH'),
 
   // ----- Imams and Auliya -----
   H('auliya', 'babaFarid', 1, 5, 'Urs of Baba Fariduddin Ganjshakar (Pakpattan)', 'عرس بابا فرید الدین گنج شکر (پاکپتن)', 'Urs Baba Farid Ganjshakar'),
@@ -117,7 +119,7 @@ export const ISLAMIC_EVENTS: IslamicEvent[] = [
   H('auliya', 'imamAzam', 8, 2, 'Wafat of Imam Abu Hanifa', 'وصالِ امام اعظم ابو حنیفہ', 'Wisal-e-Imam Azam Abu Hanifa', '150 AH'),
   H('auliya', 'mujaddid', 2, 28, 'Urs of Mujaddid Alf Sani (Sirhind)', 'عرس مجدد الف ثانی شیخ احمد سرہندی', 'Urs Mujaddid Alf Sani'),
   H('auliya', 'nizamuddin', 4, 18, 'Urs of Hazrat Nizamuddin Auliya (Delhi)', 'عرس حضرت نظام الدین اولیاء (دہلی)', 'Urs Nizamuddin Auliya'),
-  H('auliya', 'chishtianSharif', 3, 27, 'Urs of Khwaja Noor Muhammad Maharvi (Chishtian Sharif)', 'عرس خواجہ نور محمد مہاروی (چشتیاں شریف)', 'Urs Khwaja Noor Muhammad Maharvi (Chishtian)'),
+  H('auliya', 'chishtianSharif', 12, 1, 'Urs of Khwaja Noor Muhammad Maharvi, Chishtian Sharif (1–3 Dhul-Hijjah)', 'عرس خواجہ نور محمد مہاروی، چشتیاں شریف (1 تا 3 ذوالحجہ)', 'Urs Khwaja Noor Muhammad Maharvi, Chishtian Sharif (1-3 Zul-Hijjah)'),
 
   // ----- Islamic heroes (solar dates of the historical event) -----
   G('hero', 'tariq', 4, 29, 'Tariq bin Ziyad lands in Spain', 'طارق بن زیاد اندلس میں', 'Tariq bin Ziyad Andalus mein', '711'),
@@ -137,6 +139,21 @@ export const ISLAMIC_EVENTS: IslamicEvent[] = [
   G('turk', 'preveze', 9, 28, 'Battle of Preveza: Barbaros Hayreddin Pasha', 'جنگِ پریویزا: خیر الدین باربروسا', 'Jang-e-Preveza: Barbarossa', '1538'),
   G('turk', 'canakkale', 3, 18, 'Çanakkale (Gallipoli) naval victory', 'چناق قلعہ کی فتح', 'Canakkale ki fatah', '1915'),
   G('turk', 'kut', 4, 29, 'Siege of Kut ends in Ottoman victory', 'کوت العمارہ کی فتح', 'Kut-al-Amara ki fatah', '1916'),
+  G('turk', 'bursa', 4, 6, 'Conquest of Bursa by Orhan Gazi', 'اورخان غازی کے ہاتھوں فتحِ بورصہ', 'Orhan Ghazi: Fatah-e-Bursa', '1326'),
+  G('turk', 'kosovo', 6, 15, 'Battle of Kosovo; Shahadat of Sultan Murad I', 'جنگِ کوسووو، شہادتِ سلطان مراد اول', 'Jang-e-Kosovo, Shahadat-e-Sultan Murad I', '1389'),
+  G('turk', 'nicopolis', 9, 25, 'Battle of Nicopolis: Yıldırım Bayezid', 'جنگِ نکوپولس: یلدرم بایزید', 'Jang-e-Nicopolis: Yildirim Bayezid', '1396'),
+  G('turk', 'varna', 11, 10, 'Battle of Varna: Sultan Murad II', 'جنگِ وارنا: سلطان مراد دوم', 'Jang-e-Varna: Sultan Murad II', '1444'),
+  G('turk', 'fatihWafat', 5, 3, 'Wafat of Sultan Mehmed Fatih', 'وفات سلطان محمد فاتح', 'Wafat Sultan Mehmed Fatih', '1481'),
+  G('turk', 'chaldiran', 8, 23, 'Battle of Chaldiran: Yavuz Sultan Selim', 'جنگِ چالدران: یاوز سلطان سلیم', 'Jang-e-Chaldiran: Yavuz Sultan Selim', '1514'),
+  G('turk', 'marjDabiq', 8, 24, 'Battle of Marj Dabiq: Yavuz Sultan Selim', 'جنگِ مرج دابق: یاوز سلطان سلیم', 'Jang-e-Marj Dabiq', '1516'),
+  G('turk', 'yavuzWafat', 9, 22, 'Wafat of Yavuz Sultan Selim', 'وفات یاوز سلطان سلیم', 'Wafat Yavuz Sultan Selim', '1520'),
+  G('turk', 'belgrade', 8, 29, 'Conquest of Belgrade: Sultan Suleiman', 'فتحِ بلغراد: سلطان سلیمان', 'Fatah-e-Belgrade: Sultan Suleiman', '1521'),
+  G('turk', 'kanuniWafat', 9, 6, 'Wafat of Sultan Suleiman at Szigetvár', 'سلطان سلیمان قانونی کی وفات (زیگتوار)', 'Wafat Sultan Suleiman Kanuni (Szigetvar)', '1566'),
+  G('turk', 'myriokephalon', 9, 17, 'Battle of Myriokephalon: Kılıç Arslan II', 'جنگِ میریوکیفالون: قلج ارسلان دوم', 'Jang-e-Myriokephalon: Kilij Arslan II', '1176'),
+  G('turk', 'plevne', 12, 10, 'Gazi Osman Pasha ends the defence of Plevne', 'غازی عثمان پاشا: دفاعِ پلونا', 'Ghazi Osman Pasha: difa-e-Plevne', '1877'),
+  G('turk', 'abdulhamidWafat', 2, 10, 'Wafat of Sultan Abdulhamid II', 'وفات سلطان عبدالحمید ثانی', 'Wafat Sultan Abdulhamid II', '1918'),
+  G('turk', 'zafer', 8, 30, 'Victory of Dumlupınar (Zafer Bayramı)', 'دوملوپنار کی فتح (یومِ ظفر)', 'Dumlupinar ki fatah (Zafer Bayrami)', '1922'),
+  G('auliya', 'sebiArus', 12, 17, "Şeb-i Arus: wisal of Mawlana Rumi (Konya)", 'شبِ عروس: وصالِ مولانا جلال الدین رومی (قونیہ)', 'Sheb-i Arus: Wisal-e-Maulana Rumi (Konya)', '1273'),
   G('turk', 'malazgirtDay', 7, 15, 'Turkey: Democracy and National Unity Day', 'ترکی: یومِ جمہوریت و قومی اتحاد', 'Turkey: Democracy aur qaumi ittehad ka din', '2016'),
 
   // ----- Pakistan -----
@@ -147,6 +164,25 @@ export const ISLAMIC_EVENTS: IslamicEvent[] = [
   G('pakistan', 'quaid', 12, 25, 'Birth of Quaid-e-Azam Muhammad Ali Jinnah', 'یومِ قائدِ اعظم', 'Youm-e-Quaid-e-Azam', '1876'),
   G('pakistan', 'quaidWafat', 9, 11, 'Wafat of Quaid-e-Azam', 'وفاتِ قائدِ اعظم', 'Wafat-e-Quaid-e-Azam', '1948'),
 ];
+
+// Hand-written days above take precedence; the long urs list fills in the rest
+// of the year. A list entry is skipped when a hand-written entry of the same
+// kind falls on the same day (the same person, usually).
+const URS_EVENTS: IslamicEvent[] = URS.filter(([, , m, d, , k]) => {
+  const cat: EventCategory = k === 'sahabi' || k === 'ahlebait' ? 'sahaba' : 'auliya';
+  return !CORE_EVENTS.some((e) => e.kind === 'hijri' && e.category === cat && e.month === m && e.day === d);
+}).map(([en, ur, m, d, year, k, place], i) => ({
+  id: `urs${i}`,
+  kind: 'hijri',
+  category: k === 'sahabi' || k === 'ahlebait' ? 'sahaba' : 'auliya',
+  month: m,
+  day: d,
+  name: { en: `${en}${place ? ` (${place})` : ''}`, ur: `${ur || en}${place ? ` (${place})` : ''}`, roman: `${en}${place ? ` (${place})` : ''}` },
+  year: year ? `${year} AH` : undefined,
+  minor: true,
+}));
+
+export const ISLAMIC_EVENTS: IslamicEvent[] = [...CORE_EVENTS, ...URS_EVENTS];
 
 /** Events falling on a given day (midday UTC of the local date). */
 export function eventsOn(date: Date, offsetDays = 0): IslamicEvent[] {
@@ -183,7 +219,7 @@ export interface EventReminder { id: string; at: Date; event: IslamicEvent; same
  */
 export function eventReminders(today: Date, now: Date, offsetDays = 0, days = 40, cap = 14, categories?: EventCategory[]): EventReminder[] {
   const out: EventReminder[] = [];
-  for (const u of upcomingEvents(today, offsetDays, categories)) {
+  for (const u of upcomingEvents(today, offsetDays, categories).filter((x) => !x.event.minor)) {
     if ((u.date.getTime() - noon(today).getTime()) / DAY > days) continue;
     const y = u.date.getUTCFullYear(); const m = u.date.getUTCMonth(); const d = u.date.getUTCDate();
     const eve = new Date(y, m, d - 1, 19, 0, 0);

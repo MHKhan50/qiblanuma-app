@@ -15,13 +15,13 @@ const q = (id: string, ur: string, roman: string, en: string, sura: number, from
 });
 
 const durood: Recitation = {
-  id: 'durood', title: { ur: 'درود شریف', roman: 'Durood Sharif', en: 'Durood' }, arabic: DUROOD_IBRAHIMI, meaning: DUROOD_MEANING, times: 3,
+  id: 'durood', title: { ur: 'درود شریف', roman: 'Durood Sharif', en: 'Durood' }, arabic: DUROOD_IBRAHIMI, meaning: DUROOD_MEANING,
 };
 
 export const KHATAM_STEPS: KhatamStep[] = [
   { kind: 'recite', item: durood },
   q('kafirun', 'سورۃ الکافرون', 'Surah Al-Kafiroon', 'Surah Al-Kafirun', 109, 1, 6),
-  q('ikhlas', 'سورۃ الاخلاص', 'Surah Al-Ikhlas', 'Surah Al-Ikhlas', 112, 1, 4, 3),
+  q('ikhlas', 'سورۃ الاخلاص', 'Surah Al-Ikhlas', 'Surah Al-Ikhlas', 112, 1, 4),
   q('falaq', 'سورۃ الفلق', 'Surah Al-Falaq', 'Surah Al-Falaq', 113, 1, 5),
   q('nas', 'سورۃ الناس', 'Surah An-Naas', 'Surah An-Nas', 114, 1, 6),
   q('fatiha', 'سورۃ الفاتحہ', 'Surah Al-Fatiha', 'Surah Al-Fatihah', 1, 1, 7),

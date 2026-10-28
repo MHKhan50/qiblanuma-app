@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics';
 import * as Location from 'expo-location';
 import React, { useEffect, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -24,26 +25,47 @@ export default function QiblaScreen({ place }: { place: PlaceState }) {
   const [heading, setHeading] = useState<Heading | null>(null);
   const [noCompass, setNoCompass] = useState(false);
 
+  // The compass needs location permission on Android even when a city was chosen
+  // by hand, so ask for it here. Readings are smoothed (circular low-pass) so the
+  // dial does not shake.
   useEffect(() => {
     let sub: Location.LocationSubscription | null = null;
     let active = true;
-    Location.watchHeadingAsync((h) => setHeading(h))
-      .then((s) => { if (active) sub = s; else s.remove(); })
-      .catch(() => setNoCompass(true));
+    let smooth: number | null = null;
+    (async () => {
+      const perm = await Location.requestForegroundPermissionsAsync();
+      if (perm.status !== 'granted') { if (active) setNoCompass(true); return; }
+      const s = await Location.watchHeadingAsync((h) => {
+        const raw = h.trueHeading >= 0 ? h.trueHeading : h.magHeading;
+        if (raw < 0 || Number.isNaN(raw)) return;
+        if (smooth === null) smooth = raw;
+        else {
+          const diff = ((raw - smooth + 540) % 360) - 180;
+          smooth = (smooth + diff * 0.25 + 360) % 360;
+        }
+        setHeading({ trueHeading: smooth, magHeading: smooth, accuracy: h.accuracy });
+      });
+      if (active) sub = s; else s.remove();
+    })().catch(() => { if (active) setNoCompass(true); });
     return () => { active = false; sub?.remove(); };
   }, []);
 
-  if (place.status !== 'ready') {
-    return <View style={styles.pad}><Note>{place.status === 'loading' ? t('locating') : t('locationDenied')}</Note></View>;
-  }
-
-  const coords = { latitude: place.place.latitude, longitude: place.place.longitude };
+  const ready = place.status === 'ready' ? place.place : null;
+  const coords = { latitude: ready?.latitude ?? 0, longitude: ready?.longitude ?? 0 };
   const bearing = qiblaBearing(coords);
   const km = distanceToKaabaKm(coords);
-  // True heading is -1 on some devices until location is known; fall back to magnetic.
-  const h = heading ? (heading.trueHeading >= 0 ? heading.trueHeading : heading.magHeading) : null;
+  const h = heading ? heading.trueHeading : null;
   const turn = h === null ? null : turnAngle(bearing, h);
-  const facing = turn !== null && Math.abs(turn) <= 3;
+  const facing = turn !== null && Math.abs(turn) <= 4;
+
+  // A short vibration when the phone points at the Qibla.
+  useEffect(() => {
+    if (facing) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
+  }, [facing]);
+
+  if (!ready) {
+    return <View style={styles.pad}><Note>{place.status === 'loading' ? t('locating') : t('locationDenied')}</Note></View>;
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.pad}>

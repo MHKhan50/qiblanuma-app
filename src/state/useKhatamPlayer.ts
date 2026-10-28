@@ -1,4 +1,5 @@
 import * as Speech from 'expo-speech';
+import { speak } from './tts';
 import { useEffect, useRef, useState } from 'react';
 import { QURAN } from '../data/quran';
 import type { KhatamStep } from '../data/learn/khatamSharif';
@@ -19,7 +20,8 @@ export function useKhatamPlayer(steps: KhatamStep[]) {
   const lang = SPEECH_LANG[settings.language];
   const key = settings.language === 'ur' || settings.language === 'fa' ? 'ur' : settings.language === 'roman' ? 'roman' : 'en';
 
-  const timesOf = (s: KhatamStep) => (s.kind === 'quran' ? s.part.times ?? 1 : s.kind === 'recite' ? s.item.times ?? 1 : 1);
+  // Each part is read once; the reader repeats it themselves if they wish.
+  const timesOf = (_s: KhatamStep) => 1;
   const titleOf = (s: KhatamStep) => (s.kind === 'quran' ? s.part.title[key] : s.kind === 'recite' ? s.item.title[key] : s.title[key]);
 
   const finish = () => {
@@ -37,13 +39,13 @@ export function useKhatamPlayer(steps: KhatamStep[]) {
         audio.playRange({ sura: s.part.sura, aya: s.part.from }, { sura: s.part.sura, aya: s.part.to });
       } else {
         const text = QURAN.suras[s.part.sura - 1]?.ayahs.slice(s.part.from - 1, s.part.to).join(' ') ?? '';
-        Speech.speak(text, { language: 'ar-SA', rate: 0.8, onDone: () => next.current() });
+        void speak(text, 'ar-SA', { rate: 0.8, onDone: () => next.current() });
       }
     } else if (s.kind === 'recite') {
-      Speech.speak(s.item.arabic, { language: 'ar-SA', rate: 0.85, onDone: () => next.current() });
+      void speak(s.item.arabic, 'ar-SA', { rate: 0.85, onDone: () => next.current() });
     } else {
       const text = key === 'en' ? s.text.en : s.text.ur;
-      Speech.speak(text, { language: key === 'en' ? 'en-GB' : 'ur-PK', rate: 0.9, onDone: () => next.current() });
+      void speak(text, key === 'en' ? 'en-GB' : 'ur-PK', { rate: 0.9, onDone: () => next.current() });
     }
   };
 
@@ -59,7 +61,7 @@ export function useKhatamPlayer(steps: KhatamStep[]) {
     if (announce) {
       st.current.left = timesOf(s);
       const times = timesOf(s) > 1 ? (key === 'en' ? `, ${timesOf(s)} times` : `، ${timesOf(s)} مرتبہ`) : '';
-      Speech.speak(`${titleOf(s)}${times}`, { language: lang, rate: 0.95, onDone: () => perform(i) });
+      void speak(`${titleOf(s)}${times}`, lang, { rate: 0.95, onDone: () => perform(i) });
     } else perform(i);
   };
 

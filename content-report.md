@@ -13,6 +13,9 @@
 - ar.abdurrahmaansudais: Abdurrahmaan As-Sudais (https://cdn.islamic.network/quran/audio/192/ar.abdurrahmaansudais/1.mp3)
 - ar.mahermuaiqly: Maher Al Muaiqly (https://cdn.islamic.network/quran/audio/128/ar.mahermuaiqly/1.mp3)
 - ar.saoodshuraym: Saood bin Ibraaheem Ash-Shuraym (https://cdn.islamic.network/quran/audio/64/ar.saoodshuraym/1.mp3)
+## Adhan sound
+
+- The Adhan - Muslim Call to Prayer - Aaqib Azeez.mp3 | Atcovi | CC BY-SA 4.0
 ## City photos
 
 - no Commons details for "Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
@@ -69,7 +72,8 @@
 - ardabil: The Ardabil Carpet - Google Art Project.jpg | Unknown – production | Public domain
 - qazvin: Irán (RPS 12-10-2019) rezando en la mezquita de Qazvin.jpg | Raimundo Pastor y Pilar Pastor | CC BY-SA 4.0
 - isfahan: Mezquita Shah, Isfahán, Irán, 2016-09-20, DD 71-73 HDR.jpg | Diego Delso | CC BY-SA 4.0
-- tehran: Palacio de Golestán, Teherán, Irán, 2016-09-17, DD 24-26 HDR.jpg | Diego Delso | CC BY-SA 4.0
+- no lead image for "Golestan Palace"
+- no Commons details for "North_of_Tehran_Skyline_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Gohar_Shad_Mosque.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Aerial_View_of_Koohsangi_street,_Mashhad,_Iran.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "آرامگاه_عمر_خیام.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
@@ -137,7 +141,7 @@
 - kokand: Khudayar Khan Palace, Kokand, Uzbekistan (Дворец Худояр-хана, Коканд, Узбекистан).jpg | Petar Milošević | CC BY-SA 4.0
 - skipped non-Commons image for "Tashkent"
 - no Commons details for "Hansaray1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-- bakhchysarai: Bakhchysarai 04-14 img16 train station.jpg | A.Savin | CC BY-SA 3.0
+- no lead image for "Bakhchysarai"
 - no Commons details for "Jam_afghan_architecture_harirud_brick.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Jam_afghan_architecture_harirud_brick.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Garden_of_Babur_By_Dani.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
@@ -155,7 +159,7 @@
 - no Commons details for "Bijapur_Montage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Gopuram_of_the_Ranganathaswamy_Temple,_Srirangapatna_Karnataka_India.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - sonargaon: Struggle of bullock cart, Sonargaon.jpg | Masum-al-hasan | CC BY-SA 3.0
-- malacca: Melaka Malaysia Majlis-Bandaraya-Melaka-Bersejarah-01.jpg | CEphoto, Uwe Aranas | CC BY-SA 3.0
+- malacca: Melaka Malaysia Majlis-Bandaraya-Melaka-Bersejarah-02.jpg | CEphoto, Uwe Aranas | CC BY-SA 3.0
 - bandaaceh: Meuseujid Raya Bayturrahman.JPG | Si Gam Acèh | CC BY-SA 3.0
 - no Commons details for "Sultan_Omar_Ali_Saifuddin_Mosque_with_the_ceremonial_ship.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - brunei: Sultan Omar Ali Saifuddin Mosque 02.jpg | sam garza from Los Angeles, USA | CC BY 2.0
@@ -202,7 +206,7 @@
 - no Commons details for "Tokyo_Camii_2009.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 - no Commons details for "Skyscrapers_of_Shinjuku_2009_January.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
 
-No free photo found for: istanbul, sogut, iznik, erzurum, sarajevo, baghdad, alexandria, kairouan, cordoba, timbuktu, sanaa, tarim, tabriz, mashhad, nishapur, merv, kunyaurgench, khiva, bukhara, samarqand, shahrisabz, balkh, herat, lahore, multan, uch, pakpattan, peshawar, agra, fatehpursikri, ajmer, srinagar, dhaka, basra, raqqa, marrakesh, gao, sokoto, tashkent, jam, kabul, rohtas, gulbarga, bijapur, srirangapatna, london, manchester, birmingham, brussels, amsterdam, moscow, chicago, lagos, doha, tokyo
+No free photo found for: istanbul, sogut, iznik, erzurum, sarajevo, baghdad, alexandria, kairouan, cordoba, timbuktu, sanaa, tarim, tabriz, tehran, mashhad, nishapur, merv, kunyaurgench, khiva, bukhara, samarqand, shahrisabz, balkh, herat, lahore, multan, uch, pakpattan, peshawar, agra, fatehpursikri, ajmer, srinagar, dhaka, basra, raqqa, marrakesh, gao, sokoto, tashkent, bakhchysarai, jam, kabul, rohtas, gulbarga, bijapur, srirangapatna, london, manchester, birmingham, brussels, amsterdam, moscow, chicago, lagos, doha, tokyo
 
 ## Group flags
 
@@ -243,7 +247,7 @@ No free photo found for: istanbul, sogut, iznik, erzurum, sarajevo, baghdad, ale
 - mughal: Mughal Empire Flag Map.png | CC BY-SA 4.0 (check this is a fair representation before release)
 - suri: 1500s-1701 flag of the Ottoman Empire.png | CC0 (check this is a fair representation before release)
 - centralasia: no flag found on Commons
-- morocco: no flag found on Commons
+- morocco: Flag of Morocco.svg | Public domain (check this is a fair representation before release)
 - afsharqajar: no flag found on Commons
 - durrani: Flag of the Durrani Kingdom.svg | CC0 (check this is a fair representation before release)
 - yemen: no flag found on Commons

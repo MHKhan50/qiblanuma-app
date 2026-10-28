@@ -1,4 +1,4 @@
-import * as Speech from 'expo-speech';
+import { speakArabic, stopSpeaking } from '../state/tts';
 import React, { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { calculateZakat } from '../engine/zakat';
@@ -9,6 +9,12 @@ import { Card, Chip, Note, Row, Title } from '../ui/components';
 // Lesson 1: the letters (mufradat) in Noorani Qaida order. Lessons 2-3 add
 // harakat and tanween to each letter. Tapping a letter says it with the phone's
 // Arabic voice; recorded lessons by a qualified teacher can replace this later.
+// Spoken names of the letters, so the phone says "baa" rather than guessing.
+const LETTER_NAMES: Record<string, string> = {
+  'ا': 'أَلِف', 'ب': 'بَاء', 'ت': 'تَاء', 'ث': 'ثَاء', 'ج': 'جِيم', 'ح': 'حَاء', 'خ': 'خَاء', 'د': 'دَال', 'ذ': 'ذَال', 'ر': 'رَاء',
+  'ز': 'زَاي', 'س': 'سِين', 'ش': 'شِين', 'ص': 'صَاد', 'ض': 'ضَاد', 'ط': 'طَاء', 'ظ': 'ظَاء', 'ع': 'عَين', 'غ': 'غَين', 'ف': 'فَاء',
+  'ق': 'قَاف', 'ك': 'كَاف', 'ل': 'لَام', 'م': 'مِيم', 'ن': 'نُون', 'و': 'وَاو', 'ه': 'هَاء', 'ء': 'هَمْزَة', 'ي': 'يَاء',
+};
 export const QAIDA_LETTERS = ['ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'و', 'ه', 'ء', 'ي'];
 const MARKS: { id: string; label: string; marks: string[] }[] = [
   { id: 'mufradat', label: 'مفردات', marks: [''] },
@@ -20,21 +26,38 @@ export function MaktabScreen() {
   const { t, colors } = useSettings();
   const [lesson, setLesson] = useState(0);
   const L = MARKS[lesson];
+  const cells = QAIDA_LETTERS.flatMap((l) => L.marks.map((mk) => ({ show: l === 'ء' && mk === '' ? l : `${l === 'ا' && mk ? 'أ' : l}${mk}`, say: mk === '' ? LETTER_NAMES[l] ?? l : `${l === 'ا' ? 'أ' : l}${mk}` })));
+  const [playing, setPlaying] = useState<number | null>(null);
+  const playAll = (i: number) => {
+    if (i >= cells.length) { setPlaying(null); return; }
+    setPlaying(i);
+    void speakArabic(cells[i].say, { rate: 0.7, onDone: () => setTimeout(() => playAllRef.current(i + 1), 350) });
+  };
+  const playAllRef = React.useRef(playAll);
+  playAllRef.current = playAll;
   return (
     <ScrollView contentContainerStyle={styles.pad}>
       <Title>{t('maktab')}</Title>
       <View style={styles.row}>
         {MARKS.map((m, i) => <Chip key={m.id} label={`${i + 1}. ${m.label}`} active={i === lesson} onPress={() => setLesson(i)} />)}
       </View>
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => { if (playing !== null) { playAllRef.current = () => setPlaying(null); stopSpeaking(); setPlaying(null); } else playAll(0); }}
+        style={[styles.big, { backgroundColor: playing !== null ? colors.danger : colors.gold, marginBottom: 12 }]}
+      >
+        <Text style={{ color: '#FFF', fontWeight: '800', fontSize: 17 }}>{playing !== null ? '■' : '▶  سب حروف سنیں'}</Text>
+      </Pressable>
       <View style={styles.grid}>
-        {QAIDA_LETTERS.flatMap((l) => L.marks.map((mk) => l === 'ء' && mk === '' ? l : `${l === 'ا' && mk ? 'أ' : l}${mk}`)).map((g, i) => (
+        {cells.map((g, i) => (
           <Pressable
-            key={`${g}-${i}`}
+            key={`${g.show}-${i}`}
             accessibilityRole="button"
-            onPress={() => Speech.speak(g, { language: 'ar-SA', rate: 0.7 })}
-            style={[styles.cell, { borderColor: colors.border, backgroundColor: colors.card }]}
+            accessibilityLabel={g.say}
+            onPress={() => { void speakArabic(g.say, { rate: 0.7 }); }}
+            style={[styles.cell, { borderColor: playing === i ? colors.gold : colors.border, backgroundColor: playing === i ? colors.gold + '33' : colors.card }]}
           >
-            <Text style={[styles.letter, { color: colors.accent, fontFamily: 'AmiriQuran' }]}>{g}</Text>
+            <Text style={[styles.letter, { color: colors.accent, fontFamily: 'AmiriQuran' }]}>{g.show}</Text>
           </Pressable>
         ))}
       </View>
@@ -96,7 +119,7 @@ export function HalimaScreen() {
     <ScrollView contentContainerStyle={styles.pad}>
       <Title>{t('halima')}</Title>
       {KALIMAS.map((k) => (
-        <Pressable key={k.n} onPress={() => Speech.speak(k.ar, { language: 'ar-SA', rate: 0.75 })}>
+        <Pressable key={k.n} onPress={() => { void speakArabic(k.ar, { rate: 0.75 }); }}>
           <Card>
             <Text style={{ color: colors.gold, fontWeight: '700', textAlign: 'right' }}>{`${k.n}. ${k.name}`}</Text>
             <Text style={[styles.kalima, { color: colors.text, fontFamily: 'AmiriQuran' }]}>{k.ar}</Text>

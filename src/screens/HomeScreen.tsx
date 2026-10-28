@@ -6,10 +6,10 @@ import { Gradient, SectionTitle, Tile, TileGrid } from '../ui/kit';
 import type { IconName } from '../ui/SufiIcon';
 import { HIJRI_MONTHS, hijriDate } from '../engine/hijri';
 import { addDays, computePrayerTimes, currentPrayer, nextPrayer } from '../engine/prayerTimes';
-import { formatClock, formatCountdown, localDateIn } from '../engine/timezone';
+import { formatClock, localDateIn } from '../engine/timezone';
 import { useSettings } from '../state/settings';
 import type { PlaceState } from '../state/usePlace';
-import { Note, useNow } from '../ui/components';
+import { Countdown, Note, useNow } from '../ui/components';
 import { QURAN, QURAN_FONT } from '../data/quran';
 import { useAudio } from '../state/audio';
 import VoiceButton, { VOICE_AVAILABLE } from '../ui/VoiceButton';
@@ -18,19 +18,21 @@ import { AyahOfDayCard } from './ExtraScreens';
 
 
 export type Screen = 'home' | 'times' | 'quran' | 'qibla' | 'tasbeeh' | 'duas' | 'world' | 'settings' | 'maktab' | 'khatam' | 'halima' | 'zakat'
-  | 'kids' | 'tarbiyat' | 'khatamSharif' | 'duaLibrary' | 'names' | 'calendar' | 'tracker' | 'hajj' | 'babyNames' | 'ushr' | 'mirath' | 'nearby' | 'timetable' | 'journal';
+  | 'kids' | 'tarbiyat' | 'khatamSharif' | 'duaLibrary' | 'names' | 'calendar' | 'tracker' | 'hajj' | 'babyNames' | 'ushr' | 'mirath' | 'nearby' | 'timetable' | 'journal' | 'women' | 'turkHistory';
 
 // Turkish-Sufi icon for each feature (see ui/SufiIcon.tsx).
 const ICONS: Partial<Record<Screen, IconName>> = {
   quran: 'quran', times: 'mosque', qibla: 'kaaba', tasbeeh: 'dervish', duaLibrary: 'library', duas: 'dua',
   calendar: 'calendar', tracker: 'tracker', timetable: 'timetable', nearby: 'nearby', kids: 'tulip',
   tarbiyat: 'book', khatamSharif: 'kandil', names: 'allah', hajj: 'hajj', babyNames: 'crescent', journal: 'quill',
-  zakat: 'zakat', ushr: 'wheat', mirath: 'scales', world: 'globe', settings: 'gear',
+  women: 'rose', turkHistory: 'helmet', zakat: 'zakat', ushr: 'wheat', mirath: 'scales', world: 'globe', settings: 'gear',
 };
 
 export default function HomeScreen({ place, open, onVoice }: { place: PlaceState; open: (s: Screen) => void; onVoice?: (text: string) => void }) {
   const { settings, t, colors, rtl } = useSettings();
-  const now = useNow();
+  // Minute ticks are enough here; the countdown has its own one-second timer,
+  // so the tiles and icons below are not redrawn every second.
+  const now = useNow(20000);
   const audio = useAudio();
   // Al-Fatiha 1:5, taken from the bundled Tanzil text (not retyped).
   const openingAyah = QURAN.suras[0]?.ayahs[4];
@@ -69,7 +71,7 @@ export default function HomeScreen({ place, open, onVoice }: { place: PlaceState
         { id: 'quran', emoji: '📖', label: t('tabQuran') },
         { id: 'times', emoji: '🕌', label: t('prayerTimes') },
         { id: 'qibla', emoji: '🕋', label: t('tabQibla') },
-        { id: 'tasbeeh', emoji: '📿', label: t('muzammil'), sub: t('tasbeeh') },
+        { id: 'tasbeeh', emoji: '📿', label: t('muzammil'), sub: '40+ azkar' },
         { id: 'duaLibrary', emoji: '📚', label: t('duaLibrary'), sub: `${t('masnoonDuas')} · Hisn al-Muslim` },
         { id: 'duas', emoji: '📜', label: t('duas') },
         { id: 'calendar', emoji: '🗓️', label: t('mudassir'), sub: t('mudassirSub') },
@@ -82,6 +84,8 @@ export default function HomeScreen({ place, open, onVoice }: { place: PlaceState
       title: t('sectionLearn'),
       tiles: [
         { id: 'kids', emoji: '🏫', label: t('kids'), sub: t('kidsSub') },
+        { id: 'women', emoji: '🌸', label: t('women'), sub: t('womenSub') },
+        { id: 'turkHistory', emoji: '🛡️', label: t('turkHistory'), sub: t('turkHistorySub') },
         { id: 'tarbiyat', emoji: '🎓', label: t('tarbiyat'), sub: t('tarbiyatSub') },
         { id: 'khatamSharif', emoji: '🕯️', label: t('khatamSharif'), sub: t('khatamSharifSub') },
         { id: 'names', emoji: '✨', label: t('names99') },
@@ -142,7 +146,7 @@ export default function HomeScreen({ place, open, onVoice }: { place: PlaceState
               {cur && (
                 <>
                   <Text style={{ color: '#FFFFFFCC', marginTop: 6 }}>{t('endsIn')}</Text>
-                  <Text style={[styles.count, { color: '#FFFFFF' }]}>{formatCountdown(cur.endsAt.getTime() - now.getTime())}</Text>
+                  <Countdown to={cur.endsAt} style={[styles.count, { color: '#FFFFFF' }]} />
                 </>
               )}
             </View>

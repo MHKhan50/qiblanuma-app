@@ -28,7 +28,8 @@ import { useVoice } from './src/state/useVoice';
 import { SPEECH_LANG } from './src/i18n/strings';
 import { JournalScreen, NearbyScreen, TimetableScreen } from './src/screens/ExtraScreens';
 import { BabyNamesScreen, MirathScreen, UshrScreen } from './src/screens/CalcScreens';
-import { CalendarScreen, DuaLibraryScreen, HajjScreen, KhatamSharifScreen, KidsScreen, NamesScreen, TarbiyatScreen, TrackerScreen } from './src/screens/LearnScreens';
+import { CalendarScreen, DuaLibraryScreen, HajjScreen, KhatamSharifScreen, KidsScreen, NamesScreen, TarbiyatScreen, TrackerScreen, WomenScreen } from './src/screens/LearnScreens';
+import TurkHistoryScreen from './src/screens/TurkHistoryScreen';
 
 type Tab = Screen;
 const TABS: { id: Tab; label: StringKey; icon: IconName }[] = [
@@ -170,6 +171,8 @@ function Shell() {
         {tab === 'khatam' && <KhatamScreen />}
         {(tab === 'halima' || tab === 'tarbiyat') && <TarbiyatScreen />}
         {tab === 'kids' && <KidsScreen />}
+        {tab === 'women' && <WomenScreen />}
+        {tab === 'turkHistory' && <TurkHistoryScreen />}
         {tab === 'khatamSharif' && <KhatamSharifScreen key={khatamAuto} autoPlay={khatamAuto > 0} />}
         {tab === 'duaLibrary' && <DuaLibraryScreen />}
         {tab === 'names' && <NamesScreen />}

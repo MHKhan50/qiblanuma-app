@@ -46,6 +46,8 @@ export interface AppSettings {
   favDuas: string[];
   /** Notify the evening before and the morning of Islamic days and heroes' days. */
   eventReminders: boolean;
+  /** Play the adhan recording with prayer reminders (when one is bundled). */
+  adhanSound: boolean;
   /** Translation shown under each ayah in the ayah view. */
   quranTranslation: 'none' | 'ur' | 'en';
   /** Personal journal entries, newest first. */
@@ -78,6 +80,7 @@ export const DEFAULT_APP_SETTINGS: AppSettings = {
   khatam: { paras: Array(30).fill(false), completed: 0 },
   favDuas: [],
   eventReminders: true,
+  adhanSound: true,
   quranTranslation: 'ur',
   journal: [],
   tracker: {},

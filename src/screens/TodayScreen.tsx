@@ -5,11 +5,11 @@ import { addDays, computePrayerTimes, nextPrayer } from '../engine/prayerTimes';
 import { formatClock, formatCountdown, localDateIn } from '../engine/timezone';
 import { useSettings } from '../state/settings';
 import type { PlaceState } from '../state/usePlace';
-import { Card, Note, Row, Title, useNow } from '../ui/components';
+import { Card, Countdown, Note, Row, Title, useNow } from '../ui/components';
 
 export default function TodayScreen({ place }: { place: PlaceState }) {
   const { settings, t, colors } = useSettings();
-  const now = useNow();
+  const now = useNow(20000);
 
   const ready = place.status === 'ready' ? place.place : null;
   const dayKey = ready ? JSON.stringify(localDateIn(now, ready.timeZone)) : '';
@@ -37,7 +37,7 @@ export default function TodayScreen({ place }: { place: PlaceState }) {
         <Text style={[styles.small, { color: colors.card }]}>{t('nextPrayer')}</Text>
         <Text style={[styles.big, { color: colors.card }]}>{t(next.name)} · {clock(next.time)}</Text>
         <Text style={[styles.count, { color: colors.card }]}>
-          {formatCountdown(next.time.getTime() - now.getTime())} {t('in')}
+          <Countdown to={next.time} suffix={` ${t('in')}`} />
         </Text>
       </Card>
 

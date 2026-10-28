@@ -7,7 +7,7 @@ import Svg, { Circle, Defs, G, LinearGradient, Path, Polygon, Rect, Stop, Text a
 export type IconName =
   | 'quran' | 'mosque' | 'kaaba' | 'tasbih' | 'dua' | 'calendar' | 'tracker' | 'timetable' | 'nearby'
   | 'tulip' | 'kandil' | 'book' | 'library' | 'allah' | 'crescent' | 'hajj' | 'quill' | 'zakat' | 'wheat'
-  | 'scales' | 'globe' | 'gear' | 'dervish' | 'home' | 'qibla';
+  | 'scales' | 'globe' | 'gear' | 'dervish' | 'home' | 'qibla' | 'rose' | 'helmet';
 
 const GOLD = '#E3C27A';
 const IVORY = '#FFF8E7';
@@ -210,6 +210,30 @@ function Glyph({ name, c, a }: { name: IconName; c: string; a: string }) {
           <Circle cx={32} cy={32} r={2} fill={a} />
         </G>
       );
+    case 'rose':
+      // Gül, the rose of the Sufi poets.
+      return (
+        <G>
+          <Path d="M32 46 V34" stroke={c} strokeWidth={2} />
+          <Path d="M32 42 C28 42 25 39 25 36 C29 36 31 39 32 42 Z" fill={c} />
+          <Circle cx={32} cy={26} r={9} fill={a} />
+          <Path d="M32 19 C36 21 37 25 34 28 C31 30 27 28 27 25 C27 22 30 21 32 23" stroke="#7A1E1E" strokeWidth={1.4} fill="none" />
+          <Path d="M24 27 C25 33 29 35 32 35 C35 35 39 33 40 27" stroke="#7A1E1E" strokeWidth={1.2} fill="none" />
+        </G>
+      );
+    case 'helmet':
+      // An Ottoman sipahi helmet with a crescent finial, for Turkish history.
+      return (
+        <G>
+          <Path d="M20 40 C20 28 25 21 32 21 C39 21 44 28 44 40 Z" fill={c} />
+          <Path d="M18 40 H46 V43 H18 Z" fill={a} />
+          <Path d="M32 21 V14" stroke={a} strokeWidth={2} />
+          <Circle cx={32} cy={12} r={3} fill={a} />
+          <Circle cx={33.3} cy={11.3} r={2.4} fill="#0E6E6E" />
+          <Path d="M31 43 V50 M33 43 V50" stroke={c} strokeWidth={1.6} />
+          <Path d="M24 30 H40" stroke={a} strokeWidth={1.4} />
+        </G>
+      );
     case 'dervish':
       // A Mevlevi semazen: tall sikke hat, raised arms, flowing tennure skirt.
       return (
@@ -237,7 +261,7 @@ function starPoints(cx: number, cy: number, R: number, r: number): string {
 }
 
 /** A feature icon. `bare` draws only the glyph (for the tab bar). */
-export default function SufiIcon({ name, size = 52, bare, tint }: { name: IconName; size?: number; bare?: boolean; tint?: string }) {
+function SufiIconBase({ name, size = 52, bare, tint }: { name: IconName; size?: number; bare?: boolean; tint?: string }) {
   const id = `md-${name}`;
   if (bare) {
     return (
@@ -265,5 +289,10 @@ export default function SufiIcon({ name, size = 52, bare, tint }: { name: IconNa
 /** Screen headers pass their emoji; these get the matching Sufi icon instead. */
 export const EMOJI_ICON: Record<string, IconName> = {
   '🏫': 'tulip', '🎓': 'book', '🕯️': 'kandil', '📚': 'library', '✨': 'allah', '🕋': 'hajj', '👶': 'crescent',
-  '🌾': 'wheat', '⚖️': 'scales', '📍': 'nearby', '🗓️': 'timetable', '📔': 'quill', '🤲': 'dua',
+  '🌾': 'wheat', '🌸': 'rose', '🛡️': 'helmet', '⚖️': 'scales', '📍': 'nearby', '🗓️': 'timetable', '📔': 'quill', '🤲': 'dua',
 };
+
+
+/** Memoised: icons are redrawn only when their props change. */
+const SufiIcon = React.memo(SufiIconBase);
+export default SufiIcon;

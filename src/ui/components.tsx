@@ -63,3 +63,14 @@ const styles = StyleSheet.create({
   note: { fontSize: 13, marginTop: 8, lineHeight: 19 },
   chip: { borderWidth: 1, borderRadius: 18, paddingHorizontal: 12, paddingVertical: 7, marginRight: 8, marginBottom: 8 },
 });
+
+/** A countdown that re-renders only itself every second, not the whole screen. */
+export function Countdown({ to, style, suffix }: { to: Date; style?: any; suffix?: string }) {
+  const now = useNow(1000);
+  const ms = Math.max(0, to.getTime() - now.getTime());
+  const h = Math.floor(ms / 3600000);
+  const m = Math.floor((ms % 3600000) / 60000);
+  const sec = Math.floor((ms % 60000) / 1000);
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return <Text style={style}>{`${h > 0 ? `${h}:` : ''}${pad(m)}:${pad(sec)}${suffix ?? ''}`}</Text>;
+}

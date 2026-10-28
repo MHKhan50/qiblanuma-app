@@ -4,6 +4,7 @@ import { Platform } from 'react-native';
 import { upcomingReminders } from '../engine/reminders';
 import { dayOf, eventReminders } from '../engine/islamicCalendar';
 import { localDateIn } from '../engine/timezone';
+import { ADHAN_SOUND } from '../data/adhanSound';
 import { useSettings } from './settings';
 import type { PlaceState } from './usePlace';
 
@@ -31,11 +32,18 @@ export function useAdhanReminders(place: PlaceState): void {
         await Notifications.setNotificationChannelAsync('adhan', {
           name: 'Prayer times', importance: Notifications.AndroidImportance.HIGH, sound: 'default',
         });
+        // A channel's sound cannot change later, so the adhan has its own channel.
+        if (ADHAN_SOUND) {
+          await Notifications.setNotificationChannelAsync('adhan-voice', {
+            name: 'Prayer times (adhan)', importance: Notifications.AndroidImportance.MAX, sound: ADHAN_SOUND.file,
+          });
+        }
         await Notifications.setNotificationChannelAsync('events', {
           name: 'Islamic days', importance: Notifications.AndroidImportance.DEFAULT, sound: 'default',
         });
       }
       const now = new Date();
+      const useAdhan = !!ADHAN_SOUND && settings.adhanSound;
       // iOS keeps at most 64 pending notifications: up to 48 prayer reminders and 14 for Islamic days.
       if (anyOn) {
         const list = upcomingReminders(
@@ -44,8 +52,8 @@ export function useAdhanReminders(place: PlaceState): void {
         for (const r of list) {
           if (cancelled) return;
           await Notifications.scheduleNotificationAsync({
-            content: { title: t(r.prayer), body: t('adhanBody'), sound: 'default' },
-            trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: r.date, channelId: 'adhan' },
+            content: { title: `🕌 ${t(r.prayer)}`, body: t('adhanBody'), sound: useAdhan ? ADHAN_SOUND!.file : 'default' },
+            trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: r.date, channelId: useAdhan ? 'adhan-voice' : 'adhan' },
           });
         }
       }
@@ -67,5 +75,5 @@ export function useAdhanReminders(place: PlaceState): void {
     })().catch(() => undefined);
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready?.latitude, ready?.longitude, settings.prayer, settings.adhan, settings.language, settings.eventReminders, settings.hijriOffset]);
+  }, [ready?.latitude, ready?.longitude, settings.prayer, settings.adhan, settings.language, settings.eventReminders, settings.hijriOffset, settings.adhanSound]);
 }

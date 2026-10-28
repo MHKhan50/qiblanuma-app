@@ -35,7 +35,15 @@
       "expo-status-bar",
       "expo-font",
       "expo-speech-recognition",
-      "expo-audio"
+      "expo-audio",
+      [
+        "expo-notifications",
+        {
+          "sounds": [
+            "./assets/sounds/adhan.wav"
+          ]
+        }
+      ]
     ],
     "extra": {
       "eas": {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CITY_PHOTOS } from '../data/cityPhotos';
 import { GROUP_FLAGS } from '../data/groupFlags';
 import { KAABA_PHOTO } from '../data/kaabaPhoto';
+import { ADHAN_SOUND } from '../data/adhanSound';
 import { QURAN, QURAN_INDOPAK, RECITERS } from '../data/quran';
 import { Image, Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import { MANUAL_LOCATIONS } from '../data/cities';
@@ -37,6 +38,11 @@ export default function SettingsScreen() {
             />
           ))}
         </View>
+        <View style={wrap}>
+          <Chip label={`${settings.adhanSound ? '🔊' : '🔈'} ${t('adhanSoundLabel')}`} active={settings.adhanSound} onPress={() => update({ adhanSound: !settings.adhanSound })} />
+        </View>
+        {!ADHAN_SOUND && <Note>{t('adhanSoundMissing')}</Note>}
+        {ADHAN_SOUND && <Note>{`Adhan: ${ADHAN_SOUND.artist}, ${ADHAN_SOUND.licence}, Wikimedia Commons`}</Note>}
         <View style={wrap}>
           <Chip label={`${settings.eventReminders ? '🔔' : '🔕'} ${t('eventRemindersLabel')}`} active={settings.eventReminders} onPress={() => update({ eventReminders: !settings.eventReminders })} />
         </View>

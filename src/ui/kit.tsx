@@ -1,4 +1,3 @@
-import * as Speech from 'expo-speech';
 import React from 'react';
 import { Pressable, ScrollView, Share, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
@@ -28,7 +27,7 @@ export function Gradient({ from, to, style, children, radius = 20 }: { from: str
 }
 
 /** A feature card: big emoji art, title and optional subtitle. */
-export function Tile({ emoji, icon, title, sub, onPress, wide }: { emoji?: string; icon?: IconName; title: string; sub?: string; onPress: () => void; wide?: boolean }) {
+export const Tile = React.memo(function Tile({ emoji, icon, title, sub, onPress, wide }: { emoji?: string; icon?: IconName; title: string; sub?: string; onPress: () => void; wide?: boolean }) {
   const { colors, rtl } = useSettings();
   return (
     <Pressable
@@ -46,7 +45,7 @@ export function Tile({ emoji, icon, title, sub, onPress, wide }: { emoji?: strin
       {sub ? <Text style={{ color: colors.muted, fontSize: 12, textAlign: rtl ? 'right' : 'left' }} numberOfLines={2}>{sub}</Text> : null}
     </Pressable>
   );
-}
+});
 
 export function TileGrid({ children }: { children: React.ReactNode }) {
   const { rtl } = useSettings();
@@ -81,10 +80,8 @@ export function Segments<T extends string>({ items, value, onChange }: { items: 
   );
 }
 
-const speakArabic = (text: string) => {
-  Speech.stop();
-  Speech.speak(text.replace(/\(\d+\)/g, ''), { language: 'ar-SA', rate: 0.8 });
-};
+// Arabic voice of the phone (see state/tts.ts for the missing-voice fallback).
+import { speakArabic } from '../state/tts';
 
 /** Arabic text with meaning, source, listen, share and favourite. */
 export function RecitationCard({ item, index }: { item: Recitation; index?: number }) {

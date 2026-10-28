@@ -42,9 +42,17 @@ export function usePlace(): PlaceState {
         if (!cancelled) setState({ status: 'denied' });
         return;
       }
-      const last = await Location.getLastKnownPositionAsync();
-      const pos = last ?? (await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced }));
+      // Indoors the GPS can take very long; use the last known position at once,
+      // and give a fresh fix at most 12 seconds before falling back to the chosen city.
+      const last = await Location.getLastKnownPositionAsync().catch(() => null);
+      const timeout = new Promise<null>((r) => setTimeout(() => r(null), 12000));
+      const pos = last ?? (await Promise.race([Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced }), timeout]));
       if (cancelled) return;
+      if (!pos) {
+        const city = findCity(settings.manualCityId) ?? MANUAL_LOCATIONS[0];
+        setState({ status: 'ready', place: { latitude: city.latitude, longitude: city.longitude, timeZone: city.timeZone, label: `${city.name.en} (GPS ⌛)`, source: 'manual' } });
+        return;
+      }
       setState({
         status: 'ready',
         place: {

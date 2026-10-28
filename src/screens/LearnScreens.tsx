@@ -1,4 +1,3 @@
-import * as Speech from 'expo-speech';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { FlatList, Linking, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from 'react-native';
 import { ALL_DUAS, DUA_CATEGORIES, KIDS_DUA_IDS, pick, type DuaCategory } from '../data/learn';
@@ -7,6 +6,9 @@ import { GREETINGS, HAJJ, LIVE_LINKS, UMRAH } from '../data/learn/hajj';
 import { IMAN, KALIMAS } from '../data/learn/kalimas';
 import { KHATAM_STEPS } from '../data/learn/khatamSharif';
 import { TARBIYAT_TOPICS } from '../data/learn/tarbiyat';
+import { ISLAM_BASICS, KIDS_ADAB, PARENTING, PROPHETS } from '../data/learn/kids';
+import { ADULT_TOPICS, NAMAZ_TAREEQA, WOMEN_DUAS, WOMEN_TOPICS } from '../data/learn/tarbiyat2';
+import type { Topic } from '../data/learn/types';
 import { HIJRI_MONTHS } from '../engine/hijri';
 import { dayOf, daysUntil, EVENT_CATEGORIES, eventsOn, hijriMonth, upcomingEvents, type EventCategory, type IslamicEvent } from '../engine/islamicCalendar';
 import { localDateIn } from '../engine/timezone';
@@ -14,6 +16,7 @@ import { allPrayers, dateKey, lastDays, prayerStreak, toggle, TRACK_ITEMS, type 
 import { WEEKDAYS } from '../i18n/strings';
 import { useSettings } from '../state/settings';
 import { useKhatamPlayer } from '../state/useKhatamPlayer';
+import { speakArabic, stopSpeaking } from '../state/tts';
 import SufiIcon, { EMOJI_ICON } from '../ui/SufiIcon';
 import { Note } from '../ui/components';
 import { Gradient, QuranPassage, RecitationCard, Segments, SectionTitle, TopicView } from '../ui/kit';
@@ -32,16 +35,27 @@ function Header({ emoji, title, sub }: { emoji: string; title: string; sub?: str
   );
 }
 
-// ---------------- Fatima: children's corner ----------------
+// ---------------- Halima Children's Academy ----------------
+type KidsTab = 'kalimas' | 'iman' | 'duas' | 'qaida' | 'learn' | 'parents';
+
 export function KidsScreen() {
-  const { t } = useSettings();
-  const [tab, setTab] = useState<'kalimas' | 'iman' | 'duas' | 'qaida'>('kalimas');
+  const { settings, t } = useSettings();
+  const [tab, setTab] = useState<KidsTab>('kalimas');
+  const ur = settings.language === 'ur' || settings.language === 'roman';
+  const items: { id: KidsTab; label: string }[] = [
+    { id: 'kalimas', label: t('kalimas') },
+    { id: 'iman', label: t('iman') },
+    { id: 'duas', label: t('masnoonDuas') },
+    { id: 'qaida', label: t('qaida') },
+    { id: 'learn', label: ur ? 'سیکھیں' : 'Learn' },
+    { id: 'parents', label: ur ? 'والدین کے لیے' : 'For parents' },
+  ];
   const kidsDuas = KIDS_DUA_IDS.map((id) => ALL_DUAS.find((d) => d.id === id)!).filter(Boolean);
   if (tab === 'qaida') {
     return (
       <View style={{ flex: 1 }}>
         <View style={{ paddingHorizontal: 16, paddingTop: 12 }}>
-          <Segments items={kidsTabs(t)} value={tab} onChange={setTab} />
+          <Segments items={items} value={tab} onChange={setTab} />
         </View>
         <MaktabScreen />
       </View>
@@ -50,36 +64,85 @@ export function KidsScreen() {
   return (
     <ScrollView contentContainerStyle={pad}>
       <Header emoji="🏫" title={t('kids')} sub={t('kidsSub')} />
-      <Segments items={kidsTabs(t)} value={tab} onChange={setTab} />
+      <Segments items={items} value={tab} onChange={setTab} />
       <View style={{ height: 10 }} />
       {tab === 'kalimas' && KALIMAS.map((k, i) => <RecitationCard key={k.id} item={k} index={i + 1} />)}
       {tab === 'iman' && IMAN.map((k, i) => <RecitationCard key={k.id} item={k} index={i + 1} />)}
       {tab === 'duas' && kidsDuas.map((k, i) => <RecitationCard key={k.id} item={k} index={i + 1} />)}
+      {tab === 'learn' && [ISLAM_BASICS, PROPHETS, KIDS_ADAB].map((x) => (
+        <View key={x.id}><SectionTitle>{pick(x.title, settings.language)}</SectionTitle><TopicView topic={x} /></View>
+      ))}
+      {tab === 'parents' && <TopicView topic={PARENTING} />}
       <Note>{t('reportNote')}</Note>
     </ScrollView>
   );
 }
 
-const kidsTabs = (t: (k: 'kalimas' | 'iman' | 'masnoonDuas' | 'qaida') => string) => [
-  { id: 'kalimas' as const, label: t('kalimas') },
-  { id: 'iman' as const, label: t('iman') },
-  { id: 'duas' as const, label: t('masnoonDuas') },
-  { id: 'qaida' as const, label: t('qaida') },
-];
+const ALL_ADULT_TOPICS = [NAMAZ_TAREEQA, ...TARBIYAT_TOPICS, ...ADULT_TOPICS.filter((x) => x.id !== 'namazTareeqa')];
 
-// ---------------- Halima: learning for adults ----------------
-export function TarbiyatScreen() {
-  const { settings, t } = useSettings();
-  const [topic, setTopic] = useState(TARBIYAT_TOPICS[0].id);
-  const current = TARBIYAT_TOPICS.find((x) => x.id === topic)!;
+/** A list of topics as big numbered cards; tapping one opens it. */
+function TopicBrowser({ topics, emoji, title, sub, extra }: { topics: Topic[]; emoji: string; title: string; sub?: string; extra?: React.ReactNode }) {
+  const { settings, t, colors, rtl } = useSettings();
+  const [open, setOpen] = useState<string | null>(null);
+  const scroll = useRef<ScrollView>(null);
+  const current = topics.find((x) => x.id === open);
+  const ur = settings.language === 'ur' || settings.language === 'roman';
   return (
-    <ScrollView contentContainerStyle={pad}>
-      <Header emoji="🎓" title={t('tarbiyat')} sub={t('tarbiyatSub')} />
-      <Segments items={TARBIYAT_TOPICS.map((x) => ({ id: x.id, label: pick(x.title, settings.language) }))} value={topic} onChange={setTopic} />
-      <SectionTitle>{pick(current.title, settings.language)}</SectionTitle>
-      <TopicView topic={current} />
+    <ScrollView ref={scroll} contentContainerStyle={pad}>
+      <Header emoji={emoji} title={title} sub={sub} />
+      {current ? (
+        <View>
+          <Pressable onPress={() => setOpen(null)} style={{ marginBottom: 8 }}>
+            <Text style={{ color: colors.accent, fontWeight: '800', fontSize: 16, textAlign: rtl ? 'right' : 'left' }}>{ur ? '‹ تمام موضوعات' : '‹ All topics'}</Text>
+          </Pressable>
+          <SectionTitle>{pick(current.title, settings.language)}</SectionTitle>
+          <TopicView topic={current} />
+        </View>
+      ) : (
+        <View>
+          {topics.map((x, i) => (
+            <Pressable
+              key={x.id}
+              onPress={() => { setOpen(x.id); scroll.current?.scrollTo({ y: 0, animated: false }); }}
+              style={({ pressed }) => [styles.topicRow, { backgroundColor: colors.card, borderColor: colors.border, flexDirection: rtl ? 'row-reverse' : 'row', opacity: pressed ? 0.7 : 1 }]}
+            >
+              <View style={[styles.topicNum, { backgroundColor: colors.accent }]}><Text style={{ color: '#FFF', fontWeight: '800' }}>{i + 1}</Text></View>
+              <View style={{ flex: 1, marginHorizontal: 12 }}>
+                <Text style={{ color: colors.text, fontWeight: '800', fontSize: 16, textAlign: rtl ? 'right' : 'left' }}>{pick(x.title, settings.language)}</Text>
+                {x.intro ? <Text style={{ color: colors.muted, fontSize: 12, textAlign: rtl ? 'right' : 'left' }} numberOfLines={1}>{pick(x.intro, settings.language)}</Text> : null}
+              </View>
+              <Text style={{ color: colors.accent, fontSize: 22 }}>{rtl ? '‹' : '›'}</Text>
+            </Pressable>
+          ))}
+          {extra}
+        </View>
+      )}
       <Note>{t('reportNote')}</Note>
     </ScrollView>
+  );
+}
+
+export function TarbiyatScreen() {
+  const { t } = useSettings();
+  return <TopicBrowser topics={ALL_ADULT_TOPICS} emoji="🎓" title={t('tarbiyat')} sub={t('tarbiyatSub')} />;
+}
+
+export function WomenScreen() {
+  const { settings, t } = useSettings();
+  const ur = settings.language === 'ur' || settings.language === 'roman';
+  return (
+    <TopicBrowser
+      topics={WOMEN_TOPICS}
+      emoji="🌸"
+      title={t('women')}
+      sub={t('womenSub')}
+      extra={
+        <View>
+          <SectionTitle>{ur ? 'خواتین کی دعائیں' : "Women's duas"}</SectionTitle>
+          {WOMEN_DUAS.map((d, i) => <RecitationCard key={d.id} item={d} index={i + 1} />)}
+        </View>
+      }
+    />
   );
 }
 
@@ -198,6 +261,13 @@ export function DuaLibraryScreen() {
 export function NamesScreen() {
   const { settings, t, colors } = useSettings();
   const ur = settings.language === 'ur' || settings.language === 'roman' || settings.language === 'fa';
+  const [playing, setPlaying] = useState<number | null>(null);
+  const stopRef = useRef(false);
+  const playFrom = (i: number) => {
+    if (stopRef.current || i >= ASMA_UL_HUSNA.length) { setPlaying(null); return; }
+    setPlaying(i);
+    void speakArabic(ASMA_UL_HUSNA[i][0], { rate: 0.8, onDone: () => setTimeout(() => playFrom(i + 1), 250) });
+  };
   return (
     <FlatList
       contentContainerStyle={pad}
@@ -205,12 +275,27 @@ export function NamesScreen() {
       numColumns={2}
       keyExtractor={(n) => n[1]}
       columnWrapperStyle={{ justifyContent: 'space-between' }}
-      ListHeaderComponent={<Header emoji="✨" title={t('names99')} />}
+      extraData={playing}
+      ListHeaderComponent={
+        <View>
+          <Header emoji="✨" title={t('names99')} />
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => {
+              if (playing !== null) { stopRef.current = true; stopSpeaking(); setPlaying(null); }
+              else { stopRef.current = false; playFrom(0); }
+            }}
+            style={{ backgroundColor: playing !== null ? colors.danger : colors.gold, borderRadius: 18, padding: 14, marginBottom: 12, alignItems: 'center' }}
+          >
+            <Text style={{ color: '#FFF', fontWeight: '900', fontSize: 17 }}>{playing !== null ? '■' : ur ? '▶  تمام نام سنیں' : '▶  Listen to all 99 names'}</Text>
+          </Pressable>
+        </View>
+      }
       renderItem={({ item, index }) => (
         <Pressable
           accessibilityRole="button"
-          onPress={() => { Speech.stop(); Speech.speak(item[0], { language: 'ar-SA', rate: 0.8 }); }}
-          style={[styles.name, { backgroundColor: colors.card, borderColor: colors.border }]}
+          onPress={() => { void speakArabic(item[0]); }}
+          style={[styles.name, { backgroundColor: playing === index ? colors.gold + '33' : colors.card, borderColor: playing === index ? colors.gold : colors.border }]}
         >
           <Text style={{ color: colors.gold, fontSize: 11 }}>{index + 1}</Text>
           <Text style={{ color: colors.accent, fontSize: 26, fontFamily: 'AmiriQuran', lineHeight: 50 }}>{item[0]}</Text>
@@ -406,6 +491,8 @@ const styles = StyleSheet.create({
   check: { borderWidth: 1, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 10, margin: 4 },
   weekRow: { alignItems: 'center', paddingVertical: 8, borderBottomWidth: StyleSheet.hairlineWidth },
   dot: { width: 18, height: 18, borderRadius: 9, marginHorizontal: 4 },
+  topicRow: { borderWidth: 1, borderRadius: 18, padding: 14, marginBottom: 10, alignItems: 'center' },
+  topicNum: { width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
   bigPlay: { borderRadius: 20, padding: 16, marginBottom: 12 },
   activeStep: { borderWidth: 2, borderRadius: 20, padding: 6, marginBottom: 6 },
   catChip: { borderWidth: 1, borderRadius: 16, paddingHorizontal: 12, paddingVertical: 6, margin: 3 },
